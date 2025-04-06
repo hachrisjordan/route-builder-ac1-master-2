@@ -1,0 +1,116 @@
+.sources-excluded-select {
+  width: 100%;
+}
+
+/* Dropdown option styling */
+.source-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  width: 100%;
+}
+
+.source-option-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.airline-logo {
+  width: 24px;
+  height: 16px;
+  object-fit: contain;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
+.source-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.airline-name {
+  font-size: 14px;
+  color: #000000;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.program-name {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.2;
+}
+
+.source-code {
+  font-size: 13px;
+  color: #666666;
+  font-family: monospace;
+}
+
+/* Selected tags styling */
+.sources-excluded-select .ant-select-selector {
+  padding: 0 4px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  overflow: hidden !important;
+}
+
+.sources-excluded-select .ant-select-selection-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+
+/* Dropdown menu styling */
+.sources-excluded-select .ant-select-dropdown {
+  padding: 4px !important;
+}
+
+.sources-excluded-select .ant-select-item {
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
+  min-height: 32px !important;
+}
+
+.sources-excluded-select .ant-select-item-option-active {
+  background-color: #f5f5f5 !important;
+}
+
+.sources-excluded-select .ant-select-item-option-selected {
+  background-color: #e6f4ff !important;
+}
+
+/* Search input styling */
+.sources-excluded-select .ant-select-selection-search {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+.sources-excluded-select .ant-select-selection-search-input {
+  height: 28px !important;
+  line-height: 28px !important;
+  padding: 0 4px !important;
+}
+
+/* Clear all button */
+.sources-excluded-select .ant-select-clear {
+  background: #ffffff !important;
+  color: #999999 !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-top: -8px !important;
+  font-size: 12px !important;
+  right: 4px !important;
+}
+
+/* Placeholder */
+.sources-excluded-select .ant-select-selection-placeholder {
+  line-height: 28px !important;
+} 

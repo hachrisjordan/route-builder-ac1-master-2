@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../src/cli/lib/localDeployment/errors.ts"],
+  "sourcesContent": ["import { logFailure, logMessage, Context } from \"../../../bundler/context.js\";\n\nexport class LocalDeploymentError extends Error {}\n\nexport function printLocalDeploymentOnError(ctx: Context) {\n  // Note: Not printing the error message here since it should already be printed by\n  // ctx.crash.\n  logFailure(ctx, `Hit an error while running local deployment.`);\n  logMessage(\n    ctx,\n    \"Your error has been reported to our team, and we'll be working on it.\",\n  );\n  logMessage(\n    ctx,\n    \"To opt out, run `npx convex disable-local-deployments`. Then re-run your original command.\",\n  );\n}\n"],
+  "mappings": ";AAAA,SAAS,YAAY,kBAA2B;AAEzC,aAAM,6BAA6B,MAAM;AAAC;AAE1C,gBAAS,4BAA4B,KAAc;AAGxD,aAAW,KAAK,8CAA8C;AAC9D;AAAA,IACE;AAAA,IACA;AAAA,EACF;AACA;AAAA,IACE;AAAA,IACA;AAAA,EACF;AACF;",
+  "names": []
+}

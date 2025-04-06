@@ -1,0 +1,542 @@
+[
+    {
+        "From Region":"Atlantic",
+        "To Region":"South America",
+        "Min Distance":0,
+        "Max Distance":7000,
+        "Economy":45000,
+        "Premium Economy":0,
+        "Business":80000,
+        "First":100000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"South America",
+        "Min Distance":7001,
+        "Max Distance":30000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":100000,
+        "First":130000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Atlantic",
+        "Min Distance":0,
+        "Max Distance":1000,
+        "Economy":7500,
+        "Premium Economy":0,
+        "Business":15000,
+        "First":25000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Atlantic",
+        "Min Distance":1001,
+        "Max Distance":2000,
+        "Economy":12500,
+        "Premium Economy":0,
+        "Business":20000,
+        "First":40000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Atlantic",
+        "Min Distance":2001,
+        "Max Distance":4000,
+        "Economy":25000,
+        "Premium Economy":0,
+        "Business":45000,
+        "First":65000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Atlantic",
+        "Min Distance":4001,
+        "Max Distance":6000,
+        "Economy":35500,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":90000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Atlantic",
+        "Min Distance":6001,
+        "Max Distance":30000,
+        "Economy":50000,
+        "Premium Economy":0,
+        "Business":80000,
+        "First":130000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"North America",
+        "Min Distance":0,
+        "Max Distance":4000,
+        "Economy":35000,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":90000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"North America",
+        "Min Distance":4001,
+        "Max Distance":6000,
+        "Economy":40000,
+        "Premium Economy":0,
+        "Business":70000,
+        "First":100000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"North America",
+        "Min Distance":6001,
+        "Max Distance":8000,
+        "Economy":55000,
+        "Premium Economy":0,
+        "Business":90000,
+        "First":130000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"North America",
+        "Min Distance":8001,
+        "Max Distance":30000,
+        "Economy":70000,
+        "Premium Economy":0,
+        "Business":110000,
+        "First":140000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Atlantic",
+        "Min Distance":0,
+        "Max Distance":4000,
+        "Economy":35000,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":90000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Atlantic",
+        "Min Distance":4001,
+        "Max Distance":6000,
+        "Economy":40000,
+        "Premium Economy":0,
+        "Business":70000,
+        "First":100000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Atlantic",
+        "Min Distance":6001,
+        "Max Distance":8000,
+        "Economy":55000,
+        "Premium Economy":0,
+        "Business":90000,
+        "First":130000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Atlantic",
+        "Min Distance":8001,
+        "Max Distance":30000,
+        "Economy":70000,
+        "Premium Economy":0,
+        "Business":110000,
+        "First":140000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"North America",
+        "Min Distance":0,
+        "Max Distance":500,
+        "Economy":6000,
+        "Premium Economy":0,
+        "Business":15000,
+        "First":0
+    },
+    {
+        "From Region":"North America",
+        "To Region":"North America",
+        "Min Distance":501,
+        "Max Distance":1500,
+        "Economy":10000,
+        "Premium Economy":0,
+        "Business":20000,
+        "First":0
+    },
+    {
+        "From Region":"North America",
+        "To Region":"North America",
+        "Min Distance":1501,
+        "Max Distance":2750,
+        "Economy":12500,
+        "Premium Economy":0,
+        "Business":25000,
+        "First":0
+    },
+    {
+        "From Region":"North America",
+        "To Region":"North America",
+        "Min Distance":2751,
+        "Max Distance":30000,
+        "Economy":22500,
+        "Premium Economy":0,
+        "Business":35000,
+        "First":0
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Pacific",
+        "Min Distance":0,
+        "Max Distance":5000,
+        "Economy":35000,
+        "Premium Economy":0,
+        "Business":55000,
+        "First":90000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Pacific",
+        "Min Distance":5001,
+        "Max Distance":7500,
+        "Economy":50000,
+        "Premium Economy":0,
+        "Business":75000,
+        "First":110000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Pacific",
+        "Min Distance":7501,
+        "Max Distance":11000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":87500,
+        "First":130000
+    },
+    {
+        "From Region":"North America",
+        "To Region":"Pacific",
+        "Min Distance":11001,
+        "Max Distance":30000,
+        "Economy":75000,
+        "Premium Economy":0,
+        "Business":115000,
+        "First":150000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"South America",
+        "Min Distance":0,
+        "Max Distance":11000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":90000,
+        "First":130000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"South America",
+        "Min Distance":11001,
+        "Max Distance":30000,
+        "Economy":80000,
+        "Premium Economy":0,
+        "Business":140000,
+        "First":200000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Pacific",
+        "Min Distance":0,
+        "Max Distance":1000,
+        "Economy":8000,
+        "Premium Economy":0,
+        "Business":20000,
+        "First":25000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Pacific",
+        "Min Distance":1001,
+        "Max Distance":2000,
+        "Economy":12500,
+        "Premium Economy":0,
+        "Business":30000,
+        "First":50000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Pacific",
+        "Min Distance":2001,
+        "Max Distance":5000,
+        "Economy":25000,
+        "Premium Economy":0,
+        "Business":45000,
+        "First":60000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Pacific",
+        "Min Distance":5001,
+        "Max Distance":7000,
+        "Economy":37500,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":80000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Pacific",
+        "Min Distance":7001,
+        "Max Distance":30000,
+        "Economy":55000,
+        "Premium Economy":0,
+        "Business":90000,
+        "First":130000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"North America",
+        "Min Distance":0,
+        "Max Distance":5000,
+        "Economy":35000,
+        "Premium Economy":0,
+        "Business":55000,
+        "First":90000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"North America",
+        "Min Distance":5001,
+        "Max Distance":7500,
+        "Economy":50000,
+        "Premium Economy":0,
+        "Business":75000,
+        "First":110000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"North America",
+        "Min Distance":7501,
+        "Max Distance":11000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":87500,
+        "First":130000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"North America",
+        "Min Distance":11001,
+        "Max Distance":30000,
+        "Economy":75000,
+        "Premium Economy":0,
+        "Business":115000,
+        "First":150000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"South America",
+        "Min Distance":0,
+        "Max Distance":1600,
+        "Economy":10000,
+        "Premium Economy":0,
+        "Business":20000,
+        "First":30000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"South America",
+        "Min Distance":1601,
+        "Max Distance":30000,
+        "Economy":20000,
+        "Premium Economy":0,
+        "Business":35000,
+        "First":50000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"Atlantic",
+        "Min Distance":0,
+        "Max Distance":7000,
+        "Economy":45000,
+        "Premium Economy":0,
+        "Business":80000,
+        "First":100000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"Atlantic",
+        "Min Distance":7001,
+        "Max Distance":30000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":100000,
+        "First":130000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"Pacific",
+        "Min Distance":0,
+        "Max Distance":11000,
+        "Economy":60000,
+        "Premium Economy":0,
+        "Business":90000,
+        "First":130000
+    },
+    {
+        "From Region":"South America",
+        "To Region":"Pacific",
+        "Min Distance":11001,
+        "Max Distance":30000,
+        "Economy":80000,
+        "Premium Economy":0,
+        "Business":140000,
+        "First":200000
+    },
+    {
+        "From Region": "North America",
+        "To Region": "South America",
+        "Min Distance": 0,
+        "Max Distance": 2500,
+        "Economy": 20000,
+        "Premium Economy": 40000,
+        "Business": 60000,
+        "First": 0
+    },
+    {
+        "From Region": "North America",
+        "To Region": "South America",
+        "Min Distance": 2501,
+        "Max Distance": 4500,
+        "Economy": 30000,
+        "Premium Economy": 50000,
+        "Business": 80000,
+        "First": 0
+    },
+    {
+        "From Region": "North America",
+        "To Region": "South America",
+        "Min Distance": 4501,
+        "Max Distance": 30000,
+        "Economy": 40000,
+        "Premium Economy": 60000,
+        "Business": 100000,
+        "First": 0
+    },
+    {
+        "From Region": "South America",
+        "To Region": "North America",
+        "Min Distance": 0,
+        "Max Distance": 2500,
+        "Economy": 20000,
+        "Premium Economy": 40000,
+        "Business": 60000,
+        "First": 0
+    },
+    {
+        "From Region": "South America",
+        "To Region": "North America",
+        "Min Distance": 2501,
+        "Max Distance": 4500,
+        "Economy": 30000,
+        "Premium Economy": 50000,
+        "Business": 80000,
+        "First": 0
+    },
+    {
+        "From Region": "South America",
+        "To Region": "North America",
+        "Min Distance": 4501,
+        "Max Distance": 30000,
+        "Economy": 40000,
+        "Premium Economy": 60000,
+        "Business": 100000,
+        "First": 0
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Atlantic",
+        "Min Distance":0,
+        "Max Distance":2500,
+        "Economy":25000,
+        "Premium Economy":0,
+        "Business":40000,
+        "First":50000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Atlantic",
+        "Min Distance":2501,
+        "Max Distance":5000,
+        "Economy":40000,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":80000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Atlantic",
+        "Min Distance":5001,
+        "Max Distance":7000,
+        "Economy":50000,
+        "Premium Economy":0,
+        "Business":80000,
+        "First":100000
+    },
+    {
+        "From Region":"Pacific",
+        "To Region":"Atlantic",
+        "Min Distance":7001,
+        "Max Distance":30000,
+        "Economy":65000,
+        "Premium Economy":0,
+        "Business":110000,
+        "First":140000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Pacific",
+        "Min Distance":0,
+        "Max Distance":2500,
+        "Economy":25000,
+        "Premium Economy":0,
+        "Business":40000,
+        "First":50000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Pacific",
+        "Min Distance":2501,
+        "Max Distance":5000,
+        "Economy":40000,
+        "Premium Economy":0,
+        "Business":60000,
+        "First":80000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Pacific",
+        "Min Distance":5001,
+        "Max Distance":7000,
+        "Economy":50000,
+        "Premium Economy":0,
+        "Business":80000,
+        "First":100000
+    },
+    {
+        "From Region":"Atlantic",
+        "To Region":"Pacific",
+        "Min Distance":7001,
+        "Max Distance":30000,
+        "Economy":55000,
+        "Premium Economy":0,
+        "Business":110000,
+        "First":140000
+    }
+]

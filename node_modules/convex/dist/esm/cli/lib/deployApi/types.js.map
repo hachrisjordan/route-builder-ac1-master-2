@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../src/cli/lib/deployApi/types.ts"],
+  "sourcesContent": ["import { z } from \"zod\";\nimport { looseObject } from \"./utils.js\";\n\nexport const reference = z.string();\nexport type Reference = z.infer<typeof reference>;\n\nexport const authInfo = looseObject({\n  applicationID: z.string(),\n  domain: z.string(),\n});\nexport type AuthInfo = z.infer<typeof authInfo>;\n\nexport const identifier = z.string();\nexport type Identifier = z.infer<typeof identifier>;\n"],
+  "mappings": ";AAAA,SAAS,SAAS;AAClB,SAAS,mBAAmB;AAErB,aAAM,YAAY,EAAE,OAAO;AAG3B,aAAM,WAAW,YAAY;AAAA,EAClC,eAAe,EAAE,OAAO;AAAA,EACxB,QAAQ,EAAE,OAAO;AACnB,CAAC;AAGM,aAAM,aAAa,EAAE,OAAO;",
+  "names": []
+}

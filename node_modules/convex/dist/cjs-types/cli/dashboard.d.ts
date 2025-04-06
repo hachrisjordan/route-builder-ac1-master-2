@@ -1,0 +1,15 @@
+import { Command } from "@commander-js/extra-typings";
+export declare const dashboard: Command<[], {
+    open: boolean;
+} & {
+    url?: string | undefined;
+    adminKey?: string | undefined;
+    prod?: boolean | undefined;
+    previewName?: string | undefined;
+    deploymentName?: string | undefined;
+}>;
+export declare function deploymentDashboardUrlPage(configuredDeployment: string | null, page: string): string;
+export declare function deploymentDashboardUrl(team: string, project: string, deploymentName: string): string;
+export declare function projectDashboardUrl(team: string, project: string): string;
+export declare function teamDashboardUrl(team: string): string;
+//# sourceMappingURL=dashboard.d.ts.map

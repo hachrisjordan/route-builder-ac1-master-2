@@ -1,0 +1,13 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.serverless/air-canada-route-builder.zip
+*.pack
+
+.env.local
+node_modules/.cache/.eslintcache
+/node_modules/.cache
+gcp-mcp/
+/node_modules/.cache/default-development

@@ -1,0 +1,351 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
+/* Add a scaling wrapper around the entire app */
+#root {
+  width: 100%;
+  height: 100%;
+  transform-origin: top left;
+}
+
+/* Apply responsive scaling based on viewport width */
+@media (max-width: 1919px) {
+  html, body {
+    overflow-x: auto;
+    min-height: 100%;
+  }
+  
+  #root {
+    transform: scale(calc(100vw / 1920));
+    width: 1920px;
+    min-height: 100vh;
+    transform-origin: top left;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  /* Create a container to allow scrolling */
+  body::after {
+    content: '';
+    display: block;
+    height: calc(100vh * (1920 / 100vw));
+    width: 100%;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* More specific selector to override Ant Design's default styles */
+.ant-table.ant-table-small,
+.ant-table.ant-table-middle,
+.ant-table.ant-table-large,
+.ant-table {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace !important;
+}
+
+/* Target table cells specifically */
+.ant-table-tbody > tr > td {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace !important;
+}
+
+/* Override Ant Design primary button color */
+.ant-btn-primary {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: #333333 !important;
+  border-color: #333333 !important;
+}
+
+/* Override Ant Design primary color for other components */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: #000000 !important;
+}
+
+.ant-radio-inner::after {
+  background-color: #000000 !important;
+}
+
+.ant-switch-checked {
+  background-color: #000000 !important;
+}
+
+.ant-slider-track {
+  background-color: #000000 !important;
+}
+
+.ant-slider-handle {
+  border-color: #000000 !important;
+}
+
+/* Override Ant Design radio button styles */
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: #000000 !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+  background-color: #000000 !important;
+}
+
+.ant-radio-button-wrapper:hover {
+  color: #000000 !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+/* Additional Radio button focus state */
+.ant-radio-button-wrapper:focus-within {
+  outline: 2px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Disabled button styling */
+.ant-btn[disabled],
+.ant-btn-primary[disabled],
+.ant-btn-default[disabled],
+.ant-btn[disabled]:hover,
+.ant-btn-primary[disabled]:hover,
+.ant-btn-default[disabled]:hover {
+  background-color: #e0e0e0 !important;
+  color: #000000 !important;
+  border-color: #d9d9d9 !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+/* Enhanced native HTML checkboxes styling with !important */
+input[type="checkbox"] {
+  accent-color: #000000 !important;
+  border-color: #000000 !important;
+  color: #000000 !important;
+}
+
+/* More targeted styling for the segment checkboxes */
+.segment-checkbox {
+  accent-color: #000000 !important;
+  border-color: #000000 !important;
+  background-color: white !important;
+  border: 1px solid #000000 !important;
+}
+
+/* Override browser-specific checkbox appearance */
+input[type="checkbox"]:checked {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+/* For WebKit browsers */
+input[type="checkbox"]::-webkit-checkbox-inner-element {
+  appearance: none !important;
+}
+
+/* For Firefox */
+input[type="checkbox"]::-moz-check {
+  color: #000000 !important;
+}
+
+/* Complete Ant Design Checkbox override */
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: #000000 !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.ant-checkbox-checked::after {
+  border-color: #000000 !important;
+}
+
+/* Fix for indeterminate state */
+.ant-checkbox-indeterminate .ant-checkbox-inner::after {
+  background-color: #000000 !important;
+}
+
+/* Pagination styling */
+.ant-pagination-item-active {
+  border-color: #000000 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #000000 !important;
+}
+
+.ant-pagination-item:hover {
+  border-color: #000000 !important;
+}
+
+.ant-pagination-item:hover a {
+  color: #000000 !important;
+}
+
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
+.ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: #000000 !important;
+}
+
+/* Target specific checkboxes in segment table */
+.segment-table-checkbox .ant-checkbox-inner {
+  border-color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.segment-table-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.segment-table-checkbox .ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: #ffffff !important;
+}
+
+.segment-table-checkbox:hover .ant-checkbox-inner {
+  border-color: #000000 !important;
+}
+
+.segment-table-checkbox .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: #000000 !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Global Ant Design overrides for blue color */
+:root {
+  --ant-primary-color: #000000 !important;
+  --ant-primary-color-hover: #333333 !important;
+  --ant-primary-color-active: #000000 !important;
+  --ant-primary-color-outline: rgba(0, 0, 0, 0.2) !important;
+  --ant-checkbox-color: #000000 !important;
+  --ant-checkbox-check-color: #ffffff !important;
+}
+
+/* Ant Design Table specific overrides */
+.ant-table .ant-checkbox-inner {
+  border-color: #000000 !important;
+}
+
+.ant-table .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.ant-table .ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: #ffffff !important;
+}
+
+/* Force override for any checkbox */
+.ant-checkbox-inner {
+  border-color: #000000 !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: #ffffff !important;
+}
+
+/* Comprehensive input highlighting fixes */
+.ant-input:hover,
+.ant-input:focus,
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-input-number:hover,
+.ant-input-number-focused,
+.ant-picker:hover,
+.ant-picker-focused,
+.ant-select:hover .ant-select-selector,
+.ant-select-focused .ant-select-selector,
+.ant-select-open .ant-select-selector {
+  border-color: #000000 !important;
+  box-shadow: none !important;
+}
+
+/* Input focus */
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper-focused,
+.ant-input-number-focused,
+.ant-picker-focused,
+.ant-select-focused .ant-select-selector {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Calendar navigation buttons */
+.ant-picker-header-view button:hover,
+.ant-picker-header button:hover,
+.ant-picker-cell:hover .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Calendar buttons */
+.calendar-container button.ant-btn-primary {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* List selection */
+.ant-list-item-active,
+.ant-list-item:hover,
+.ant-list-item-selected {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dropdown option hover */
+.ant-select-item-option-active:not(.ant-select-item-option-disabled),
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+}
+
+/* Input number handlers */
+.ant-input-number-handler:hover .ant-input-number-handler-up-inner,
+.ant-input-number-handler:hover .ant-input-number-handler-down-inner {
+  color: #000000 !important;
+}
+
+/* Fix calendar arrow buttons */
+.calendar-container .ant-btn[style*="background-color: rgb(22, 119, 255)"] {
+  background-color: #000000 !important;
+}

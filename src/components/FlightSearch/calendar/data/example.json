@@ -1,0 +1,2142 @@
+[
+    {
+        "originAirport": "LHR",
+        "destinationAirport": "JFK",
+        "date": "2025-04-09",
+        "distance": 3446,
+        "ID": "2gOQluMKH6arZqkDsod0wmeGJEG",
+        "source": "american",
+        "YAvailable": true,
+        "WAvailable": true,
+        "JAvailable": true,
+        "FAvailable": true,
+        "YDirect": true,
+        "WDirect": true,
+        "JDirect": true,
+        "FDirect": true,
+        "YAirlines": "AA, BA",
+        "WAirlines": "AA, BA",
+        "JAirlines": "AA, BA",
+        "FAirlines": "AA, BA",
+        "YDirectAirlines": "AA, BA",
+        "WDirectAirlines": "AA, BA",
+        "JDirectAirlines": "AA, BA",
+        "FDirectAirlines": "AA, BA",
+        "YMileageCost": "27000",
+        "WMileageCost": "40000",
+        "JMileageCost": "57500",
+        "FMileageCost": "74000",
+        "YTotalTaxes": 20151,
+        "WTotalTaxes": 58430,
+        "JTotalTaxes": 37591,
+        "FTotalTaxes": 36461,
+        "YDirectMileageCost": 27000,
+        "WDirectMileageCost": 40000,
+        "JDirectMileageCost": 57500,
+        "FDirectMileageCost": 74000,
+        "YDirectTotalTaxes": 20151,
+        "WDirectTotalTaxes": 58430,
+        "JDirectTotalTaxes": 77471,
+        "FDirectTotalTaxes": 36461,
+        "TaxesCurrency": "USD",
+        "AvailabilityTrips": [
+            {
+                "FlightNumbers": [
+                    "AA47",
+                    "AA696"
+                ],
+                "TotalDuration": 795,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T12:15:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 102000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA47",
+                    "AA532"
+                ],
+                "TotalDuration": 1903,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737 MAX 8"
+                ],
+                "DepartsAt": "2025-04-09T12:15:00Z",
+                "ArrivesAt": "2025-04-10T14:58:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 102000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA107"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T17:00:00Z",
+                "ArrivesAt": "2025-04-09T19:55:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 47000,
+                "JMile": 62000,
+                "FMile": 0,
+                "YTaxes": 20151,
+                "WTaxes": 36461,
+                "JTaxes": 36461,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA21",
+                    "AA578"
+                ],
+                "TotalDuration": 960,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T10:30:00Z",
+                "ArrivesAt": "2025-04-09T21:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 1,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 181000,
+                "FMile": 191000,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA195",
+                    "AA1587"
+                ],
+                "TotalDuration": 1400,
+                "Distance": 7414,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737 MAX 8"
+                ],
+                "DepartsAt": "2025-04-09T11:15:00Z",
+                "ArrivesAt": "2025-04-10T05:35:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 150000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "PHX"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA81",
+                    "AA606"
+                ],
+                "TotalDuration": 1815,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T16:25:00Z",
+                "ArrivesAt": "2025-04-10T17:40:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 3,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 135500,
+                "FMile": 145500,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA105"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T14:10:00Z",
+                "ArrivesAt": "2025-04-09T17:05:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 1,
+                "YMile": 29000,
+                "WMile": 49000,
+                "JMile": 64000,
+                "FMile": 74000,
+                "YTaxes": 20151,
+                "WTaxes": 36461,
+                "JTaxes": 36461,
+                "FTaxes": 36461,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA113"
+                ],
+                "TotalDuration": 485,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T16:20:00Z",
+                "ArrivesAt": "2025-04-09T19:25:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 30000,
+                "WMile": 40000,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 29961,
+                "WTaxes": 58430,
+                "JTaxes": 77471,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA137",
+                    "AA28"
+                ],
+                "TotalDuration": 1301,
+                "Distance": 7920,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Airbus A321"
+                ],
+                "DepartsAt": "2025-04-09T14:45:00Z",
+                "ArrivesAt": "2025-04-10T07:26:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 2,
+                "FSeats": 0,
+                "YMile": 29000,
+                "WMile": 0,
+                "JMile": 310500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "LAX"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA173",
+                    "AA4765"
+                ],
+                "TotalDuration": 1990,
+                "Distance": 4294,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T10:05:00Z",
+                "ArrivesAt": "2025-04-10T14:15:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 93500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "RDU"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA731",
+                    "AA493"
+                ],
+                "TotalDuration": 1815,
+                "Distance": 4526,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-10T10:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CLT"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA79",
+                    "AA1766"
+                ],
+                "TotalDuration": 1829,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T12:00:00Z",
+                "ArrivesAt": "2025-04-10T13:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 2,
+                "FSeats": 2,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 140500,
+                "FMile": 150500,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA87",
+                    "AA696"
+                ],
+                "TotalDuration": 975,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 102000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA173",
+                    "AA4690"
+                ],
+                "TotalDuration": 895,
+                "Distance": 4294,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T10:05:00Z",
+                "ArrivesAt": "2025-04-09T20:00:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 100500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "RDU"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA153",
+                    "AA606"
+                ],
+                "TotalDuration": 1890,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T15:10:00Z",
+                "ArrivesAt": "2025-04-10T17:40:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 136500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA87",
+                    "AA532"
+                ],
+                "TotalDuration": 2083,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737 MAX 8"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-10T14:58:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 102000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA295",
+                    "AA696"
+                ],
+                "TotalDuration": 865,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-10",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T11:05:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 30000,
+                "WMile": 0,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 30970,
+                "WTaxes": 0,
+                "JTaxes": 78481,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA304",
+                    "AA45"
+                ],
+                "TotalDuration": 770,
+                "Distance": 3846,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320",
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T06:40:00Z",
+                "ArrivesAt": "2025-04-09T14:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 38221,
+                "FTaxes": 0,
+                "connections": [
+                    "CDG"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA21",
+                    "AA1766"
+                ],
+                "TotalDuration": 1919,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T10:30:00Z",
+                "ArrivesAt": "2025-04-10T13:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 2,
+                "FSeats": 2,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 140500,
+                "FMile": 150500,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA177"
+                ],
+                "TotalDuration": 470,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T13:20:00Z",
+                "ArrivesAt": "2025-04-09T16:10:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 3,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 40000,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 58430,
+                "JTaxes": 77471,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA173",
+                    "AA4805"
+                ],
+                "TotalDuration": 1573,
+                "Distance": 4294,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T10:05:00Z",
+                "ArrivesAt": "2025-04-10T07:18:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 100500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "RDU"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA117"
+                ],
+                "TotalDuration": 465,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T08:20:00Z",
+                "ArrivesAt": "2025-04-09T11:05:00Z",
+                "YSeats": 0,
+                "WSeats": 2,
+                "JSeats": 0,
+                "FSeats": 1,
+                "YMile": 0,
+                "WMile": 40000,
+                "JMile": 0,
+                "FMile": 85000,
+                "YTaxes": 0,
+                "WTaxes": 58430,
+                "JTaxes": 0,
+                "FTaxes": 80581,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA115"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T14:40:00Z",
+                "ArrivesAt": "2025-04-09T17:35:00Z",
+                "YSeats": 3,
+                "WSeats": 0,
+                "JSeats": 3,
+                "FSeats": 0,
+                "YMile": 30000,
+                "WMile": 40000,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 29961,
+                "WTaxes": 58430,
+                "JTaxes": 77471,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA482",
+                    "AA67"
+                ],
+                "TotalDuration": 1499,
+                "Distance": 4538,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320",
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T19:30:00Z",
+                "ArrivesAt": "2025-04-10T15:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 37591,
+                "FTaxes": 0,
+                "connections": [
+                    "BCN"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA51",
+                    "AA578"
+                ],
+                "TotalDuration": 1090,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T08:20:00Z",
+                "ArrivesAt": "2025-04-09T21:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 1,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 181000,
+                "FMile": 191000,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA101"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T09:45:00Z",
+                "ArrivesAt": "2025-04-09T12:40:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 29000,
+                "WMile": 49000,
+                "JMile": 64000,
+                "FMile": 0,
+                "YTaxes": 20151,
+                "WTaxes": 36461,
+                "JTaxes": 36461,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA109",
+                    "AA4566"
+                ],
+                "TotalDuration": 1894,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T08:55:00Z",
+                "ArrivesAt": "2025-04-10T11:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 62000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA183"
+                ],
+                "TotalDuration": 470,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T19:40:00Z",
+                "ArrivesAt": "2025-04-09T22:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 1,
+                "YMile": 30000,
+                "WMile": 40000,
+                "JMile": 57500,
+                "FMile": 85000,
+                "YTaxes": 29961,
+                "WTaxes": 58430,
+                "JTaxes": 77471,
+                "FTaxes": 80581,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA109",
+                    "AA4580"
+                ],
+                "TotalDuration": 1054,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T08:55:00Z",
+                "ArrivesAt": "2025-04-09T21:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA91",
+                    "AA532"
+                ],
+                "TotalDuration": 1773,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737 MAX 8"
+                ],
+                "DepartsAt": "2025-04-09T14:25:00Z",
+                "ArrivesAt": "2025-04-10T14:58:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 102000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA731",
+                    "AA657"
+                ],
+                "TotalDuration": 885,
+                "Distance": 4526,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Airbus A319"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T19:00:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CLT"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA153",
+                    "AA1766"
+                ],
+                "TotalDuration": 1639,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T15:10:00Z",
+                "ArrivesAt": "2025-04-10T13:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 2,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 141500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA137",
+                    "AA10"
+                ],
+                "TotalDuration": 1241,
+                "Distance": 7920,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Airbus A321"
+                ],
+                "DepartsAt": "2025-04-09T14:45:00Z",
+                "ArrivesAt": "2025-04-10T06:26:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 29000,
+                "WMile": 0,
+                "JMile": 337500,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "LAX"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA179"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T18:05:00Z",
+                "ArrivesAt": "2025-04-09T21:00:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 30000,
+                "WMile": 40000,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 29961,
+                "WTaxes": 58430,
+                "JTaxes": 77471,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA141"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T19:05:00Z",
+                "ArrivesAt": "2025-04-09T22:00:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 47000,
+                "JMile": 62000,
+                "FMile": 0,
+                "YTaxes": 20151,
+                "WTaxes": 36461,
+                "JTaxes": 36461,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA81",
+                    "AA1766"
+                ],
+                "TotalDuration": 1564,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T16:25:00Z",
+                "ArrivesAt": "2025-04-10T13:29:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 2,
+                "FSeats": 2,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 140500,
+                "FMile": 150500,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 37021,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA731",
+                    "AA1727"
+                ],
+                "TotalDuration": 1068,
+                "Distance": 4526,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T22:03:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CLT"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA109",
+                    "AA4721"
+                ],
+                "TotalDuration": 621,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T08:55:00Z",
+                "ArrivesAt": "2025-04-09T14:16:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27000,
+                "WMile": 0,
+                "JMile": 62000,
+                "FMile": 0,
+                "YTaxes": 20711,
+                "WTaxes": 0,
+                "JTaxes": 37021,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA566",
+                    "AA235"
+                ],
+                "TotalDuration": 1555,
+                "Distance": 5169,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320",
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T20:15:00Z",
+                "ArrivesAt": "2025-04-10T17:10:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 37631,
+                "FTaxes": 0,
+                "connections": [
+                    "FCO"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA314",
+                    "AA45"
+                ],
+                "TotalDuration": 1800,
+                "Distance": 3846,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320",
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T13:30:00Z",
+                "ArrivesAt": "2025-04-10T14:30:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 1,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 57500,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 39441,
+                "FTaxes": 0,
+                "connections": [
+                    "CDG"
+                ]
+            }
+        ],
+        "earliestDeparture": "2025-04-09T06:40:00Z",
+        "latestArrival": "2025-04-10T17:40:00Z"
+    },
+    {
+        "originAirport": "LHR",
+        "destinationAirport": "JFK",
+        "date": "2025-04-09",
+        "distance": 3446,
+        "ID": "2fUwaXTpUhWRmNis2hgZf1WXlJH",
+        "source": "alaska",
+        "YAvailable": true,
+        "WAvailable": true,
+        "JAvailable": true,
+        "FAvailable": true,
+        "YDirect": true,
+        "WDirect": true,
+        "JDirect": true,
+        "FDirect": true,
+        "YAirlines": "AA, AT, BA, EI",
+        "WAirlines": "BA",
+        "JAirlines": "AA, BA",
+        "FAirlines": "AA, BA",
+        "YDirectAirlines": "AA, BA",
+        "WDirectAirlines": "BA",
+        "JDirectAirlines": "AA, BA",
+        "FDirectAirlines": "AA, BA",
+        "YMileageCost": "22500",
+        "WMileageCost": "30000",
+        "JMileageCost": "45000",
+        "FMileageCost": "67500",
+        "YTotalTaxes": 21401,
+        "WTotalTaxes": 59680,
+        "JTotalTaxes": 37711,
+        "FTotalTaxes": 37711,
+        "YDirectMileageCost": 22500,
+        "WDirectMileageCost": 30000,
+        "JDirectMileageCost": 45000,
+        "FDirectMileageCost": 67500,
+        "YDirectTotalTaxes": 21401,
+        "WDirectTotalTaxes": 59680,
+        "JDirectTotalTaxes": 37711,
+        "FDirectTotalTaxes": 37711,
+        "TaxesCurrency": "USD",
+        "AvailabilityTrips": [
+            {
+                "FlightNumbers": [
+                    "AA731",
+                    "AA657"
+                ],
+                "TotalDuration": 885,
+                "Distance": 4526,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Airbus A319"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T19:00:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CLT"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AT801",
+                    "AT202"
+                ],
+                "TotalDuration": 1250,
+                "Distance": 4907,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 737 MAX 8",
+                    "Boeing 787-8"
+                ],
+                "DepartsAt": "2025-04-09T18:10:00Z",
+                "ArrivesAt": "2025-04-10T10:00:00Z",
+                "YSeats": 1,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 47791,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CMN"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA115"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T14:40:00Z",
+                "ArrivesAt": "2025-04-09T17:35:00Z",
+                "YSeats": 3,
+                "WSeats": 5,
+                "JSeats": 3,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 30000,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 42861,
+                "WTaxes": 59680,
+                "JTaxes": 78721,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA117"
+                ],
+                "TotalDuration": 465,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T08:20:00Z",
+                "ArrivesAt": "2025-04-09T11:05:00Z",
+                "YSeats": 0,
+                "WSeats": 2,
+                "JSeats": 0,
+                "FSeats": 1,
+                "YMile": 0,
+                "WMile": 30000,
+                "JMile": 0,
+                "FMile": 67500,
+                "YTaxes": 0,
+                "WTaxes": 59680,
+                "JTaxes": 0,
+                "FTaxes": 81831,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA183"
+                ],
+                "TotalDuration": 470,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T19:40:00Z",
+                "ArrivesAt": "2025-04-09T22:30:00Z",
+                "YSeats": 9,
+                "WSeats": 9,
+                "JSeats": 9,
+                "FSeats": 1,
+                "YMile": 22500,
+                "WMile": 30000,
+                "JMile": 45000,
+                "FMile": 67500,
+                "YTaxes": 42861,
+                "WTaxes": 59680,
+                "JTaxes": 78721,
+                "FTaxes": 81831,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA179"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777"
+                ],
+                "DepartsAt": "2025-04-09T18:05:00Z",
+                "ArrivesAt": "2025-04-09T21:00:00Z",
+                "YSeats": 9,
+                "WSeats": 9,
+                "JSeats": 9,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 30000,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 42861,
+                "WTaxes": 59680,
+                "JTaxes": 78721,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA21",
+                    "AA578"
+                ],
+                "TotalDuration": 960,
+                "Distance": 6133,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T10:30:00Z",
+                "ArrivesAt": "2025-04-09T21:30:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 55000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DFW"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "EI151",
+                    "EI105"
+                ],
+                "TotalDuration": 645,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T07:40:00Z",
+                "ArrivesAt": "2025-04-09T13:25:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 87500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA141"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-200"
+                ],
+                "DepartsAt": "2025-04-09T19:05:00Z",
+                "ArrivesAt": "2025-04-09T22:00:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 9,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 0,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 21401,
+                "WTaxes": 0,
+                "JTaxes": 37711,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA109",
+                    "AA4721"
+                ],
+                "TotalDuration": 621,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T08:55:00Z",
+                "ArrivesAt": "2025-04-09T14:16:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 8,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 0,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 38271,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "EI381",
+                    "EI111"
+                ],
+                "TotalDuration": 720,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A321neo",
+                    "Airbus A321neo"
+                ],
+                "DepartsAt": "2025-04-09T09:50:00Z",
+                "ArrivesAt": "2025-04-09T16:50:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 87500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18021,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "SNN"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA113"
+                ],
+                "TotalDuration": 485,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T16:20:00Z",
+                "ArrivesAt": "2025-04-09T19:25:00Z",
+                "YSeats": 6,
+                "WSeats": 9,
+                "JSeats": 6,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 30000,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 42861,
+                "WTaxes": 59680,
+                "JTaxes": 78721,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "EI151",
+                    "EI107"
+                ],
+                "TotalDuration": 1000,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T07:40:00Z",
+                "ArrivesAt": "2025-04-09T19:20:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 45000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA105"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T14:10:00Z",
+                "ArrivesAt": "2025-04-09T17:05:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 9,
+                "FSeats": 1,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 45000,
+                "FMile": 67500,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 37711,
+                "FTaxes": 37711,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "EI153",
+                    "EI107"
+                ],
+                "TotalDuration": 930,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T08:50:00Z",
+                "ArrivesAt": "2025-04-09T19:20:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 45000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA239",
+                    "AA4566"
+                ],
+                "TotalDuration": 1219,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T20:10:00Z",
+                "ArrivesAt": "2025-04-10T11:29:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 7,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 55000,
+                "FMile": 0,
+                "YTaxes": 43421,
+                "WTaxes": 0,
+                "JTaxes": 79281,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "EI183",
+                    "EI105"
+                ],
+                "TotalDuration": 1275,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T21:10:00Z",
+                "ArrivesAt": "2025-04-10T13:25:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 87500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 19401,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "EI163",
+                    "EI107"
+                ],
+                "TotalDuration": 655,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T13:25:00Z",
+                "ArrivesAt": "2025-04-09T19:20:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 45000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA109",
+                    "AA4580"
+                ],
+                "TotalDuration": 1054,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T08:55:00Z",
+                "ArrivesAt": "2025-04-09T21:29:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA213",
+                    "AA4580"
+                ],
+                "TotalDuration": 709,
+                "Distance": 3446,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A380-800",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T14:40:00Z",
+                "ArrivesAt": "2025-04-09T21:29:00Z",
+                "YSeats": 8,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 43421,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "BOS"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA101"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T09:45:00Z",
+                "ArrivesAt": "2025-04-09T12:40:00Z",
+                "YSeats": 0,
+                "WSeats": 0,
+                "JSeats": 9,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 0,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 0,
+                "JTaxes": 37711,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "BA295",
+                    "AA696"
+                ],
+                "TotalDuration": 865,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-10",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T11:05:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 5,
+                "FSeats": 0,
+                "YMile": 35000,
+                "WMile": 0,
+                "JMile": 70000,
+                "FMile": 0,
+                "YTaxes": 43421,
+                "WTaxes": 0,
+                "JTaxes": 79281,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "EI155",
+                    "EI107"
+                ],
+                "TotalDuration": 870,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A321neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T09:50:00Z",
+                "ArrivesAt": "2025-04-09T19:20:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 45000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA173",
+                    "AA4690"
+                ],
+                "TotalDuration": 895,
+                "Distance": 4294,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Embraer E175"
+                ],
+                "DepartsAt": "2025-04-09T10:05:00Z",
+                "ArrivesAt": "2025-04-09T20:00:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 55000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "RDU"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "QR16",
+                    "QR701"
+                ],
+                "TotalDuration": 1335,
+                "Distance": 9961,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-300ER",
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T21:55:00Z",
+                "ArrivesAt": "2025-04-10T15:10:00Z",
+                "YSeats": 1,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 200000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 25121,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DOH"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA731",
+                    "AA1727"
+                ],
+                "TotalDuration": 1068,
+                "Distance": 4526,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 777-200",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T22:03:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "CLT"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA107"
+                ],
+                "TotalDuration": 475,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T17:00:00Z",
+                "ArrivesAt": "2025-04-09T19:55:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 9,
+                "FSeats": 0,
+                "YMile": 22500,
+                "WMile": 0,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 21401,
+                "WTaxes": 0,
+                "JTaxes": 37711,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "EI159",
+                    "EI107"
+                ],
+                "TotalDuration": 740,
+                "Distance": 3454,
+                "Stops": 1,
+                "Aircraft": [
+                    "Airbus A320neo",
+                    "Airbus A330-300"
+                ],
+                "DepartsAt": "2025-04-09T12:00:00Z",
+                "ArrivesAt": "2025-04-09T19:20:00Z",
+                "YSeats": 4,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 45000,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 18411,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "DUB"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "AA47",
+                    "AA696"
+                ],
+                "TotalDuration": 795,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T12:15:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            },
+            {
+                "FlightNumbers": [
+                    "BA177"
+                ],
+                "TotalDuration": 470,
+                "Distance": 3446,
+                "Stops": 0,
+                "Aircraft": [
+                    "Boeing 777-300ER"
+                ],
+                "DepartsAt": "2025-04-09T13:20:00Z",
+                "ArrivesAt": "2025-04-09T16:10:00Z",
+                "YSeats": 0,
+                "WSeats": 4,
+                "JSeats": 3,
+                "FSeats": 0,
+                "YMile": 0,
+                "WMile": 30000,
+                "JMile": 45000,
+                "FMile": 0,
+                "YTaxes": 0,
+                "WTaxes": 59680,
+                "JTaxes": 78721,
+                "FTaxes": 0,
+                "connections": []
+            },
+            {
+                "FlightNumbers": [
+                    "AA87",
+                    "AA696"
+                ],
+                "TotalDuration": 975,
+                "Distance": 4684,
+                "Stops": 1,
+                "Aircraft": [
+                    "Boeing 787-9",
+                    "Boeing 737-800"
+                ],
+                "DepartsAt": "2025-04-09T09:15:00Z",
+                "ArrivesAt": "2025-04-09T20:30:00Z",
+                "YSeats": 9,
+                "WSeats": 0,
+                "JSeats": 0,
+                "FSeats": 0,
+                "YMile": 27500,
+                "WMile": 0,
+                "JMile": 0,
+                "FMile": 0,
+                "YTaxes": 21961,
+                "WTaxes": 0,
+                "JTaxes": 0,
+                "FTaxes": 0,
+                "connections": [
+                    "ORD"
+                ]
+            }
+        ],
+        "earliestDeparture": "2025-04-09T07:40:00Z",
+        "latestArrival": "2025-04-10T15:10:00Z"
+    }
+]
