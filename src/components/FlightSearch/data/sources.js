@@ -64,6 +64,12 @@ export const sources = [
     codename: 'skywards'
   },
   {
+    airline: 'Ethiopian Airlines',
+    ffname: ' ShebaMiles',
+    iata: 'ET',
+    codename: 'ethiopian'
+  },
+  {
     airline: 'Etihad',
     ffname: 'Guest',
     iata: 'EY',
@@ -105,6 +111,13 @@ export const sources = [
     iata: 'SK',
     codename: 'eurobonus'
   },
+  {
+    airline: 'Saudia',
+    ffname: 'Al-Fursan',
+    iata: 'SV',
+    codename: 'saudia'
+  },
+
   {
     airline: 'Singapore Airlines',
     ffname: 'KrisFlyer',
