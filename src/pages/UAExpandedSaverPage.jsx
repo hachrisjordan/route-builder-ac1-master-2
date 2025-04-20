@@ -3,6 +3,7 @@ import { Card, Input, Button, message, Form, Typography } from 'antd';
 import UAExpandedSaverBuilder from '../components/FlightSearch/UAExpandedSaverBuilder';
 import UAExpandedSaverResultsTable from '../components/FlightSearch/UAExpandedSaverResultsTable';
 import useNormalFlightSearch from '../components/FlightSearch/hooks/useNormalFlightSearch';
+import { validateAccessCode, saveAuthState } from '../services/AccessCodeService';
 
 const { Title, Text } = Typography;
 
@@ -31,6 +32,8 @@ const UAExpandedSaverPage = () => {
   });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState('');
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState(null);
 
   // Check for cached authentication on component mount
   useEffect(() => {
@@ -39,14 +42,16 @@ const UAExpandedSaverPage = () => {
       
       if (authData) {
         try {
-          const { expiry } = JSON.parse(authData);
+          const { expiry, description } = JSON.parse(authData);
           
           // Check if the cached authentication is still valid
           if (expiry && new Date(expiry) > new Date()) {
             setIsAuthenticated(true);
+            console.log(`Authenticated access (${description || 'No description'})`);
           } else {
             // Clear expired auth data
             localStorage.removeItem('uaExpandedSaverAuth');
+            setAuthError('Your access has expired. Please enter a new access code.');
           }
         } catch (error) {
           console.error('Error parsing auth data:', error);
@@ -58,22 +63,42 @@ const UAExpandedSaverPage = () => {
     checkAuth();
   }, []);
 
-  const handleAuthenticate = () => {
-    // Case insensitive comparison
-    if (passcode.toLowerCase() === 'meatloaf') {
-      // Set expiry to 24 hours from now
-      const expiry = new Date();
-      expiry.setHours(expiry.getHours() + 24);
+  const handleAuthenticate = async () => {
+    if (!passcode.trim()) {
+      message.error('Please enter an access code');
+      return;
+    }
+
+    setIsAuthLoading(true);
+    setAuthError(null);
+    
+    try {
+      const result = await validateAccessCode(passcode);
       
-      // Save authentication in local storage
-      localStorage.setItem('uaExpandedSaverAuth', JSON.stringify({
-        expiry: expiry.toISOString()
-      }));
-      
-      setIsAuthenticated(true);
-      message.success('Authentication successful');
-    } else {
-      message.error('Invalid passcode');
+      if (result.isValid) {
+        // Save authentication state
+        saveAuthState(result.expiryDate, result.description);
+        
+        setIsAuthenticated(true);
+        message.success('Authentication successful');
+        
+        // Log access for admin purposes
+        console.log(`Access granted: ${result.description || 'No description'}`);
+      } else {
+        if (result.error) {
+          setAuthError(result.error);
+          message.error(result.error);
+        } else {
+          setAuthError('Invalid access code');
+          message.error('Invalid access code');
+        }
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+      setAuthError('Failed to verify access code. Please try again.');
+      message.error('Authentication failed. Please try again.');
+    } finally {
+      setIsAuthLoading(false);
     }
   };
 
@@ -122,16 +147,22 @@ const UAExpandedSaverPage = () => {
           <div className="auth-content">
             <Title level={3} style={{ textAlign: 'center', marginBottom: '16px' }}>UA Expanded Saver Access</Title>
             <Text style={{ display: 'block', textAlign: 'center', marginBottom: '24px' }}>
-              Please enter the passcode to access this page.
+              Please enter the access code to access this page.
             </Text>
+            {authError && (
+              <div style={{ color: '#ff4d4f', marginBottom: '16px', textAlign: 'center' }}>
+                {authError}
+              </div>
+            )}
             <Form layout="vertical" style={{ width: '100%' }}>
               <Form.Item>
                 <Input.Password 
-                  placeholder="Enter passcode" 
+                  placeholder="Enter access code" 
                   value={passcode} 
                   onChange={(e) => setPasscode(e.target.value)}
                   onPressEnter={handleAuthenticate}
                   size="large"
+                  disabled={isAuthLoading}
                 />
               </Form.Item>
               <Form.Item>
@@ -140,6 +171,7 @@ const UAExpandedSaverPage = () => {
                   onClick={handleAuthenticate} 
                   block 
                   size="large"
+                  loading={isAuthLoading}
                   style={{ backgroundColor: '#000', borderColor: '#000' }}
                 >
                   Submit

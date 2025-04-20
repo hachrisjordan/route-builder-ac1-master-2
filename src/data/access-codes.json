@@ -1,0 +1,19 @@
+{
+  "accessCodes": [
+    {
+      "code": "meatloaf",
+      "expiryDate": "2099-12-31T23:59:59Z", 
+      "description": "Yappers"
+    },
+    {
+      "code": "binbinhihi",
+      "expiryDate": "2025-04-21T05:59:59Z",
+      "description": "Free trial"
+    },
+    {
+      "code": "expired",
+      "expiryDate": "2025-03-30T23:59:59Z",
+      "description": "Expired"
+    }
+  ]
+} 
