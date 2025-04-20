@@ -137,7 +137,7 @@ const UAExpandedSaverResultsTable = ({
         },
       },
       {
-        title: 'Flight Numbers',
+        title: 'Flight #',
         dataIndex: 'flightNumbers',
         key: 'flightNumbers',
         width: 120,
@@ -234,6 +234,17 @@ const UAExpandedSaverResultsTable = ({
     if (onRouteSelect) {
       onRouteSelect(record);
     }
+    
+    // Extract origin, destination and date from the record
+    const originAirport = record.rawData.originAirport;
+    const destinationAirport = record.rawData.destinationAirport;
+    const date = record.rawData.date;
+    
+    // Format the URL with the flight data
+    const bookingUrl = `https://shopping.copaair.com/miles?roundtrip=false&adults=1&children=0&infants=0&date1=${date}&date2=null&promocode=&area1=${originAirport}&area2=${destinationAirport}&advanced_air_search=false&flexible_dates_v2=false&airline_preference=UA`;
+    
+    // Open the URL in a new tab
+    window.open(bookingUrl, '_blank');
   };
 
   const calculateLayoverTime = (departDate, arriveDate) => {

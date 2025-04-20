@@ -91,27 +91,6 @@ const UAExpandedSaverBuilder = ({ onSearch, isLoading, errors, cachedApiKey, sav
     }
   }, []);
 
-  // Date range disabler function
-  const disabledDate = (current) => {
-    // Disable dates before today
-    const today = dayjs().startOf('day');
-    // Disable dates after 365 days from today
-    const maxDate = today.add(365, 'day');
-    
-    // Handle 7-day limit
-    if (selectingDate === 'end' && tempStartDate) {
-      const maxEndDate = dayjs(tempStartDate).add(7, 'day');
-      return current && (
-        current < today || 
-        current > maxDate || 
-        current < tempStartDate || 
-        current > maxEndDate
-      );
-    }
-    
-    return current && (current < today || current > maxDate);
-  };
-
   // Custom date range handler
   const handleDateRangeChange = (dates, dateStrings) => {
     if (!dates || dates.length === 0) {
@@ -122,32 +101,57 @@ const UAExpandedSaverBuilder = ({ onSearch, isLoading, errors, cachedApiKey, sav
       return;
     }
 
-    if (dates.length === 1 || selectingDate === 'start') {
-      // User selected a start date
-      setTempStartDate(dates[0]);
-      setSelectingDate('end');
-      setDateRange([dates[0], null]);
+    // Always store both dates when provided
+    if (dates.length === 2 && dates[0] && dates[1]) {
+      const startDate = dates[0];
+      const endDate = dates[1];
+      
+      // Check if the date range is more than 7 days
+      const diffDays = endDate.diff(startDate, 'day');
+      
+      if (diffDays > 7) {
+        // If more than 7 days, adjust the end date to be 7 days from start
+        const newEndDate = startDate.clone().add(7, 'day');
+        setDateRange([startDate, newEndDate]);
+      } else {
+        // Valid selection within 7 days
+        setDateRange(dates);
+      }
+      setSelectingDate('start'); // Reset for next selection
       return;
     }
-
-    // User has selected both dates
-    const startDate = dates[0];
-    const endDate = dates[1];
     
-    // Check if the date range is more than 7 days
-    const diffDays = endDate.diff(startDate, 'day');
-    
-    if (diffDays > 7) {
-      // If more than 7 days, reset selection with the end date as new start
-      setTempStartDate(endDate);
-      setSelectingDate('end');
-      setDateRange([endDate, null]);
-    } else {
-      // Valid selection within 7 days
-      setDateRange(dates);
-      setTempStartDate(null);
-      setSelectingDate('start'); // Reset for next selection
+    // Store the single date if only one selected
+    if (dates.length === 1 && dates[0]) {
+      setDateRange([dates[0], null]);
+      setTempStartDate(dates[0]);
     }
+  };
+
+  // Date range disabler function
+  const disabledDate = (current) => {
+    // Disable dates before today
+    const today = dayjs().startOf('day');
+    // Disable dates after 365 days from today
+    const maxDate = today.add(365, 'day');
+    
+    // Get the currently selected start date (if any)
+    const startDate = dateRange && dateRange[0] ? dateRange[0] : null;
+    
+    // If we have a start date and we're selecting the end date
+    if (startDate) {
+      const maxEndDate = startDate.clone().add(7, 'day');
+      // For end date selection, disable dates before start date or after start date + 7 days
+      if (current.isBefore(startDate, 'day')) {
+        return true;
+      }
+      if (current.isAfter(maxEndDate, 'day')) {
+        return true;
+      }
+    }
+    
+    // Always disable dates outside the allowed range
+    return current.isBefore(today, 'day') || current.isAfter(maxDate, 'day');
   };
 
   // Common airport select properties - exactly matching the AC Route Builder
@@ -383,6 +387,8 @@ const UAExpandedSaverBuilder = ({ onSearch, isLoading, errors, cachedApiKey, sav
                 format="YYYY-MM-DD"
                 disabledDate={disabledDate}
                 placeholder={['Start date', 'End date (max 7 days)']}
+                allowClear={true}
+                style={{ width: '100%' }}
               />
             </div>
           </Col>
