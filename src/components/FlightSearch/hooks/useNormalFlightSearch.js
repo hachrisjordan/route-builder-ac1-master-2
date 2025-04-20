@@ -321,14 +321,15 @@ export default function useNormalFlightSearch() {
   };
 
   const handleSearch = async (searchParams, setExternalFlightData) => {
-    const { path: originalPath, sourcesState, apiKey, dateRange } = searchParams;
+    const { path: originalPath, sourcesState, apiKey, dateRange, isUAExpandedSaver } = searchParams;
     let path = originalPath;
     let routeSegmentsForProcessing = [];
 
     console.log('🔍 Search params received:', {
       path,
       sourcesState,
-      dateRange
+      dateRange,
+      isUAExpandedSaver
     });
 
     // Reset errors and data
@@ -338,79 +339,22 @@ export default function useNormalFlightSearch() {
     setSelectedFlights([]);
     setPricingData(null);
 
-    // Validate mandatory fields
-    if (!path) {
-      setErrors({ path: 'Path is required' });
-      return;
-    }
-
-    // First, check if the path is already expanded (contains / and -), like "EWR/JFK/LGA-HND/NRT"
-    if (path.includes('/') && path.includes('-')) {
-      console.log('Path is already expanded:', path);
-      // Split into segments based on hyphens
-      const segments = path.split('-');
-      console.log('Expanded route segments:', segments);
+    // Special handling for UA Expanded Saver direct API calls
+    if (isUAExpandedSaver) {
+      console.log('Using UA Expanded Saver direct API mode');
       
-      if (segments.length < 2) {
-        setErrors({ path: 'Invalid path format. Need at least two segments.' });
-        return;
-      }
-      
-      // Store the segments for later use (both in state and local var)
-      routeSegmentsForProcessing = segments;
-      setCurrentRoute(segments);
-      
-      // For API request, we'll keep using the expanded format
-      const originalPath = path;
-      
-      // Get all available source codenames and filter based on mode
-      const allSources = getSourceCodenames();
-      
-      // If no sources are selected, use all sources
-      // Otherwise, if mode is 'include', use only the selected sources
-      // If mode is 'exclude', use all sources except the selected ones
-      const sourcesToUse = !sourcesState.sources.length ? allSources :
-        sourcesState.mode === 'include' 
-          ? sourcesState.sources 
-          : allSources.filter(source => !sourcesState.sources.includes(source));
-
-      setIsLoading(true);
-
-      try {
-        // Prepare the request body
-        const requestBody = {
-          routeId: path,
-          startDate: dateRange ? dateRange[0] : null,
-          endDate: dateRange ? dateRange[1] : null,
-          sources: sourcesToUse.join(',')
-        };
-
-        console.log('API Request Body:', requestBody);
-
-        const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Partner-Authorization': apiKey
-          },
-          body: JSON.stringify(requestBody)
-        });
-
-        if (!response.ok) {
-          throw new Error('Search failed');
-        }
-
-        const data = await response.json();
-        console.log('API response:', data);
+      // If apiResponseData is provided, use it directly
+      if (searchParams.apiResponseData) {
+        console.log('Direct API response data available:', searchParams.apiResponseData);
         
-        // Process the flight data
-        const processedData = processFlightData(data, routeSegmentsForProcessing);
+        // Process the data from direct API call 
+        // This would normally happen in the API response handler
+        const processedData = {}; // Process API data to match expected format
         
-        // For expanded paths, we don't need to generate permutations again
         const flightDataObj = {
-          routes: generateRoutePermutations(originalPath),
+          routes: [path], // Use the provided path
           data: processedData,
-          rawData: data
+          rawData: searchParams.apiResponseData
         };
 
         setFlightData(flightDataObj);
@@ -418,71 +362,164 @@ export default function useNormalFlightSearch() {
           setExternalFlightData(flightDataObj);
         }
         setSelectedDateRange(dateRange);
-      } catch (error) {
-        console.error('Search failed:', error);
-        setErrors({ general: 'Search failed. Please try again.' });
-      } finally {
-        setIsLoading(false);
+        
+        return;
       }
       
-      return;
-    }
+      // If we get here, it's a UA Expanded Saver request without direct API data
+      // Split path into segments but skip validation
+      const segments = path.split('-');
+      routeSegmentsForProcessing = segments;
+      setCurrentRoute(segments);
+    } else {
+      // Regular path validation for non-UA Expanded Saver requests
+    
+      // Validate mandatory fields
+      if (!path) {
+        setErrors({ path: 'Path is required' });
+        return;
+      }
 
-    // Check if the path is an expanded airport group value
-    if (path.includes('/') && !path.includes('-')) {
-      // This is likely an expanded airport group value
-      console.log('Path appears to be an expanded airport group value:', path);
-      
-      // Try to find which airport group this value belongs to
-      for (const [code, airports] of Object.entries(airportGroups)) {
-        if (path === airports) {
-          console.log('Found matching airport group:', code);
-          
-          // Detailed error message explaining the issue
-          setErrors({ 
-            path: `
-              Error: Received only one expanded airport group "${code}" (${path}).
-              The search path should be in format like "NYC-TYO" or "EWR/JFK/LGA-HND/NRT".
-              Please check HybridPathInput component - it's sending expanded airports instead of the full path.
-            `
-          });
-          console.error(`
-            DETECTED FRONTEND BUG IN HybridPathInput COMPONENT:
-            When searching for paths like "NYC-TYO", the frontend is only sending the 
-            expanded value of the last part ("HND/NRT") instead of the full path.
-            
-            To fix: Update HybridPathInput to send the full path with airport group codes.
-          `);
+      // First, check if the path is already expanded (contains / and -), like "EWR/JFK/LGA-HND/NRT"
+      if (path.includes('/') && path.includes('-')) {
+        console.log('Path is already expanded:', path);
+        // Split into segments based on hyphens
+        const segments = path.split('-');
+        console.log('Expanded route segments:', segments);
+        
+        if (segments.length < 2) {
+          setErrors({ path: 'Invalid path format. Need at least two segments.' });
           return;
         }
-      }
-    }
+        
+        // Store the segments for later use (both in state and local var)
+        routeSegmentsForProcessing = segments;
+        setCurrentRoute(segments);
+        
+        // For API request, we'll keep using the expanded format
+        const originalPath = path;
+        
+        // Get all available source codenames and filter based on mode
+        const allSources = getSourceCodenames();
+        
+        // If no sources are selected, use all sources
+        // Otherwise, if mode is 'include', use only the selected sources
+        // If mode is 'exclude', use all sources except the selected ones
+        const sourcesToUse = !sourcesState.sources.length ? allSources :
+          sourcesState.mode === 'include' 
+            ? sourcesState.sources 
+            : allSources.filter(source => !sourcesState.sources.includes(source));
 
-    // Split path into segments (e.g., "EST-WST-EUR" -> ["EST", "WST", "EUR"])
-    const segments = path.split('-');
-    console.log('Route segments:', segments);
-    
-    if (segments.length < 2) {
-      setErrors({ path: 'Invalid path format' });
-      return;
-    }
+        setIsLoading(true);
 
-    // Store the original segments for later use, but handle slashes correctly
-    // For segments with slashes (e.g., "HAN/SGN"), we need to keep them as is
-    // This ensures that when comparing routes, we match against the full segment
-    routeSegmentsForProcessing = segments;
-    setCurrentRoute(segments.map(segment => {
-      // If this is a group code, expand it
-      if (airportGroups[segment]) {
-        return segment;
+        try {
+          // Prepare the request body
+          const requestBody = {
+            routeId: path,
+            startDate: dateRange ? dateRange[0] : null,
+            endDate: dateRange ? dateRange[1] : null,
+            sources: sourcesToUse.join(',')
+          };
+
+          console.log('API Request Body:', requestBody);
+
+          const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Partner-Authorization': apiKey
+            },
+            body: JSON.stringify(requestBody)
+          });
+
+          if (!response.ok) {
+            throw new Error('Search failed');
+          }
+
+          const data = await response.json();
+          console.log('API response:', data);
+          
+          // Process the flight data
+          const processedData = processFlightData(data, routeSegmentsForProcessing);
+          
+          // For expanded paths, we don't need to generate permutations again
+          const flightDataObj = {
+            routes: generateRoutePermutations(originalPath),
+            data: processedData,
+            rawData: data
+          };
+
+          setFlightData(flightDataObj);
+          if (setExternalFlightData) {
+            setExternalFlightData(flightDataObj);
+          }
+          setSelectedDateRange(dateRange);
+        } catch (error) {
+          console.error('Search failed:', error);
+          setErrors({ general: 'Search failed. Please try again.' });
+        } finally {
+          setIsLoading(false);
+        }
+        
+        return;
       }
-      // If it contains slashes, keep it as is
-      if (segment.includes('/')) {
-        return segment;
+
+      // Check if the path is an expanded airport group value
+      if (path.includes('/') && !path.includes('-')) {
+        // This is likely an expanded airport group value
+        console.log('Path appears to be an expanded airport group value:', path);
+        
+        // Try to find which airport group this value belongs to
+        for (const [code, airports] of Object.entries(airportGroups)) {
+          if (path === airports) {
+            console.log('Found matching airport group:', code);
+            
+            // Detailed error message explaining the issue
+            setErrors({ 
+              path: `
+                Error: Received only one expanded airport group "${code}" (${path}).
+                The search path should be in format like "NYC-TYO" or "EWR/JFK/LGA-HND/NRT".
+                Please check HybridPathInput component - it's sending expanded airports instead of the full path.
+              `
+            });
+            console.error(`
+              DETECTED FRONTEND BUG IN HybridPathInput COMPONENT:
+              When searching for paths like "NYC-TYO", the frontend is only sending the 
+              expanded value of the last part ("HND/NRT") instead of the full path.
+              
+              To fix: Update HybridPathInput to send the full path with airport group codes.
+            `);
+            return;
+          }
+        }
       }
-      // Otherwise, it's a single airport code
-      return segment;
-    }));
+
+      // Split path into segments (e.g., "EST-WST-EUR" -> ["EST", "WST", "EUR"])
+      const segments = path.split('-');
+      console.log('Route segments:', segments);
+      
+      if (segments.length < 2 && !isUAExpandedSaver) {
+        setErrors({ path: 'Invalid path format' });
+        return;
+      }
+
+      // Store the original segments for later use, but handle slashes correctly
+      // For segments with slashes (e.g., "HAN/SGN"), we need to keep them as is
+      // This ensures that when comparing routes, we match against the full segment
+      routeSegmentsForProcessing = segments;
+      setCurrentRoute(segments.map(segment => {
+        // If this is a group code, expand it
+        if (airportGroups[segment]) {
+          return segment;
+        }
+        // If it contains slashes, keep it as is
+        if (segment.includes('/')) {
+          return segment;
+        }
+        // Otherwise, it's a single airport code
+        return segment;
+      }));
+    }
 
     // Get all available source codenames and filter based on mode
     const allSources = getSourceCodenames();

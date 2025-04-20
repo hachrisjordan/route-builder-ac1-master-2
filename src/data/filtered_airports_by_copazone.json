@@ -1,0 +1,1422 @@
+{
+  "Australia & New Zealand": [
+    {
+      "Country": "New Zealand",
+      "Latitude": -37.010914,
+      "Longitude": 174.790176,
+      "Name": "Auckland Airport",
+      "IATA": "AKL",
+      "Zone": "Pacific",
+      "CountryCode": "NZ",
+      "TC": "TC3",
+      "copazone": "Australia & New Zealand"
+    },
+    {
+      "Country": "Australia",
+      "Latitude": -27.388636,
+      "Longitude": 153.126251,
+      "Name": "Brisbane Airport",
+      "IATA": "BNE",
+      "Zone": "Pacific",
+      "CountryCode": "AU",
+      "TC": "TC3",
+      "copazone": "Australia & New Zealand"
+    },
+    {
+      "Country": "Australia",
+      "Latitude": -33.946098,
+      "Longitude": 151.1772,
+      "Name": "Sydney Kingsford Smith Airport",
+      "IATA": "SYD",
+      "Zone": "Pacific",
+      "CountryCode": "AU",
+      "TC": "TC3",
+      "copazone": "Australia & New Zealand"
+    },
+    {
+      "Country": "Australia",
+      "Latitude": -37.665794,
+      "Longitude": 144.837296,
+      "Name": "Melbourne Airport",
+      "IATA": "MEL",
+      "Zone": "Pacific",
+      "CountryCode": "AU",
+      "TC": "TC3",
+      "copazone": "Australia & New Zealand"
+    }
+  ],
+  "Caribbean": [
+    {
+      "Country": "Antigua And Barbuda",
+      "Latitude": 17.13674,
+      "Longitude": -61.792599,
+      "Name": "Antigua V. C. Bird International Airport",
+      "IATA": "ANU",
+      "Zone": "North America",
+      "CountryCode": "AG",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Aruba",
+      "Latitude": 12.50138,
+      "Longitude": -70.015198,
+      "Name": "Oranjestad Queen Beatrix International Airport",
+      "IATA": "AUA",
+      "Zone": "North America",
+      "CountryCode": "AW",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Bermuda",
+      "Latitude": 32.36404,
+      "Longitude": -64.678703,
+      "Name": "Bermuda L.F. Wade International Airport",
+      "IATA": "BDA",
+      "Zone": "North America",
+      "CountryCode": "BM",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Barbados",
+      "Latitude": 13.0746,
+      "Longitude": -59.492401,
+      "Name": "Bridgetown Grantley Adams International Airport",
+      "IATA": "BGI",
+      "Zone": "North America",
+      "CountryCode": "BB",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Bahamas",
+      "Latitude": 25.04105,
+      "Longitude": -77.463669,
+      "Name": "Nassau Lynden Pindling International Airport",
+      "IATA": "NAS",
+      "Zone": "North America",
+      "CountryCode": "BS",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Netherlands",
+      "Latitude": 12.13104,
+      "Longitude": -68.268501,
+      "Name": "Bonaire Flamingo International Airport",
+      "IATA": "BON",
+      "Zone": "Atlantic",
+      "CountryCode": "BQ",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Puerto Rico",
+      "Latitude": 18.49486,
+      "Longitude": -67.129402,
+      "Name": "Aguadilla Rafael Hernandez Airport",
+      "IATA": "BQN",
+      "Zone": "North America",
+      "CountryCode": "PR",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 21.03652,
+      "Longitude": -86.876999,
+      "Name": "Cancun International Airport",
+      "IATA": "CUN",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Curacao",
+      "Latitude": 12.18885,
+      "Longitude": -68.959801,
+      "Name": "Willemstad Curacao Hato International Airport",
+      "IATA": "CUR",
+      "Zone": "North America",
+      "CountryCode": "CW",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Jamaica",
+      "Latitude": 18.50371,
+      "Longitude": -77.9133,
+      "Name": "Montego Bay Sangster International Airport",
+      "IATA": "MBJ",
+      "Zone": "North America",
+      "CountryCode": "JM",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Puerto Rico",
+      "Latitude": 18.439409,
+      "Longitude": -66.001801,
+      "Name": "San Juan Luis Munoz Marin International Airport",
+      "IATA": "SJU",
+      "Zone": "North America",
+      "CountryCode": "PR",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Cayman Islands",
+      "Latitude": 19.29277,
+      "Longitude": -81.357697,
+      "Name": "George Town Owen Roberts International Airport",
+      "IATA": "GCM",
+      "Zone": "North America",
+      "CountryCode": "KY",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Turks And Caicos Islands",
+      "Latitude": 21.773621,
+      "Longitude": -72.2658,
+      "Name": "Providenciales International Airport",
+      "IATA": "PLS",
+      "Zone": "North America",
+      "CountryCode": "TC",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Dominican Republic",
+      "Latitude": 19.7579,
+      "Longitude": -70.57,
+      "Name": "Puerto Plata Gregorio Luperon International Airport",
+      "IATA": "POP",
+      "Zone": "North America",
+      "CountryCode": "DO",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Dominican Republic",
+      "Latitude": 18.56736,
+      "Longitude": -68.363403,
+      "Name": "Punta Cana International Airport",
+      "IATA": "PUJ",
+      "Zone": "North America",
+      "CountryCode": "DO",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Dominican Republic",
+      "Latitude": 18.429661,
+      "Longitude": -69.6689,
+      "Name": "Santo Domingo Las Americas International Airport",
+      "IATA": "SDQ",
+      "Zone": "North America",
+      "CountryCode": "DO",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Saint Kitts And Nevis",
+      "Latitude": 17.31119,
+      "Longitude": -62.718601,
+      "Name": "Basseterre Robert L. Bradshaw International Airport",
+      "IATA": "SKB",
+      "Zone": "North America",
+      "CountryCode": "KN",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Dominican Republic",
+      "Latitude": 19.40609,
+      "Longitude": -70.604599,
+      "Name": "Santiago de los Caballeros Cibao International Airport",
+      "IATA": "STI",
+      "Zone": "North America",
+      "CountryCode": "DO",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Virgin Islands Us",
+      "Latitude": 18.337299,
+      "Longitude": -64.973297,
+      "Name": "St. Thomas Cyril E. King Airport",
+      "IATA": "STT",
+      "Zone": "North America",
+      "CountryCode": "VI",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Netherlands",
+      "Latitude": 18.040951,
+      "Longitude": -63.108898,
+      "Name": "Sint Maarten Princess Juliana International Airport",
+      "IATA": "SXM",
+      "Zone": "Atlantic",
+      "CountryCode": "SX",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.174339,
+      "Longitude": -87.65873,
+      "Name": "Tulum International Airport",
+      "IATA": "TQO",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Saint Lucia",
+      "Latitude": 13.73319,
+      "Longitude": -60.952499,
+      "Name": "Vieux Fort Hewanorra International Airport",
+      "IATA": "UVF",
+      "Zone": "North America",
+      "CountryCode": "LC",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Cuba",
+      "Latitude": 22.989149,
+      "Longitude": -82.408997,
+      "Name": "Havana Jose Marti International Airport",
+      "IATA": "HAV",
+      "Zone": "North America",
+      "CountryCode": "CU",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Trinidad And Tobago",
+      "Latitude": 10.59536,
+      "Longitude": -61.3372,
+      "Name": "Port of Spain Piarco International Airport",
+      "IATA": "POS",
+      "Zone": "North America",
+      "CountryCode": "TT",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    },
+    {
+      "Country": "Dominica",
+      "Latitude": 15.543056,
+      "Longitude": -61.309166,
+      "Name": "Melville Hall",
+      "IATA": "DOM",
+      "Zone": "North America",
+      "CountryCode": "DM",
+      "TC": "TC1",
+      "copazone": "Caribbean"
+    }
+  ],
+  "Central / Southern Africa": [
+    {
+      "Country": "Ghana",
+      "Latitude": 5.605186,
+      "Longitude": -0.16678,
+      "Name": "Accra Kotoka International Airport",
+      "IATA": "ACC",
+      "Zone": "Atlantic",
+      "CountryCode": "GH",
+      "TC": "TC2",
+      "copazone": "Central / Southern Africa"
+    },
+    {
+      "Country": "Nigeria",
+      "Latitude": 6.577369,
+      "Longitude": 3.321156,
+      "Name": "Lagos Murtala Mohammed Airport",
+      "IATA": "LOS",
+      "Zone": "Atlantic",
+      "CountryCode": "NG",
+      "TC": "TC2",
+      "copazone": "Central / Southern Africa"
+    },
+    {
+      "Country": "South Africa",
+      "Latitude": -33.964802,
+      "Longitude": 18.60166,
+      "Name": "Cape Town International Airport",
+      "IATA": "CPT",
+      "Zone": "Atlantic",
+      "CountryCode": "ZA",
+      "TC": "TC2",
+      "copazone": "Central / Southern Africa"
+    },
+    {
+      "Country": "South Africa",
+      "Latitude": -26.139099,
+      "Longitude": 28.246,
+      "Name": "Johannesburg OR Tambo International Airport",
+      "IATA": "JNB",
+      "Zone": "Atlantic",
+      "CountryCode": "ZA",
+      "TC": "TC2",
+      "copazone": "Central / Southern Africa"
+    }
+  ],
+  "Central America": [
+    {
+      "Country": "Belize",
+      "Latitude": 17.539141,
+      "Longitude": -88.308197,
+      "Name": "Belize City Philip S. W. Goldson International Airport",
+      "IATA": "BZE",
+      "Zone": "North America",
+      "CountryCode": "BZ",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Costa Rica",
+      "Latitude": 10.59301,
+      "Longitude": -85.545502,
+      "Name": "Liberia Guanacaste International Airport",
+      "IATA": "LIR",
+      "Zone": "North America",
+      "CountryCode": "CR",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Costa Rica",
+      "Latitude": 9.993903,
+      "Longitude": -84.208801,
+      "Name": "San Jose Juan Santamaria International Airport",
+      "IATA": "SJO",
+      "Zone": "North America",
+      "CountryCode": "CR",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Guatemala",
+      "Latitude": 14.58327,
+      "Longitude": -90.527397,
+      "Name": "Guatemala City La Aurora International Airport",
+      "IATA": "GUA",
+      "Zone": "North America",
+      "CountryCode": "GT",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "El Salvador",
+      "Latitude": 13.44094,
+      "Longitude": -89.055702,
+      "Name": "San Salvador International Airport",
+      "IATA": "SAL",
+      "Zone": "North America",
+      "CountryCode": "SV",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Honduras",
+      "Latitude": 15.45263,
+      "Longitude": -87.9235,
+      "Name": "San Pedro Sula La Mesa International Airport",
+      "IATA": "SAP",
+      "Zone": "North America",
+      "CountryCode": "HN",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Nicaragua",
+      "Latitude": 12.14149,
+      "Longitude": -86.168098,
+      "Name": "Managua Augusto C. Sandino International Airport",
+      "IATA": "MGA",
+      "Zone": "North America",
+      "CountryCode": "NI",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Honduras",
+      "Latitude": 16.316811,
+      "Longitude": -86.522903,
+      "Name": "Roatan International Airport",
+      "IATA": "RTB",
+      "Zone": "North America",
+      "CountryCode": "HN",
+      "TC": "TC1",
+      "copazone": "Central America"
+    },
+    {
+      "Country": "Honduras",
+      "Latitude": 14.3824,
+      "Longitude": -87.621201,
+      "Name": "Tegucigalpa Palmerola International Airport",
+      "IATA": "XPL",
+      "Zone": "North America",
+      "CountryCode": "HN",
+      "TC": "TC1",
+      "copazone": "Central America"
+    }
+  ],
+  "Colombia": [
+    {
+      "Country": "Colombia",
+      "Latitude": 4.703056,
+      "Longitude": -74.138298,
+      "Name": "Bogota El Dorado International Airport",
+      "IATA": "BOG",
+      "Zone": "South America",
+      "CountryCode": "CO",
+      "TC": "TC1",
+      "copazone": "Colombia"
+    },
+    {
+      "Country": "Colombia",
+      "Latitude": 6.164444,
+      "Longitude": -75.422997,
+      "Name": "Medellin Jose Maria Cordova International Airport",
+      "IATA": "MDE",
+      "Zone": "South America",
+      "CountryCode": "CO",
+      "TC": "TC1",
+      "copazone": "Colombia"
+    }
+  ],
+  "Europe": [
+    {
+      "Country": "Germany",
+      "Latitude": 52.362877,
+      "Longitude": 13.503722,
+      "Name": "Berlin Brandenburg Airport",
+      "IATA": "BER",
+      "Zone": "Atlantic",
+      "CountryCode": "DE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Ireland",
+      "Latitude": 53.421379,
+      "Longitude": -6.27,
+      "Name": "Dublin Airport",
+      "IATA": "DUB",
+      "Zone": "Atlantic",
+      "CountryCode": "IE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "United Kingdom",
+      "Latitude": 55.950001,
+      "Longitude": -3.3725,
+      "Name": "Edinburgh Airport",
+      "IATA": "EDI",
+      "Zone": "Atlantic",
+      "CountryCode": "GB",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Switzerland",
+      "Latitude": 46.23806,
+      "Longitude": 6.10895,
+      "Name": "Geneva International Airport",
+      "IATA": "GVA",
+      "Zone": "Atlantic",
+      "CountryCode": "CH",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Portugal",
+      "Latitude": 38.781311,
+      "Longitude": -9.13591,
+      "Name": "Lisbon Humberto Delgado Airport",
+      "IATA": "LIS",
+      "Zone": "Atlantic",
+      "CountryCode": "PT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Spain",
+      "Latitude": 40.488701,
+      "Longitude": -3.57,
+      "Name": "Madrid Barajas Airport",
+      "IATA": "MAD",
+      "Zone": "Atlantic",
+      "CountryCode": "ES",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Spain",
+      "Latitude": 28.04447,
+      "Longitude": -16.572399,
+      "Name": "Tenerife South Airport",
+      "IATA": "TFS",
+      "Zone": "Atlantic",
+      "CountryCode": "ES",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Netherlands",
+      "Latitude": 52.308609,
+      "Longitude": 4.763889,
+      "Name": "Amsterdam Schiphol Airport",
+      "IATA": "AMS",
+      "Zone": "Atlantic",
+      "CountryCode": "NL",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Spain",
+      "Latitude": 41.29707,
+      "Longitude": 2.078463,
+      "Name": "Barcelona El Prat Airport",
+      "IATA": "BCN",
+      "Zone": "Atlantic",
+      "CountryCode": "ES",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Germany",
+      "Latitude": 50.037796,
+      "Longitude": 8.555783,
+      "Name": "Frankfurt Airport",
+      "IATA": "FRA",
+      "Zone": "Atlantic",
+      "CountryCode": "DE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Belgium",
+      "Latitude": 50.901379,
+      "Longitude": 4.484444,
+      "Name": "Brussels Airport",
+      "IATA": "BRU",
+      "Zone": "Atlantic",
+      "CountryCode": "BE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "France",
+      "Latitude": 49.012516,
+      "Longitude": 2.555752,
+      "Name": "Paris Charles de Gaulle Airport",
+      "IATA": "CDG",
+      "Zone": "Atlantic",
+      "CountryCode": "FR",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "United Kingdom",
+      "Latitude": 51.471626,
+      "Longitude": -0.467081,
+      "Name": "London Heathrow Airport",
+      "IATA": "LHR",
+      "Zone": "Atlantic",
+      "CountryCode": "GB",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Germany",
+      "Latitude": 48.353779,
+      "Longitude": 11.78608,
+      "Name": "Munich Airport",
+      "IATA": "MUC",
+      "Zone": "Atlantic",
+      "CountryCode": "DE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Italy",
+      "Latitude": 41.80447,
+      "Longitude": 12.25079,
+      "Name": "Rome Leonardo da Vinci Fiumicino Airport",
+      "IATA": "FCO",
+      "Zone": "Atlantic",
+      "CountryCode": "IT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Italy",
+      "Latitude": 45.6306,
+      "Longitude": 8.728111,
+      "Name": "Milan Malpensa Airport",
+      "IATA": "MXP",
+      "Zone": "Atlantic",
+      "CountryCode": "IT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Switzerland",
+      "Latitude": 47.464722,
+      "Longitude": 8.549167,
+      "Name": "Zurich Airport",
+      "IATA": "ZRH",
+      "Zone": "Atlantic",
+      "CountryCode": "CH",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Greece",
+      "Latitude": 37.936352,
+      "Longitude": 23.94446,
+      "Name": "Athens Eleftherios Venizelos",
+      "IATA": "ATH",
+      "Zone": "Atlantic",
+      "CountryCode": "GR",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Italy",
+      "Latitude": 40.886028,
+      "Longitude": 14.29078,
+      "Name": "Naples Airport",
+      "IATA": "NAP",
+      "Zone": "Atlantic",
+      "CountryCode": "IT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "France",
+      "Latitude": 43.661453,
+      "Longitude": 7.21736,
+      "Name": "Nice Cote d'Azur Airport",
+      "IATA": "NCE",
+      "Zone": "Atlantic",
+      "CountryCode": "FR",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Portugal",
+      "Latitude": 41.248051,
+      "Longitude": -8.68138,
+      "Name": "Porto Francisco de Sa Carneiro Airport",
+      "IATA": "OPO",
+      "Zone": "Atlantic",
+      "CountryCode": "PT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Italy",
+      "Latitude": 45.505268,
+      "Longitude": 12.35194,
+      "Name": "Venice Marco Polo Airport",
+      "IATA": "VCE",
+      "Zone": "Atlantic",
+      "CountryCode": "IT",
+      "TC": "TC2",
+      "copazone": "Europe"
+    },
+    {
+      "Country": "Ireland",
+      "Latitude": 52.69248,
+      "Longitude": -8.92039,
+      "Name": "Shannon",
+      "IATA": "SNN",
+      "Zone": "Atlantic",
+      "CountryCode": "IE",
+      "TC": "TC2",
+      "copazone": "Europe"
+    }
+  ],
+  "Hawaii": [
+    {
+      "Country": "United States",
+      "Latitude": 21.31868,
+      "Longitude": -157.921997,
+      "Name": "Honolulu International Airport",
+      "IATA": "HNL",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "Hawaii"
+    }
+  ],
+  "Japan": [
+    {
+      "Country": "Japan",
+      "Latitude": 35.764721,
+      "Longitude": 140.386307,
+      "Name": "Tokyo Narita International Airport",
+      "IATA": "NRT",
+      "Zone": "Pacific",
+      "CountryCode": "JP",
+      "TC": "TC3",
+      "copazone": "Japan"
+    },
+    {
+      "Country": "Japan",
+      "Latitude": 35.55225,
+      "Longitude": 139.779602,
+      "Name": "Tokyo Haneda International Airport",
+      "IATA": "HND",
+      "Zone": "Pacific",
+      "CountryCode": "JP",
+      "TC": "TC3",
+      "copazone": "Japan"
+    },
+    {
+      "Country": "Japan",
+      "Latitude": 34.427299,
+      "Longitude": 135.244003,
+      "Name": "Osaka Kansai International Airport",
+      "IATA": "KIX",
+      "Zone": "Pacific",
+      "CountryCode": "JP",
+      "TC": "TC3",
+      "copazone": "Japan"
+    },
+    {
+      "Country": "Japan",
+      "Latitude": 34.85841,
+      "Longitude": 136.805405,
+      "Name": "Nagoya Chubu Centrair International Airport",
+      "IATA": "NGO",
+      "Zone": "Pacific",
+      "CountryCode": "JP",
+      "TC": "TC3",
+      "copazone": "Japan"
+    }
+  ],
+  "Mexico": [
+    {
+      "Country": "Mexico",
+      "Latitude": 16.757059,
+      "Longitude": -99.753899,
+      "Name": "Acapulco International Airport",
+      "IATA": "ACA",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 21.705549,
+      "Longitude": -102.317001,
+      "Name": "Aguascalientes International Airport",
+      "IATA": "AGU",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.99346,
+      "Longitude": -101.480003,
+      "Name": "Silao Del Bajio International Airport",
+      "IATA": "BJX",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.5224,
+      "Longitude": -86.925598,
+      "Name": "Cozumel International Airport",
+      "IATA": "CZM",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.68008,
+      "Longitude": -105.253998,
+      "Name": "Puerto Vallarta International Airport",
+      "IATA": "PVR",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 23.15185,
+      "Longitude": -109.72068,
+      "Name": "San Jose del Cabo Los Cabos International Airport",
+      "IATA": "SJD",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 19.4363,
+      "Longitude": -99.071999,
+      "Name": "Mexico City International Airport",
+      "IATA": "MEX",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.521799,
+      "Longitude": -103.310997,
+      "Name": "Guadalajara International Airport",
+      "IATA": "GDL",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.936979,
+      "Longitude": -89.6576,
+      "Name": "Merida Rejon Airport",
+      "IATA": "MID",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 25.778481,
+      "Longitude": -100.106003,
+      "Name": "Monterrey International Airport",
+      "IATA": "MTY",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 16.999901,
+      "Longitude": -96.726601,
+      "Name": "Oaxaca Xoxocotlan International Airport",
+      "IATA": "OAX",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 20.617279,
+      "Longitude": -100.184998,
+      "Name": "Queretaro International Airport",
+      "IATA": "QRO",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 22.254299,
+      "Longitude": -100.93,
+      "Name": "San Luis Potosi Ponciano Arriaga International Airport",
+      "IATA": "SLP",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 22.29645,
+      "Longitude": -97.865898,
+      "Name": "Tampico International Airport",
+      "IATA": "TAM",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 19.145929,
+      "Longitude": -96.187202,
+      "Name": "Veracruz International Airport",
+      "IATA": "VER",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 17.601561,
+      "Longitude": -101.459999,
+      "Name": "Zihuatanejo Ixtapa International Airport",
+      "IATA": "ZIH",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 19.14477,
+      "Longitude": -104.557999,
+      "Name": "Manzanillo Playa de Oro International Airport",
+      "IATA": "ZLO",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    },
+    {
+      "Country": "Mexico",
+      "Latitude": 15.85,
+      "Longitude": -97.083336,
+      "Name": "Puerto Escondido",
+      "IATA": "PXM",
+      "Zone": "North America",
+      "CountryCode": "MX",
+      "TC": "TC1",
+      "copazone": "Mexico"
+    }
+  ],
+  "Middle East": [
+    {
+      "Country": "United Arab Emirates",
+      "Latitude": 25.252769,
+      "Longitude": 55.364441,
+      "Name": "Dubai International Airport",
+      "IATA": "DXB",
+      "Zone": "Atlantic",
+      "CountryCode": "AE",
+      "TC": "TC2",
+      "copazone": "Middle East"
+    },
+    {
+      "Country": "Israel",
+      "Latitude": 32.000454,
+      "Longitude": 34.870743,
+      "Name": "Ben Gurion International",
+      "IATA": "TLV",
+      "Zone": "Atlantic",
+      "CountryCode": "IL",
+      "TC": "TC2",
+      "copazone": "Middle East"
+    }
+  ],
+  "North Asia": [
+    {
+      "Country": "South Korea",
+      "Latitude": 37.46907,
+      "Longitude": 126.4505,
+      "Name": "Seoul Incheon International Airport",
+      "IATA": "ICN",
+      "Zone": "Pacific",
+      "CountryCode": "KR",
+      "TC": "TC3",
+      "copazone": "North Asia"
+    },
+    {
+      "Country": "China",
+      "Latitude": 31.14337,
+      "Longitude": 121.805199,
+      "Name": "Shanghai Pudong International Airport",
+      "IATA": "PVG",
+      "Zone": "Pacific",
+      "CountryCode": "CN",
+      "TC": "TC3",
+      "copazone": "North Asia"
+    },
+    {
+      "Country": "China",
+      "Latitude": 40.084152,
+      "Longitude": 116.592735,
+      "Name": "Beijing Capital International Airport",
+      "IATA": "PEK",
+      "Zone": "Pacific",
+      "CountryCode": "CN",
+      "TC": "TC3",
+      "copazone": "North Asia"
+    },
+    {
+      "Country": "Taiwan",
+      "Latitude": 25.07773,
+      "Longitude": 121.232803,
+      "Name": "Taipei Taoyuan International Airport",
+      "IATA": "TPE",
+      "Zone": "Pacific",
+      "CountryCode": "TW",
+      "TC": "TC3",
+      "copazone": "North Asia"
+    }
+  ],
+  "Northern South America": [
+    {
+      "Country": "Peru",
+      "Latitude": -12.0218,
+      "Longitude": -77.114304,
+      "Name": "Lima Jorge Chavez International Airport",
+      "IATA": "LIM",
+      "Zone": "South America",
+      "CountryCode": "PE",
+      "TC": "TC1",
+      "copazone": "Northern South America"
+    },
+    {
+      "Country": "Guyana",
+      "Latitude": 6.498553,
+      "Longitude": -58.254101,
+      "Name": "Georgetown Cheddi Jagan International Airport",
+      "IATA": "GEO",
+      "Zone": "South America",
+      "CountryCode": "GY",
+      "TC": "TC1",
+      "copazone": "Northern South America"
+    },
+    {
+      "Country": "Ecuador",
+      "Latitude": -0.1133,
+      "Longitude": -78.358597,
+      "Name": "Quito Mariscal Sucre International Airport",
+      "IATA": "UIO",
+      "Zone": "South America",
+      "CountryCode": "EC",
+      "TC": "TC1",
+      "copazone": "Northern South America"
+    }
+  ],
+  "Oceania": [
+    {
+      "Country": "Guam",
+      "Latitude": 13.48387,
+      "Longitude": 144.797104,
+      "Name": "Guam Antonio B. Won Pat International Airport",
+      "IATA": "GUM",
+      "Zone": "Pacific",
+      "CountryCode": "GU",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Micronesia",
+      "Latitude": 6.9851,
+      "Longitude": 158.208893,
+      "Name": "Pohnpei International Airport",
+      "IATA": "PNI",
+      "Zone": "Pacific",
+      "CountryCode": "FM",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Palau",
+      "Latitude": 7.367303,
+      "Longitude": 134.544205,
+      "Name": "Airai Roman Tmetuchl International Airport",
+      "IATA": "ROR",
+      "Zone": "Pacific",
+      "CountryCode": "PW",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Northern Mariana Islands",
+      "Latitude": 15.119,
+      "Longitude": 145.729294,
+      "Name": "Saipan International Airport",
+      "IATA": "SPN",
+      "Zone": "Pacific",
+      "CountryCode": "MP",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Micronesia",
+      "Latitude": 7.461893,
+      "Longitude": 151.843002,
+      "Name": "Chuuk International Airport",
+      "IATA": "TKK",
+      "Zone": "Pacific",
+      "CountryCode": "FM",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Micronesia",
+      "Latitude": 9.498912,
+      "Longitude": 138.082397,
+      "Name": "Yap International Airport",
+      "IATA": "YAP",
+      "Zone": "Pacific",
+      "CountryCode": "FM",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Marshall Islands",
+      "Latitude": 7.06498,
+      "Longitude": 171.272003,
+      "Name": "Majuro Marshall Islands International Airport",
+      "IATA": "MAJ",
+      "Zone": "Pacific",
+      "CountryCode": "MH",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Micronesia",
+      "Latitude": 5.356975,
+      "Longitude": 162.958298,
+      "Name": "Kosrae International Airport",
+      "IATA": "KSA",
+      "Zone": "Pacific",
+      "CountryCode": "FM",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "Marshall Islands",
+      "Latitude": 8.720122,
+      "Longitude": 167.731598,
+      "Name": "Kwajalein Island Airport",
+      "IATA": "KWA",
+      "Zone": "Pacific",
+      "CountryCode": "MH",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    },
+    {
+      "Country": "French Polynesia",
+      "Latitude": -17.556601,
+      "Longitude": -149.610992,
+      "Name": "Papeete Tahiti Faa'a International Airport",
+      "IATA": "PPT",
+      "Zone": "Pacific",
+      "CountryCode": "PF",
+      "TC": "TC3",
+      "copazone": "Oceania"
+    }
+  ],
+  "Panama": [
+    {
+      "Country": "Panama",
+      "Latitude": 9.071364,
+      "Longitude": -79.3834,
+      "Name": "Panama City Tocumen International Airport",
+      "IATA": "PTY",
+      "Zone": "North America",
+      "CountryCode": "PA",
+      "TC": "TC1",
+      "copazone": "Panama"
+    }
+  ],
+  "South Asia": [
+    {
+      "Country": "Philippines",
+      "Latitude": 10.30754,
+      "Longitude": 123.979401,
+      "Name": "Cebu Mactan International Airport",
+      "IATA": "CEB",
+      "Zone": "Pacific",
+      "CountryCode": "PH",
+      "TC": "TC3",
+      "copazone": "South Asia"
+    },
+    {
+      "Country": "India",
+      "Latitude": 28.5665,
+      "Longitude": 77.103081,
+      "Name": "Delhi Indira Gandhi International Airport",
+      "IATA": "DEL",
+      "Zone": "Atlantic",
+      "CountryCode": "IN",
+      "TC": "TC3",
+      "copazone": "South Asia"
+    },
+    {
+      "Country": "Philippines",
+      "Latitude": 14.50864,
+      "Longitude": 121.019501,
+      "Name": "Manila Ninoy Aquino International Airport",
+      "IATA": "MNL",
+      "Zone": "Pacific",
+      "CountryCode": "PH",
+      "TC": "TC3",
+      "copazone": "South Asia"
+    },
+    {
+      "Country": "Hong Kong",
+      "Latitude": 22.309616,
+      "Longitude": 113.916237,
+      "Name": "Hong Kong International Airport",
+      "IATA": "HKG",
+      "Zone": "Pacific",
+      "CountryCode": "HK",
+      "TC": "TC3",
+      "copazone": "South Asia"
+    },
+    {
+      "Country": "Singapore",
+      "Latitude": 1.350189,
+      "Longitude": 103.9944,
+      "Name": "Singapore Changi Airport",
+      "IATA": "SIN",
+      "Zone": "Pacific",
+      "CountryCode": "SG",
+      "TC": "TC3",
+      "copazone": "South Asia"
+    }
+  ],
+  "Southern South America": [
+    {
+      "Country": "Brazil",
+      "Latitude": -23.431999,
+      "Longitude": -46.469501,
+      "Name": "Sao Paulo Guarulhos International Airport",
+      "IATA": "GRU",
+      "Zone": "South America",
+      "CountryCode": "BR",
+      "TC": "TC1",
+      "copazone": "Southern South America"
+    },
+    {
+      "Country": "Argentina",
+      "Latitude": -34.822201,
+      "Longitude": -58.535801,
+      "Name": "Buenos Aires Ministro Pistarini International Airport",
+      "IATA": "EZE",
+      "Zone": "South America",
+      "CountryCode": "AR",
+      "TC": "TC1",
+      "copazone": "Southern South America"
+    },
+    {
+      "Country": "Brazil",
+      "Latitude": -22.805696,
+      "Longitude": -43.25523,
+      "Name": "Rio de Janeiro Galeao International Airport",
+      "IATA": "GIG",
+      "Zone": "South America",
+      "CountryCode": "BR",
+      "TC": "TC1",
+      "copazone": "Southern South America"
+    }
+  ],
+  "US & Canada": [
+    {
+      "Country": "United States",
+      "Latitude": 41.978142,
+      "Longitude": -87.9058,
+      "Name": "Chicago O'Hare International Airport",
+      "IATA": "ORD",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 39.858784,
+      "Longitude": -104.673882,
+      "Name": "Denver International Airport",
+      "IATA": "DEN",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 38.947441,
+      "Longitude": -77.4599,
+      "Name": "Washington Dulles International Airport",
+      "IATA": "IAD",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 41.410252,
+      "Longitude": -81.853897,
+      "Name": "Cleveland Hopkins International Airport",
+      "IATA": "CLE",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 29.98443,
+      "Longitude": -95.3414,
+      "Name": "Houston George Bush Intercontinental Airport",
+      "IATA": "IAH",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 37.618969,
+      "Longitude": -122.374001,
+      "Name": "San Francisco International Airport",
+      "IATA": "SFO",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 33.94252,
+      "Longitude": -118.406998,
+      "Name": "Los Angeles International Airport",
+      "IATA": "LAX",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    },
+    {
+      "Country": "United States",
+      "Latitude": 40.692501,
+      "Longitude": -74.168602,
+      "Name": "New York Newark Liberty International Airport",
+      "IATA": "EWR",
+      "Zone": "North America",
+      "CountryCode": "US",
+      "TC": "TC1",
+      "copazone": "US & Canada"
+    }
+  ]
+}

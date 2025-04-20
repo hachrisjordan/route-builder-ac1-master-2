@@ -5,6 +5,7 @@ import { AirplaneIcon, MenuIcon, HomeIcon, CloseIcon } from './components/Icons'
 import './App.css';
 import FlightSearch from './pages/FlightSearch';
 import NormalRouteBuilderPage from './pages/NormalRouteBuilder';
+import UAExpandedSaverPage from './pages/UAExpandedSaverPage';
 
 const { Header, Content, Footer } = Layout;
 
@@ -69,6 +70,9 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
               <img src="/AC.png" alt="AC" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>AC Route Builder</NavLink>
             <NavLink to="/normal" icon={<HomeIcon />}>Normal Route Builder</NavLink>
+            <NavLink to="/ua-expanded-saver" icon={
+              <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
+            }>UA Expanded Saver</NavLink>
           </nav>
           
           {/* Mobile menu button */}
@@ -105,6 +109,9 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
           <Link to="/normal" onClick={() => setMobileMenuOpen(false)}>
             <HomeIcon /> Normal Route Builder
           </Link>
+          <Link to="/ua-expanded-saver" onClick={() => setMobileMenuOpen(false)}>
+            <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> UA Expanded Saver
+          </Link>
         </div>
       </Drawer>
       
@@ -112,6 +119,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
         <Routes>
           <Route path="/ac" element={<FlightSearch />} />
           <Route path="/normal" element={<NormalRouteBuilderPage />} />
+          <Route path="/ua-expanded-saver" element={<UAExpandedSaverPage />} />
           <Route path="/" element={<Navigate to="/ac" replace />} />
         </Routes>
       </Content>
