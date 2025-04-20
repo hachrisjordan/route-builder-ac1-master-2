@@ -56,7 +56,10 @@ const UAExpandedSaverResultsTable = ({
         dataIndex: 'connections',
         key: 'stops',
         width: 80,
-        sorter: (a, b) => (a.connections ? a.connections.length : 0) - (b.connections ? b.connections.length : 0),
+        sorter: { 
+          compare: (a, b) => (a.connections ? a.connections.length : 0) - (b.connections ? b.connections.length : 0),
+          multiple: 2 
+        },
         render: (connections) => {
           const stops = connections ? connections.length : 0;
           let color;
@@ -212,7 +215,11 @@ const UAExpandedSaverResultsTable = ({
         dataIndex: 'price',
         key: 'price',
         width: 100,
-        sorter: (a, b) => a.price - b.price,
+        defaultSortOrder: 'ascend',
+        sorter: { 
+          compare: (a, b) => a.price - b.price,
+          multiple: 1 
+        },
         render: (price) => <div>{price.toLocaleString()}</div>,
       },
       {
@@ -454,7 +461,7 @@ const UAExpandedSaverResultsTable = ({
 
   return (
     <>
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'flex-end' }}>
         <Input.Search
           placeholder="Search flights..."
           onChange={e => handleSearchTextChange(e.target.value)}
@@ -470,12 +477,16 @@ const UAExpandedSaverResultsTable = ({
         onChange={onTableChange}
         scroll={{ x: 'max-content' }}
         size="small"
-        style={{ width: '1600px' }}
-        defaultSortOrder={[
-          { columnKey: 'price', order: 'ascend' },
-          { columnKey: 'stops', order: 'ascend' }
-        ]}
+        style={{ width: '100%' }}
       />
+      
+      {/* Add custom styles to override global flex-direction */}
+      <style jsx>{`
+        :global(.ua-expanded-table-card .ant-card-body) {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+        }
+      `}</style>
     </>
   );
 };
