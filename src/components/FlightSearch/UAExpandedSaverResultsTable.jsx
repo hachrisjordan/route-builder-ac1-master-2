@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Input, Radio, Checkbox, Space, Tag, Dropdown, Button, Slider } from 'antd';
-import { LinkOutlined, SearchOutlined } from '@ant-design/icons';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Table, Input, Radio, Checkbox, Space, Tag, Dropdown, Button, Slider, Switch, Select, Menu, Tabs } from 'antd';
+import { LinkOutlined, SearchOutlined, DownOutlined, DollarOutlined, UserOutlined } from '@ant-design/icons';
 import { airports } from './data/airports';
 import uaPriceData from '../../data/ua';
 import filteredAirportsByCopazone from '../../data/filtered_airports_by_copazone.json';
 import airlines from './data/airlines';
+import rateData from '../../data/rate.json';
+import { currencyList } from './calendar/data/currency_list';
+import { convertCurrency, formatCurrencyAmount } from './calendar/utils/currencyUtils';
 
 const UAExpandedSaverResultsTable = ({ 
   searchResults, 
@@ -15,8 +18,23 @@ const UAExpandedSaverResultsTable = ({
 }) => {
   const [tableSearchText, setTableSearchText] = useState('');
   const [filteredData, setFilteredData] = useState([]);
+  const [isCashView, setIsCashView] = useState(false);
+  const [applyExpiredPromo, setApplyExpiredPromo] = useState(false);
+  const [selectedCurrency, setSelectedCurrency] = useState('USD');
+  const [convertedPrices, setConvertedPrices] = useState({});
+  const [seatsFilterMode, setSeatsFilterMode] = useState('approximate'); // 'approximate' or 'exact'
+  const [seatsFilterRange, setSeatsFilterRange] = useState([1, 9]);
+  const [seatsFilterActive, setSeatsFilterActive] = useState(false);
   
-  // Transform and filter data whenever searchResults or tableSearchText changes
+  // Check if promo rate is expired
+  const isPromoExpired = useMemo(() => {
+    if (!rateData || !rateData.endDate) return false;
+    const endDate = new Date(rateData.endDate);
+    const currentDate = new Date();
+    return currentDate > endDate;
+  }, []);
+  
+  // Transform and filter data whenever searchResults or tableSearchText or seatsFilter changes
   useEffect(() => {
     const data = getFilteredData();
     setFilteredData(data);
@@ -39,7 +57,28 @@ const UAExpandedSaverResultsTable = ({
         total: totalItems
       });
     }
-  }, [searchResults, tableSearchText]);
+  }, [searchResults, tableSearchText, seatsFilterActive, seatsFilterMode, seatsFilterRange]);
+  
+  // Convert prices when currency or filteredData changes
+  useEffect(() => {
+    if (!isCashView || !filteredData.length) return;
+    
+    const convertPrices = async () => {
+      const priceMap = {};
+      for (const item of filteredData) {
+        const cashPrice = getCashPrice(item.price);
+        if (selectedCurrency === 'USD') {
+          priceMap[item.key] = cashPrice;
+        } else {
+          const convertedPrice = await convertCurrency(cashPrice, 'USD', selectedCurrency);
+          priceMap[item.key] = convertedPrice;
+        }
+      }
+      setConvertedPrices(priceMap);
+    };
+    
+    convertPrices();
+  }, [filteredData, selectedCurrency, isCashView, applyExpiredPromo]);
   
   const getColumns = () => {
     return [
@@ -214,13 +253,37 @@ const UAExpandedSaverResultsTable = ({
         title: 'Price',
         dataIndex: 'price',
         key: 'price',
-        width: 100,
+        width: 120,
         defaultSortOrder: 'ascend',
         sorter: { 
           compare: (a, b) => a.price - b.price,
           multiple: 1 
         },
-        render: (price) => <div>{price.toLocaleString()}</div>,
+        render: (price, record) => {
+          if (isCashView) {
+            // Use converted price if available, otherwise calculate
+            const convertedPrice = convertedPrices[record.key];
+            if (convertedPrice !== undefined) {
+              // Format with currency code (not symbol)
+              // Use locale formatting for numbers but with currency code prefix
+              const isHighValueCurrency = selectedCurrency === 'VND' || 
+                selectedCurrency === 'KRW' || 
+                selectedCurrency === 'JPY' || 
+                selectedCurrency === 'IDR';
+              
+              // Format with 2 decimal places for most currencies, 0 for high-value ones
+              const formattedPrice = convertedPrice.toLocaleString('en-US', {
+                minimumFractionDigits: isHighValueCurrency ? 0 : 2,
+                maximumFractionDigits: isHighValueCurrency ? 0 : 2
+              });
+              
+              return <div>{selectedCurrency} {formattedPrice}</div>;
+            }
+            return <div>...</div>; // Loading state
+          }
+          // Miles view
+          return <div>{price.toLocaleString()}</div>;
+        },
       },
       {
         title: '',
@@ -442,26 +505,350 @@ const UAExpandedSaverResultsTable = ({
   const getFilteredData = () => {
     const data = transformData(searchResults);
     
-    if (!tableSearchText) {
-      return data;
+    let filteredBySearch = data;
+    if (tableSearchText) {
+      const searchLower = tableSearchText.toLowerCase();
+      
+      filteredBySearch = data.filter(item => {
+        return (
+          item.path.toLowerCase().includes(searchLower) ||
+          item.date.toLowerCase().includes(searchLower) ||
+          (item.connections && item.connections.some(c => c.toLowerCase().includes(searchLower))) ||
+          (item.flightNumbers && item.flightNumbers.some(f => f.toLowerCase().includes(searchLower))) ||
+          (item.aircraft && item.aircraft.some(a => a.toLowerCase().includes(searchLower)))
+        );
+      });
     }
     
-    const searchLower = tableSearchText.toLowerCase();
+    // Apply seats filter if active
+    if (seatsFilterActive && filteredBySearch.length > 0) {
+      return filteredBySearch.filter(item => {
+        const seats = item.seats;
+        const min = seatsFilterRange[0];
+        const max = seatsFilterRange[1];
+        
+        if (seatsFilterMode === 'approximate') {
+          // For "Min 1", show if the filter includes 1
+          if (seats === "Min 1") {
+            return min <= 1;
+          }
+          
+          // For ranges like "1~4"
+          if (typeof seats === 'string' && seats.includes('~')) {
+            const upperBound = parseInt(seats.split('~')[1]);
+            // Show if there's any overlap between the filter range and seat range
+            return !(max < 1 || min > upperBound);
+          }
+          
+          // For exact numbers
+          const exactSeats = parseInt(seats);
+          if (!isNaN(exactSeats)) {
+            return exactSeats >= min && exactSeats <= max;
+          }
+        } else if (seatsFilterMode === 'exact') {
+          // In exact mode, if filter range includes 1, show all results
+          if (min <= 1) {
+            return true;
+          }
+          
+          // For "Min 1", hide in exact mode unless filter includes 1
+          if (seats === "Min 1") {
+            return false;
+          }
+          
+          // For ranges like "1~4", hide in exact mode
+          if (typeof seats === 'string' && seats.includes('~')) {
+            return false;
+          }
+          
+          // For exact numbers, show only if within filter range
+          const exactSeats = parseInt(seats);
+          if (!isNaN(exactSeats)) {
+            return exactSeats >= min && exactSeats <= max;
+          }
+        }
+        
+        return true; // Default to showing if logic fails
+      });
+    }
     
-    return data.filter(item => {
-      return (
-        item.path.toLowerCase().includes(searchLower) ||
-        item.date.toLowerCase().includes(searchLower) ||
-        (item.connections && item.connections.some(c => c.toLowerCase().includes(searchLower))) ||
-        (item.flightNumbers && item.flightNumbers.some(f => f.toLowerCase().includes(searchLower))) ||
-        (item.aircraft && item.aircraft.some(a => a.toLowerCase().includes(searchLower)))
-      );
-    });
+    return filteredBySearch;
+  };
+
+  // Calculate cash price based on miles using rate.json data
+  const getCashPrice = (miles) => {
+    // Default to base price if no rate data
+    if (!rateData) return Math.round(miles * 0.03);
+    
+    const basePrice = rateData.basePrice || 0.03;
+    const promoType = rateData.type || 'none';
+    const tiers = rateData.tiers || [];
+    
+    // Skip promo logic if expired and not applying promo
+    if (isPromoExpired && !applyExpiredPromo) {
+      return Math.round(miles * basePrice);
+    }
+    
+    // Discount type: apply percentage discount to the price
+    if (promoType === 'discount') {
+      // Round miles up to nearest 1000
+      const roundedMiles = Math.ceil(miles / 1000) * 1000;
+      
+      // Find applicable tier
+      const tier = tiers.find(t => 
+        roundedMiles >= t.minMiles && roundedMiles <= t.maxMiles
+      ) || { Percentage: 0 };
+      
+      // Apply discount
+      return Math.round(roundedMiles * basePrice * (100 - tier.Percentage) / 100);
+    }
+    
+    // Bonus type: work backwards to find base miles
+    if (promoType === 'bonus') {
+      // For bonus type, we need to find the correct tier by testing each one
+      let baseMiles = miles;
+      let roundedBaseMiles = miles;
+      
+      // Sort tiers by percentage in descending order to try higher bonuses first
+      const sortedTiers = [...tiers].sort((a, b) => b.Percentage - a.Percentage);
+      
+      // Try each tier to find the correct one
+      for (const tier of sortedTiers) {
+        // Calculate what the base miles would be for this tier
+        const bonusMultiplier = 1 + (tier.Percentage / 100);
+        const calculatedBaseMiles = miles / bonusMultiplier;
+        const roundedCalculatedMiles = Math.ceil(calculatedBaseMiles / 1000) * 1000;
+        
+        // Check if the rounded base miles would fall within this tier's range
+        if (roundedCalculatedMiles >= tier.minMiles && roundedCalculatedMiles <= tier.maxMiles) {
+          // This tier is valid - use these base miles
+          baseMiles = calculatedBaseMiles;
+          roundedBaseMiles = roundedCalculatedMiles;
+          break;
+        }
+      }
+      
+      // If no tier matched, use the standard base price without bonus
+      return Math.round(roundedBaseMiles * basePrice);
+    }
+    
+    // No promo or unknown type
+    return Math.round(miles * basePrice);
+  };
+
+  const handleCurrencyChange = (value) => {
+    setSelectedCurrency(value);
+  };
+
+  const handleSeatsFilterChange = (range) => {
+    setSeatsFilterRange(range);
+    setSeatsFilterActive(true);
+  };
+  
+  const handleSeatsFilterModeChange = (mode) => {
+    setSeatsFilterMode(mode);
+  };
+  
+  const resetSeatsFilter = () => {
+    setSeatsFilterRange([1, 9]);
+    setSeatsFilterActive(false);
   };
 
   return (
     <>
-      <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'flex-end' }}>
+      <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ marginRight: 8 }}>Mode:</span>
+          <Switch
+            checked={isCashView}
+            onChange={setIsCashView}
+            checkedChildren="Cash"
+            unCheckedChildren="Miles"
+            style={{ marginRight: 8 }}
+          />
+          
+          {isCashView && (
+            <Dropdown
+              overlay={
+                <div style={{ 
+                  backgroundColor: 'white', 
+                  boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05)',
+                  borderRadius: '8px',
+                  padding: '8px 0',
+                  width: '300px'
+                }}>
+                  <div style={{ padding: '8px 12px', borderBottom: '1px solid #f0f0f0' }}>
+                    <Input.Search
+                      placeholder="Search currencies..."
+                      size="small"
+                      allowClear
+                      onChange={(e) => {
+                        // Will be used for filtering
+                        const searchText = e.target.value.toLowerCase();
+                        document.querySelectorAll('.currency-option').forEach(el => {
+                          const text = el.getAttribute('data-search').toLowerCase();
+                          el.style.display = text.includes(searchText) ? 'flex' : 'none';
+                        });
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  </div>
+                  
+                  <div style={{ 
+                    maxHeight: '400px', 
+                    overflowY: 'auto',
+                    padding: '8px 0'
+                  }}>
+                    {currencyList.map(currency => (
+                      <div 
+                        key={currency.code}
+                        className="currency-option"
+                        data-search={`${currency.code} ${currency.name}`}
+                        onClick={() => handleCurrencyChange(currency.code)}
+                        style={{ 
+                          padding: '8px 12px',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          backgroundColor: selectedCurrency === currency.code ? '#f0f8ff' : 'white',
+                          borderLeft: selectedCurrency === currency.code ? '3px solid #1890ff' : '3px solid transparent',
+                          '&:hover': {
+                            backgroundColor: '#f5f5f5'
+                          }
+                        }}
+                      >
+                        <span style={{ fontWeight: 'bold' }}>{currency.code}</span>
+                        <span style={{ fontSize: '12px', color: '#666' }}>{currency.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              }
+              trigger={['click']}
+            >
+              <Button style={{ marginLeft: 8 }}>
+                <Space>
+                  <DollarOutlined />
+                  {selectedCurrency}
+                  <DownOutlined />
+                </Space>
+              </Button>
+            </Dropdown>
+          )}
+          
+          {/* Seats Filter Button */}
+          <Dropdown
+            overlay={
+              <div style={{ 
+                backgroundColor: 'white', 
+                boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05)',
+                borderRadius: '8px',
+                padding: '8px 0',
+                width: '300px'
+              }}>
+                <Tabs 
+                  defaultActiveKey={seatsFilterMode}
+                  onChange={handleSeatsFilterModeChange}
+                  style={{ padding: '0 12px' }}
+                >
+                  <Tabs.TabPane tab="Approximate" key="approximate">
+                    <div style={{ padding: '12px 0' }}>
+                      <Slider 
+                        range
+                        min={1}
+                        max={9}
+                        value={seatsFilterRange}
+                        onChange={handleSeatsFilterChange}
+                        marks={{
+                          1: '1',
+                          3: '3',
+                          5: '5',
+                          7: '7',
+                          9: '9'
+                        }}
+                      />
+                      <div style={{ marginTop: '12px', textAlign: 'center', fontSize: '13px', color: '#666' }}>
+                        Selected: {seatsFilterRange[0]} - {seatsFilterRange[1]} seats
+                      </div>
+                      <div style={{ marginTop: '12px', fontSize: '12px', color: '#888' }}>
+                        <p>Includes flights with:</p>
+                        <ul style={{ paddingLeft: '20px', margin: '4px 0' }}>
+                          <li>Exact seat counts in range</li>
+                          <li>Range values with overlap (e.g. "1~4")</li>
+                          <li>"Min 1" if range includes 1</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Tabs.TabPane>
+                  <Tabs.TabPane tab="Exact" key="exact">
+                    <div style={{ padding: '12px 0' }}>
+                      <Slider 
+                        range
+                        min={1}
+                        max={9}
+                        value={seatsFilterRange}
+                        onChange={handleSeatsFilterChange}
+                        marks={{
+                          1: '1',
+                          3: '3',
+                          5: '5',
+                          7: '7',
+                          9: '9'
+                        }}
+                      />
+                      <div style={{ marginTop: '12px', textAlign: 'center', fontSize: '13px', color: '#666' }}>
+                        Selected: {seatsFilterRange[0]} - {seatsFilterRange[1]} seats
+                      </div>
+                      <div style={{ marginTop: '12px', fontSize: '12px', color: '#888' }}>
+                        <p>Strict matching:</p>
+                        <ul style={{ paddingLeft: '20px', margin: '4px 0' }}>
+                          <li>Only exact seat counts in range</li>
+                          <li>No range values (e.g. "1~4")</li>
+                          <li>Shows all if range includes 1</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Tabs.TabPane>
+                </Tabs>
+                <div style={{ 
+                  padding: '8px 12px',
+                  borderTop: '1px solid #f0f0f0',
+                  display: 'flex', 
+                  justifyContent: 'flex-end'
+                }}>
+                  <Button 
+                    size="small" 
+                    onClick={resetSeatsFilter}
+                  >
+                    Reset
+                  </Button>
+                </div>
+              </div>
+            }
+            trigger={['click']}
+          >
+            <Button 
+              style={{ marginLeft: 8 }}
+              type={seatsFilterActive ? 'primary' : 'default'}
+            >
+              <Space>
+                <UserOutlined />
+                Seats {seatsFilterActive && `(${seatsFilterRange[0]}-${seatsFilterRange[1]})`}
+                <DownOutlined />
+              </Space>
+            </Button>
+          </Dropdown>
+          
+          {isCashView && isPromoExpired && (
+            <Checkbox 
+              checked={applyExpiredPromo} 
+              onChange={e => setApplyExpiredPromo(e.target.checked)}
+              style={{ marginLeft: 12 }}
+            >
+              Apply last promo
+            </Checkbox>
+          )}
+        </div>
         <Input.Search
           placeholder="Search flights..."
           onChange={e => handleSearchTextChange(e.target.value)}

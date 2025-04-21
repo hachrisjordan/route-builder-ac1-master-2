@@ -1,0 +1,27 @@
+{
+    "basePrice": 0.03,
+    "type": "bonus",
+    "endDate": "2025-04-18",
+    "tiers": [
+      {
+        "minMiles": 1000,
+        "maxMiles": 4000,
+        "Percentage": 0
+      },
+      {
+        "minMiles": 5000,
+        "maxMiles": 9000,
+        "Percentage": 40
+      },
+      {
+        "minMiles": 10000,
+        "maxMiles": 19000,
+        "Percentage": 50
+      },
+      {
+        "minMiles": 20000,
+        "maxMiles": 100000,
+        "Percentage": 60
+      }
+    ]
+  }
