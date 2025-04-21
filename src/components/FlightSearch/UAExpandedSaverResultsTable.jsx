@@ -5,9 +5,50 @@ import { airports } from './data/airports';
 import uaPriceData from '../../data/ua';
 import filteredAirportsByCopazone from '../../data/filtered_airports_by_copazone.json';
 import airlines from './data/airlines';
-import rateData from '../../data/rate.json';
 import { currencyList } from './calendar/data/currency_list';
-import { convertCurrency, formatCurrencyAmount } from './calendar/utils/currencyUtils';
+import { convertCurrency, formatCurrencyAmount, fetchExchangeRates } from './calendar/utils/currencyUtils';
+
+// URL for rate.json
+const RATE_JSON_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/rate.json';
+
+// Create a separate component for formatted price display
+const FormattedPrice = ({ price, currency }) => {
+  const [formattedValue, setFormattedValue] = useState('...');
+  
+  useEffect(() => {
+    let isMounted = true;
+    
+    const formatPrice = async () => {
+      try {
+        // Use the public formatCurrencyAmount function for consistent formatting
+        const formattedPrice = await formatCurrencyAmount(price, currency, true);
+        // Remove any currency symbol and just keep the number with proper formatting
+        const numericPart = formattedPrice.replace(/^[^\d]+/, '').trim();
+        return `${currency} ${numericPart}`;
+      } catch (error) {
+        console.error('Error formatting price:', error);
+        
+        // Fallback if formatting fails
+        const rates = await fetchExchangeRates();
+        const rate = rates && rates[currency];
+        const isHighValueCurrency = rate && rate > 1000;
+        
+        return `${currency} ${price.toLocaleString('en-US', {
+          minimumFractionDigits: isHighValueCurrency ? 0 : 2,
+          maximumFractionDigits: isHighValueCurrency ? 0 : 2
+        })}`;
+      }
+    };
+    
+    formatPrice().then(result => {
+      if (isMounted) setFormattedValue(result);
+    });
+    
+    return () => { isMounted = false; };
+  }, [price, currency]);
+  
+  return <div style={{ fontWeight: 'bold' }}>{formattedValue}</div>;
+};
 
 const UAExpandedSaverResultsTable = ({ 
   searchResults, 
@@ -25,6 +66,43 @@ const UAExpandedSaverResultsTable = ({
   const [seatsFilterMode, setSeatsFilterMode] = useState('approximate'); // 'approximate' or 'exact'
   const [seatsFilterRange, setSeatsFilterRange] = useState([1, 9]);
   const [seatsFilterActive, setSeatsFilterActive] = useState(false);
+  // Add state for rate data
+  const [rateData, setRateData] = useState(null);
+  const [rateDataLoading, setRateDataLoading] = useState(true);
+  
+  // Fetch rate data when component mounts
+  useEffect(() => {
+    const fetchRateData = async () => {
+      try {
+        setRateDataLoading(true);
+        const response = await fetch(RATE_JSON_URL);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch rate data: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Rate data loaded:', data);
+        setRateData(data);
+      } catch (error) {
+        console.error('Error fetching rate data:', error);
+        // Set fallback default values
+        setRateData({
+          basePrice: 0.03,
+          type: 'bonus',
+          endDate: '2025-04-18',
+          tiers: [
+            { minMiles: 1000, maxMiles: 4000, Percentage: 0 },
+            { minMiles: 5000, maxMiles: 9000, Percentage: 40 },
+            { minMiles: 10000, maxMiles: 19000, Percentage: 50 },
+            { minMiles: 20000, maxMiles: 100000, Percentage: 60 }
+          ]
+        });
+      } finally {
+        setRateDataLoading(false);
+      }
+    };
+    
+    fetchRateData();
+  }, []);
   
   // Check if promo rate is expired
   const isPromoExpired = useMemo(() => {
@@ -32,7 +110,7 @@ const UAExpandedSaverResultsTable = ({
     const endDate = new Date(rateData.endDate);
     const currentDate = new Date();
     return currentDate > endDate;
-  }, []);
+  }, [rateData]);
   
   // Transform and filter data whenever searchResults or tableSearchText or seatsFilter changes
   useEffect(() => {
@@ -250,39 +328,27 @@ const UAExpandedSaverResultsTable = ({
         },
       },
       {
-        title: 'Price',
+        title: 'Price (Business Class)',
         dataIndex: 'price',
         key: 'price',
-        width: 120,
+        width: 200,
         defaultSortOrder: 'ascend',
         sorter: { 
           compare: (a, b) => a.price - b.price,
           multiple: 1 
         },
+        align: 'right',
         render: (price, record) => {
           if (isCashView) {
             // Use converted price if available, otherwise calculate
             const convertedPrice = convertedPrices[record.key];
             if (convertedPrice !== undefined) {
-              // Format with currency code (not symbol)
-              // Use locale formatting for numbers but with currency code prefix
-              const isHighValueCurrency = selectedCurrency === 'VND' || 
-                selectedCurrency === 'KRW' || 
-                selectedCurrency === 'JPY' || 
-                selectedCurrency === 'IDR';
-              
-              // Format with 2 decimal places for most currencies, 0 for high-value ones
-              const formattedPrice = convertedPrice.toLocaleString('en-US', {
-                minimumFractionDigits: isHighValueCurrency ? 0 : 2,
-                maximumFractionDigits: isHighValueCurrency ? 0 : 2
-              });
-              
-              return <div>{selectedCurrency} {formattedPrice}</div>;
+              return <FormattedPrice price={convertedPrice} currency={selectedCurrency} />;
             }
-            return <div>...</div>; // Loading state
+            return <div style={{ fontWeight: 'bold' }}>...</div>; // Loading state
           }
           // Miles view
-          return <div>{price.toLocaleString()}</div>;
+          return <div style={{ fontWeight: 'bold' }}>{price.toLocaleString()}</div>;
         },
       },
       {
@@ -577,8 +643,10 @@ const UAExpandedSaverResultsTable = ({
 
   // Calculate cash price based on miles using rate.json data
   const getCashPrice = (miles) => {
-    // Default to base price if no rate data
-    if (!rateData) return Math.round(miles * 0.03);
+    // Return default calculation if rate data is still loading or unavailable
+    if (rateDataLoading || !rateData) {
+      return Math.round(miles * 0.03);
+    }
     
     const basePrice = rateData.basePrice || 0.03;
     const promoType = rateData.type || 'none';
