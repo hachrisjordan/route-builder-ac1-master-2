@@ -6,6 +6,7 @@ import './App.css';
 import FlightSearch from './pages/FlightSearch';
 import NormalRouteBuilderPage from './pages/NormalRouteBuilder';
 import UAExpandedSaverPage from './pages/UAExpandedSaverPage';
+import VJDelayMetricsPage from './pages/VJDelayMetricsPage';
 
 const { Header, Content, Footer } = Layout;
 
@@ -73,6 +74,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
             <NavLink to="/ua-expanded-saver" icon={
               <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>UA Expanded Saver</NavLink>
+            <NavLink to="/vj-delay-metrics" icon={<HomeIcon />}>VJ Delay Metrics</NavLink>
           </nav>
           
           {/* Mobile menu button */}
@@ -112,6 +114,9 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
           <Link to="/ua-expanded-saver" onClick={() => setMobileMenuOpen(false)}>
             <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> UA Expanded Saver
           </Link>
+          <Link to="/vj-delay-metrics" onClick={() => setMobileMenuOpen(false)}>
+            <HomeIcon /> VJ Delay Metrics
+          </Link>
         </div>
       </Drawer>
       
@@ -120,6 +125,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
           <Route path="/ac" element={<FlightSearch />} />
           <Route path="/normal" element={<NormalRouteBuilderPage />} />
           <Route path="/ua-expanded-saver" element={<UAExpandedSaverPage />} />
+          <Route path="/vj-delay-metrics" element={<VJDelayMetricsPage />} />
           <Route path="/" element={<Navigate to="/ac" replace />} />
         </Routes>
       </Content>
