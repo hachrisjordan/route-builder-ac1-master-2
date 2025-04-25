@@ -74,7 +74,9 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
             <NavLink to="/ua-expanded-saver" icon={
               <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>UA Expanded Saver</NavLink>
-            <NavLink to="/vj-delay-metrics" icon={<HomeIcon />}>VJ Delay Metrics</NavLink>
+            <NavLink to="/vj-delay-metrics" icon={
+              <img src="/VJ.png" alt="VJ" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
+            }>VJ Delay Metrics</NavLink>
           </nav>
           
           {/* Mobile menu button */}
