@@ -1,5 +1,5 @@
 {
-  "Australia / New Zealand": [
+  "Australia & New Zealand": [
     {
       "Country": "New Zealand",
       "Latitude": -37.010914,
@@ -9,7 +9,7 @@
       "Zone": "Pacific",
       "CountryCode": "NZ",
       "TC": "TC3",
-      "copazone": "Australia / New Zealand"
+      "copazone": "Australia & New Zealand"
     },
     {
       "Country": "Australia",
@@ -20,7 +20,7 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia / New Zealand"
+      "copazone": "Australia & New Zealand"
     },
     {
       "Country": "Australia",
@@ -31,7 +31,7 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia / New Zealand"
+      "copazone": "Australia & New Zealand"
     },
     {
       "Country": "Australia",
@@ -42,7 +42,7 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia / New Zealand"
+      "copazone": "Australia & New Zealand"
     }
   ],
   "Caribbean": [
@@ -234,171 +234,6 @@
       "copazone": "Caribbean"
     },
     {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
-      "Country": "Saint Kitts And Nevis",
-      "Latitude": 17.31119,
-      "Longitude": -62.718601,
-      "Name": "Basseterre Robert L. Bradshaw International Airport",
-      "IATA": "SKB",
-      "Zone": "North America",
-      "CountryCode": "KN",
-      "TC": "TC1",
-      "copazone": "Caribbean"
-    },
-    {
       "Country": "Dominican Republic",
       "Latitude": 19.40609,
       "Longitude": -70.604599,
@@ -564,171 +399,6 @@
       "IATA": "SJO",
       "Zone": "North America",
       "CountryCode": "CR",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
-      "TC": "TC1",
-      "copazone": "Central America"
-    },
-    {
-      "Country": "Guatemala",
-      "Latitude": 14.58327,
-      "Longitude": -90.527397,
-      "Name": "Guatemala City La Aurora International Airport",
-      "IATA": "GUA",
-      "Zone": "North America",
-      "CountryCode": "GT",
       "TC": "TC1",
       "copazone": "Central America"
     },
@@ -1691,7 +1361,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1702,7 +1372,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1713,7 +1383,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1724,7 +1394,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1735,7 +1405,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1746,7 +1416,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1757,7 +1427,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     },
     {
       "Country": "United States",
@@ -1768,7 +1438,7 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US, Alaska and Canada"
+      "copazone": "US & Canada"
     }
   ]
 }
