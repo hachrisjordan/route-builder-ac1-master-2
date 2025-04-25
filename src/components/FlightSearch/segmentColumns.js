@@ -16,14 +16,17 @@ const formatTimeWithDayDiff = (time, baseDate) => {
     return '--:--';
   }
 
-  // Parse the date from DepartsAt/ArrivesAt which should be in YYYY-MM-DD HH:mm:ss format
-  const flightDate = dayjs(cleanTime);
+  // First remove the Z suffix to ensure we don't interpret as UTC
+  const timeWithoutZ = cleanTime.replace('Z', '');
+  
+  // Parse the date without timezone conversion
+  const flightDate = dayjs(timeWithoutZ);
 
   if (!flightDate.isValid()) {
     return cleanTime;
   }
 
-  // Format as "HH:mm MM-DD"
+  // Format as "HH:mm MM-DD" to match the console log format
   return flightDate.format('HH:mm MM-DD');
 };
 
@@ -119,8 +122,9 @@ export const getSegmentColumns = (onFlightSelect, startDay) => {
       defaultSortOrder: 'ascend',
       render: (time) => formatTimeWithDayDiff(time, baseDayjs),
       sorter: (a, b) => {
-        const aTime = dayjs(a.DepartsAt).valueOf();
-        const bTime = dayjs(b.DepartsAt).valueOf();
+        // Sort by departure time without timezone conversion
+        const aTime = dayjs(a.DepartsAt.replace('Z', '')).valueOf();
+        const bTime = dayjs(b.DepartsAt.replace('Z', '')).valueOf();
         return aTime - bTime;
       }
     },
@@ -130,8 +134,9 @@ export const getSegmentColumns = (onFlightSelect, startDay) => {
       width: 100,
       render: (time) => formatTimeWithDayDiff(time, baseDayjs),
       sorter: (a, b) => {
-        const aTime = dayjs(a.ArrivesAt).valueOf();
-        const bTime = dayjs(b.ArrivesAt).valueOf();
+        // Sort by arrival time without timezone conversion
+        const aTime = dayjs(a.ArrivesAt.replace('Z', '')).valueOf();
+        const bTime = dayjs(b.ArrivesAt.replace('Z', '')).valueOf();
         return aTime - bTime;
       }
     },
