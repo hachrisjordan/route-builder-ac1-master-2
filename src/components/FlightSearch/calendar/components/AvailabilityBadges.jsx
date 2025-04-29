@@ -55,8 +55,13 @@ export const hasAvailableBadges = (route, date, flightData, directFilter, source
         const rawFlight = flight.rawData;
         if (!rawFlight || !rawFlight.source) return false;
         
-        const matchesSource = sourceFilter.sources.includes(rawFlight.source);
-        return sourceFilter.mode === 'include' ? matchesSource : !matchesSource;
+        if (sourceFilter.mode === 'include') {
+          // In include mode, keep flights that match any included source
+          return sourceFilter.sources.includes(rawFlight.source);
+        } else {
+          // In exclude mode, keep flights that have at least one non-excluded source
+          return !sourceFilter.sources.includes(rawFlight.source);
+        }
       });
     }
     
@@ -440,9 +445,16 @@ const AvailabilityBadges = ({
     // Apply source filter if set
     if (sourceFilter?.sources?.length > 0) {
       const sources = (classData.sources || '').split(',').map(s => s.trim()).filter(s => s);
-      const matchesSources = sourceFilter.sources.some(s => sources.includes(s));
-      if (sourceFilter.mode === 'include' && !matchesSources) return false;
-      if (sourceFilter.mode === 'exclude' && matchesSources) return false;
+      
+      if (sourceFilter.mode === 'include') {
+        // In include mode, keep if any source matches
+        const matchesSources = sourceFilter.sources.some(s => sources.includes(s));
+        if (!matchesSources) return false;
+      } else {
+        // In exclude mode, keep if any source is not excluded
+        const hasNonExcludedSource = sources.some(s => !sourceFilter.sources.includes(s));
+        if (!hasNonExcludedSource) return false;
+      }
     }
     
     // If either time or airlines filter is enabled, we need to check actual flight data
@@ -637,8 +649,13 @@ const AvailabilityBadges = ({
         const rawFlight = flight.rawData;
         if (!rawFlight || !rawFlight.source) return false;
         
-        const matchesSource = sourceFilter.sources.includes(rawFlight.source);
-        return sourceFilter.mode === 'include' ? matchesSource : !matchesSource;
+        if (sourceFilter.mode === 'include') {
+          // In include mode, keep flights that match any included source
+          return sourceFilter.sources.includes(rawFlight.source);
+        } else {
+          // In exclude mode, keep flights that have at least one non-excluded source
+          return !sourceFilter.sources.includes(rawFlight.source);
+        }
       });
     }
     

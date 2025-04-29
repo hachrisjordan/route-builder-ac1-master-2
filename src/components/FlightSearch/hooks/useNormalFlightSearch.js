@@ -503,9 +503,93 @@ export default function useNormalFlightSearch() {
         return;
       }
 
+      // Check if there are airport groups between first and last hyphens
+      const hasMiddleAirportGroups = segments.length > 2 && 
+        segments.slice(1, -1).some(segment => 
+          Object.keys(airportGroups).includes(segment) || 
+          segment.includes('/')
+        );
+
+      if (hasMiddleAirportGroups) {
+        console.log('Path contains airport groups in the middle, splitting into individual searches');
+        
+        // Split into individual paths
+        const individualPaths = [];
+        for (let i = 0; i < segments.length - 1; i++) {
+          individualPaths.push(`${segments[i]}-${segments[i + 1]}`);
+        }
+
+        // Get all available source codenames and filter based on mode
+        const allSources = getSourceCodenames();
+        const sourcesToUse = !sourcesState.sources.length ? allSources :
+          sourcesState.mode === 'include' 
+            ? sourcesState.sources 
+            : allSources.filter(source => !sourcesState.sources.includes(source));
+
+        setIsLoading(true);
+
+        try {
+          // Make individual API calls for each path
+          const allResponses = await Promise.all(
+            individualPaths.map(async (individualPath) => {
+              const requestBody = {
+                routeId: individualPath,
+                startDate: dateRange ? dateRange[0] : null,
+                endDate: dateRange ? dateRange[1] : null,
+                sources: sourcesToUse.join(',')
+              };
+
+              console.log('🔍 API Request Body for path:', individualPath, requestBody);
+
+              const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Partner-Authorization': apiKey
+                },
+                body: JSON.stringify(requestBody)
+              });
+
+              if (!response.ok) {
+                throw new Error(`Search failed for path: ${individualPath}`);
+              }
+
+              return response.json();
+            })
+          );
+
+          // Merge all responses
+          const mergedData = allResponses.flat();
+          console.log('Merged API responses:', mergedData);
+
+          // Process the flight data with the original segments
+          const processedData = processFlightData(mergedData, segments);
+          
+          // Generate route permutations for display
+          const routePermutations = generateRoutePermutations(path);
+          
+          const flightDataObj = {
+            routes: routePermutations,
+            data: processedData,
+            rawData: mergedData
+          };
+
+          setFlightData(flightDataObj);
+          if (setExternalFlightData) {
+            setExternalFlightData(flightDataObj);
+          }
+          setSelectedDateRange(dateRange);
+        } catch (error) {
+          console.error('Search failed:', error);
+          setErrors({ general: 'Search failed. Please try again.' });
+        } finally {
+          setIsLoading(false);
+        }
+        
+        return;
+      }
+
       // Store the original segments for later use, but handle slashes correctly
-      // For segments with slashes (e.g., "HAN/SGN"), we need to keep them as is
-      // This ensures that when comparing routes, we match against the full segment
       routeSegmentsForProcessing = segments;
       setCurrentRoute(segments.map(segment => {
         // If this is a group code, expand it
