@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Input, DatePicker, Button, Space, Row, Col } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, SwapOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import HybridPathInput from './HybridPathInput';
 import SourcesInput from './SourcesExcludedInput';
@@ -56,6 +56,24 @@ const NormalRouteBuilder = ({ onSearch, isLoading, errors, cachedApiKey, saveApi
     });
   };
 
+  const handleReversePath = () => {
+    if (!path) return;
+
+    // Split the path into segments
+    const segments = path.split('-');
+    
+    // Reverse the segments and their internal airports
+    const reversedSegments = segments.map(segment => {
+      const airports = segment.split('/');
+      return airports.reverse().join('/');
+    }).reverse();
+    
+    // Join the segments back together
+    const reversedPath = reversedSegments.join('-');
+    
+    setPath(reversedPath);
+  };
+
   return (
     <>
       <Card className="normal-route-builder">
@@ -63,7 +81,16 @@ const NormalRouteBuilder = ({ onSearch, isLoading, errors, cachedApiKey, saveApi
           {/* Path Input */}
           <Col flex="10">
             <div className="form-item">
-              <div className="element-label">Path:</div>
+              <div className="element-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                Path:
+                <Button
+                  type="text"
+                  icon={<SwapOutlined />}
+                  onClick={handleReversePath}
+                  style={{ padding: '0 4px' }}
+                  title="Reverse path"
+                />
+              </div>
               <HybridPathInput
                 value={path}
                 onChange={setPath}

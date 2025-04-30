@@ -65,6 +65,9 @@ export const hasAvailableBadges = (route, date, flightData, directFilter, source
       });
     }
     
+    // Only show badge if there are flights remaining after all filters
+    if (filteredFlights.length === 0) continue;
+    
     // Apply airlines filter
     if (airlinesFilter?.airlines?.length > 0) {
       filteredFlights = filteredFlights.filter(flight => {

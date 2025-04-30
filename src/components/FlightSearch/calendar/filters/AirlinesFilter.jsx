@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radio, Input, Checkbox } from 'antd';
+import AirlineAllianceGroups from '../components/AirlineAllianceGroups';
 
 const AirlinesFilter = ({ 
   airlinesFilter, 
@@ -65,6 +66,22 @@ const AirlinesFilter = ({
           </Radio.Button>
         </Radio.Group>
       </div>
+
+      {/* Alliance Groups */}
+      <div style={{ borderBottom: '1px solid #f0f0f0' }}>
+        <AirlineAllianceGroups
+          selectedAirlines={airlines}
+          onAirlinesChange={(newAirlines) => {
+            const newFilter = {
+              mode: safeAirlinesFilter.mode,
+              airlines: newAirlines
+            };
+            updateFilter(newFilter);
+          }}
+          availableAirlines={filteredAirlines}
+        />
+      </div>
+
       <div style={{ padding: '8px 12px', borderBottom: '1px solid #f0f0f0' }}>
         <Input
           placeholder="Search airlines..."

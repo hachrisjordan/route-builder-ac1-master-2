@@ -18,6 +18,50 @@ const HybridPathInput = ({ value, onChange, placeholder = 'Enter path (e.g. NRT/
   const [cursorPosition, setCursorPosition] = useState(0);
   const [completedSegments, setCompletedSegments] = useState([]);
   const inputRef = useRef(null);
+  const previousValueRef = useRef(value);
+
+  // Add useEffect to handle external value changes
+  useEffect(() => {
+    if (value !== previousValueRef.current) {
+      previousValueRef.current = value;
+      setInputValue(value || '');
+      setDisplayValue('');
+      
+      // Parse the new value into segments
+      const segments = [];
+      let currentSegment = '';
+      let i = 0;
+      
+      while (i < value.length) {
+        if (value[i] === '/' || value[i] === '-') {
+          if (currentSegment) {
+            const isGroup = Object.keys(airportGroups).includes(currentSegment);
+            segments.push({ 
+              type: 'airport', 
+              value: currentSegment,
+              expandedValue: isGroup ? airportGroups[currentSegment] : undefined
+            });
+          }
+          segments.push({ type: 'separator', value: value[i] });
+          currentSegment = '';
+        } else {
+          currentSegment += value[i];
+        }
+        i++;
+      }
+      
+      if (currentSegment) {
+        const isGroup = Object.keys(airportGroups).includes(currentSegment);
+        segments.push({ 
+          type: 'airport', 
+          value: currentSegment,
+          expandedValue: isGroup ? airportGroups[currentSegment] : undefined
+        });
+      }
+      
+      setCompletedSegments(segments);
+    }
+  }, [value]);
 
   // Convert airports data to options format
   const airportOptions = [
@@ -184,55 +228,52 @@ const HybridPathInput = ({ value, onChange, placeholder = 'Enter path (e.g. NRT/
 
   // Update completed segments when input changes
   useEffect(() => {
-    const segments = [];
-    let currentSegment = '';
-    let i = 0;
-    
-    while (i < inputValue.length) {
-      if (inputValue[i] === '/' || inputValue[i] === '-') {
-        if (currentSegment) {
-          // Check if this is a known group code
-          const isGroup = Object.keys(airportGroups).includes(currentSegment);
-          segments.push({ 
-            type: 'airport', 
-            value: currentSegment,
-            expandedValue: isGroup ? airportGroups[currentSegment] : undefined
-          });
-        }
-        segments.push({ type: 'separator', value: inputValue[i] });
-        currentSegment = '';
-      } else {
-        currentSegment += inputValue[i];
-      }
-      i++;
-    }
-    
-    // Don't add the current typing segment to completed segments
-    if (currentSegment && !displayValue) {
-      const isGroup = Object.keys(airportGroups).includes(currentSegment);
-      segments.push({ 
-        type: 'airport', 
-        value: currentSegment,
-        expandedValue: isGroup ? airportGroups[currentSegment] : undefined
-      });
-    }
-    
-    setCompletedSegments(segments);
-    
-    // Generate the final value using the unexpanded group codes
-    // This ensures we always send the path with group codes to the search function
-    if (segments.length > 0 && !displayValue) {
-      let pathWithGroupCodes = '';
-      segments.forEach(segment => {
-        pathWithGroupCodes += segment.value;
-      });
+    if (inputValue !== value) {
+      const segments = [];
+      let currentSegment = '';
+      let i = 0;
       
-      // Only trigger onChange if the path has actually changed
-      if (pathWithGroupCodes !== value) {
-        onChange?.(pathWithGroupCodes);
+      while (i < inputValue.length) {
+        if (inputValue[i] === '/' || inputValue[i] === '-') {
+          if (currentSegment) {
+            const isGroup = Object.keys(airportGroups).includes(currentSegment);
+            segments.push({ 
+              type: 'airport', 
+              value: currentSegment,
+              expandedValue: isGroup ? airportGroups[currentSegment] : undefined
+            });
+          }
+          segments.push({ type: 'separator', value: inputValue[i] });
+          currentSegment = '';
+        } else {
+          currentSegment += inputValue[i];
+        }
+        i++;
+      }
+      
+      if (currentSegment && !displayValue) {
+        const isGroup = Object.keys(airportGroups).includes(currentSegment);
+        segments.push({ 
+          type: 'airport', 
+          value: currentSegment,
+          expandedValue: isGroup ? airportGroups[currentSegment] : undefined
+        });
+      }
+      
+      setCompletedSegments(segments);
+      
+      if (segments.length > 0 && !displayValue) {
+        let pathWithGroupCodes = '';
+        segments.forEach(segment => {
+          pathWithGroupCodes += segment.value;
+        });
+        
+        if (pathWithGroupCodes !== value) {
+          onChange?.(pathWithGroupCodes);
+        }
       }
     }
-  }, [inputValue, displayValue, value, onChange]);
+  }, [inputValue, displayValue]);
 
   // Handle key down
   const handleKeyDown = (e) => {

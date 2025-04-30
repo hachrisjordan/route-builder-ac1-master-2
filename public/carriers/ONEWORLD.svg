@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=utf-8>
+    <meta content="IE=edge" http-equiv=X-UA-Compatible>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width, user-scalable=no" />
+    <meta name="description" content="none" />
+        <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:title" content="System Error" />
+    <meta property="og:description" content="none" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.ctfassets.net/m9ph4qvas97u/7bt27FXMWPjH7PfVv9KXf7/62a073da5599232d9be3a1eafe14464b/oneworld_alliance_logo.png" />
+    <meta property="og:url" content="https://www.oneworld.com/images/oneworld-logo.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@traveloneworld" />
+    <meta name="twitter:site:id" content="987030841" />
+    <meta name="twitter:creator" content="@traveloneworld" />
+    <meta name="twitter:creator:id" content="987030841" />
+
+    <title>System Error | oneworld</title>
+
+    <link rel="canonical" href="https://www.oneworld.com/images/oneworld-logo.svg" />
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/images/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/images/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/images/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/images/favicon/mstile-310x310.png" />
+    <!-- /favicon -->
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KDJT6Z8');</script>
+    <!-- End Google Tag Manager -->
+    <!-- styles -->
+    <link rel=stylesheet href="/css/styles.css" />
+    <!-- /styles -->
+    
+<script type="text/javascript">!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+crossOrigin: "anonymous", 
+cfg: { // Application Insights Configuration
+    connectionString: 'InstrumentationKey=88b9eae8-b99c-4094-afa4-4316a80f0d9f'
+}});</script></head>
+<!-- NOTE: Themes-->
+<!-- dandelion, columbia-blue, wewak, sulu -->
+
+<body data-page-title-override="">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDJT6Z8" title="Google Tag Manager" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- begin page body -->
+    
+
+
+<!-- header -->
+
+<header role="banner" class="header">
+    <div class="header__container">
+        <div class="logo">
+            <a href="/" class="logo__link" title="Return to homepage">
+                <img data-src="/images/logo.webp" class="lazyload logo__image" alt="oneWorld" aria-hidden="true" />
+            </a>
+        </div>
+        <nav class="primary-nav">
+            <button class="primary-nav__open" aria-label="Open menu">
+                <svg class="primary-nav__open-icon">
+                    <use xlink:href="#menu" />
+                </svg>
+            </button>
+            <div class="primary-nav__menu">
+                <button class="primary-nav__close" aria-label="Close menu">
+                    <svg class="primary-nav__close-icon">
+                        <use xlink:href="#close" />
+                    </svg>
+                </button>
+                <ol class="primary-nav__list">
+                    <li class="primary-nav__item  dandelion">
+                        <a href="/flight-search?utm_source=oneworld&utm_medium=website&utm_content=flights_nav">
+                            Flights
+                        </a>
+                    </li>
+                    <li class="primary-nav__item   columbia-blue">
+                        <a href="/round-the-world" class="primary-nav__link">
+                            Round The World
+                        </a>
+                    </li>
+                    <li class="primary-nav__item  wewak">
+                        <a href="/airport-lounges" class="primary-nav__link">
+                            Airport Lounges
+                        </a>
+                    </li>
+                    <li class="primary-nav__item  sulu">
+                        <a href="/members" class="primary-nav__link">
+                            Member Airlines
+                        </a>
+                    </li>
+                    <li class="primary-nav__item  dandelion">
+                        <a href="/travel-benefits" class="primary-nav__link">
+                            Benefits
+                        </a>
+                    </li>
+                    <li class="primary-nav__item columbia-blue" data-module="UserLocale">
+                        <a class="user-locale primary-nav__link" href="#" title="Choose Language">
+                            <svg class="primary-nav__icon">
+                                <use xlink:href="#language"></use>
+                            </svg>
+                        </a>
+                        <div class="user-locale__modal">
+                            <div class="user-locale__modal-inner">
+                                <button class="user-locale__modal-close">×</button>
+                                <div class="user-locale__modal-logo">
+                                    <img data-src="/images/logo-small.png?fm=webp&q=80" class="lazyload" alt="Decorative image of oneworld logo" aria-hidden="true" />
+                                </div>
+                                <h3 class="user-locale__modal-title">Please select your language.</h3>
+                                <div class="user-locale__modal-selector">
+                                    <div class="user-locale__modal-menu menu">
+                                        <button class="menu__button">
+                                            <svg class="user-locale__modal-menu-icon">
+                                                <use xlink:href="#language-gray"></use>
+                                            </svg>
+                                            English
+                                            <span class="chevron bottom"></span>
+                                        </button>
+                                        <div class="menu__links OneLinkNoTx OneLinkKeepLinks">
+                                            <a class="menu__link" href="//ar.oneworld.com">عربى</a>
+                                            <a class="menu__link" href="//zh.oneworld.com">简体中文</a>
+                                            <a class="menu__link" href="//de.oneworld.com">Deutsch</a>
+                                            <a class="menu__link" href="//www.oneworld.com">English</a>
+                                            <a class="menu__link" href="//es.oneworld.com">Español</a>
+                                            <a class="menu__link" href="//fr.oneworld.com">Français</a>
+                                            <a class="menu__link" href="//it.oneworld.com">Italiano</a>
+                                            <a class="menu__link" href="//ja.oneworld.com">日本語</a>
+                                            <a class="menu__link" href="//pt.oneworld.com">Português</a>
+                                            <a class="menu__link" href="//ru.oneworld.com">Русский</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- end header -->
+
+<main class="page">
+
+                    
+<section class="airline-hero dandelion">
+    <div class="grid airline-hero">
+        <div class="grid__column">
+            <figure class="airline-hero__image-wrapper">
+                <div>
+                        <picture>
+                            <img data-src='//images.ctfassets.net/m9ph4qvas97u/4DmZsJbjALkxCeo2kaVedc/366856b81277e848e210bbe594b55dd2/Watches_g_EXT.jpg?fm=webp&q=80' class='lazyload airline-hero__image' />
+                        </picture>
+                </div>
+            </figure>
+        </div>
+        <div class="grid__column">
+            <figure class="airline-hero__detail">
+                <figcaption class="airline-hero__info">
+                    <h1 class="airline-hero__title--h1">Whoops!</h1>
+                    <h2 class="airline-hero__subtitle">Looks like we've steered off course.</h2>
+                    <div class="airline-hero__description">
+                        <p><p> It’s possible that this page has been moved or doesn’t exist anymore. To navigate back to the homepage, click below.</p></p>
+                    </div>
+
+                        <a class="airline-hero__cta btn" href="/"  >Visit Our Homepage</a>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+</main>
+
+    <!-- end page body -->
+
+    <!-- Footer -->
+<footer class="footer">
+    <ul class="separator">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="footer__content">
+        <div class="footer__top">
+            <section class="airline-links">
+                <ol class="airline-links__list">
+                                <li class="airline-links__item ">
+                                    <a href=https://www.oneworld.com/members/alaska-airlines class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/3BwC7uHE7BUgPqdTLheEdL/b58df432b818812383808b1bb44d19f1/01-AS-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of the Alaska Airlines logo." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item ">
+                                    <a href=https://www.oneworld.com/members/american-airlines class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/6RVJqdfYTnul2AZeNwi0pa/53b6e7c94f08a562f50e2cad11a9ba76/02-AA-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of the American Airlines logo." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item ">
+                                    <a href=https://www.oneworld.com/members/british-airways class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/3jwsMbxt8QOqSndSCCRxSL/3ce3ad0441a578d0eddf5281327c72be/03-BA-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of British Airways logo." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item ">
+                                    <a href=https://www.oneworld.com/members/cathay-pacific class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/6aQGNjaEJ5soSwuDl4cS96/b5d9bf832aae5eff873e0ed7f4b64c3f/04-CX-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of Cathay Pacific logo wordmark." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item ">
+                                    <a href=/members/fiji-airways  class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/4hV4sJ924fityvOShK2jGD/a8439695cdaab575d6bd2530468dd97b/Fiji_Footer_Logo.png?fm=webp&amp;q=80" class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item ">
+                                    <a href=https://www.oneworld.com/members/finnair class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/1dvVCXbx382enu3cbqndBL/2d107fc301fbd57403b49b3ad45dae07/05-AY-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of the Finnair logo wordmark." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item hide-md">
+                                    <a href=https://www.oneworld.com/members/iberia class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/24MrFCzTeob2FQsnCOMyf2/3407bd3f3bee2cec7d0015dfe109cba4/06-IB-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of the Iberia logo wordmark." class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                                <li class="airline-links__item hide-md">
+                                    <a href=https://www.oneworld.com/members/japan-airlines class="airline-link" target="_blank">
+                                        <img data-src="//images.ctfassets.net/m9ph4qvas97u/2lzpKs1KLt2kfLh0Fi3ath/535ec1d3bceaf4c5926871a3ea4fcca4/07-JL-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of the Japan Airlines logo" class="lazyload airline-link__logo" />
+                                        <span class="screen-reader-only">(opens in a new tab)</span>
+                                    </a>
+                                </li>
+                </ol>
+                <ol class="airline-links__list show-md">
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/iberia class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/24MrFCzTeob2FQsnCOMyf2/3407bd3f3bee2cec7d0015dfe109cba4/06-IB-web-link-logo.png?fm=webp&amp;q=80" alt="Decorative image of the Iberia logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/japan-airlines class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/2lzpKs1KLt2kfLh0Fi3ath/535ec1d3bceaf4c5926871a3ea4fcca4/07-JL-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of the Japan Airlines logo" class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/malaysia-airlines class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/45Wof7KBFgjyF9QRh0SBjP/3116ce493fd2b9dea4cc702b20a4aa0e/08-MH-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Malaysia Airlines logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/qantas class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1FUzchzPqeiS7DVnBZSg3y/a301c013bef6c0d30038b733c39b9ceb/09-QF-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Qantas logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/qatar-airways class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1GXgnr90AI2CtcArGrBLEJ/b70c410e66e00509b3da6dc2b3cdc633/10-QR-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Qatar Airways logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/royal-air-maroc class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1Mh6PYmCeN5XgRGOtSgSAl/e247e8a6ec629a105b65ac0463278b21/11-AT-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Royal Air Maroc logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/royal-jordanian class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/6EGyOg0zV6lgKPhjhUgvg0/a776efe0be3a2db6293d0329742c7af9/12-RJ-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Royal Jordanian logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/srilankan-airlines class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/6lEpqtIlh82qEmd6jHDyTR/8ae46faf08173b6a79c2a1776a5f439b/13-UL-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of SriLankan Airlines logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                </ol>
+                <ol class="airline-links__list airline-links__list--nowrap hide-md">
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/malaysia-airlines class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/45Wof7KBFgjyF9QRh0SBjP/3116ce493fd2b9dea4cc702b20a4aa0e/08-MH-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Malaysia Airlines logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/qantas class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1FUzchzPqeiS7DVnBZSg3y/a301c013bef6c0d30038b733c39b9ceb/09-QF-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Qantas logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/qatar-airways class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1GXgnr90AI2CtcArGrBLEJ/b70c410e66e00509b3da6dc2b3cdc633/10-QR-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Qatar Airways logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/royal-air-maroc class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/1Mh6PYmCeN5XgRGOtSgSAl/e247e8a6ec629a105b65ac0463278b21/11-AT-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Royal Air Maroc logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/royal-jordanian class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/6EGyOg0zV6lgKPhjhUgvg0/a776efe0be3a2db6293d0329742c7af9/12-RJ-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of Royal Jordanian logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                        <li class="airline-links__item">
+                            <a href=https://www.oneworld.com/members/srilankan-airlines class="airline-link" target="_blank">
+                                <img data-src="//images.ctfassets.net/m9ph4qvas97u/6lEpqtIlh82qEmd6jHDyTR/8ae46faf08173b6a79c2a1776a5f439b/13-UL-web-link-logo-h.png?fm=webp&amp;q=80" alt="Decorative image of SriLankan Airlines logo wordmark." class="lazyload airline-link__logo" />
+                                <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                </ol>
+            </section>
+        </div>
+        <div class="footer__medium">
+                    <section class="footer-links">
+                        <h3 class="footer__list-title">About</h3>
+                        <ul class="footer-links__list">
+                                    <li class="footer-links__item">
+                                        <a href=/about-the-oneworld-alliance class="footer-link"  >
+                                            About <b>one</b>world
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/members class="footer-link"  >
+                                            Member Airlines
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/travel-benefits class="footer-link"  >
+                                            Benefits
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=https://apps.apple.com/us/app/fly-oneworld/id1194445509 class="footer-link"  >
+                                            App
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/sustainability class="footer-link"  >
+                                            Sustainability
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/news class="footer-link"  >
+                                            News
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/careers class="footer-link"  >
+                                            Careers
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/privacy-policy class="footer-link"  >
+                                            Privacy Policy
+                                        </a>
+                                    </li>
+                        </ul>
+                    </section>
+                    <section class="footer-links">
+                        <h3 class="footer__list-title">Products</h3>
+                        <ul class="footer-links__list">
+                                    <li class="footer-links__item">
+                                        <a href=/flight-search?utm_source=oneworld&amp;utm_medium=website&amp;utm_content=footer class="footer-link"  >
+                                            Flights
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/world-travel class="footer-link"  >
+                                            Round The World
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/airport-lounges class="footer-link"  >
+                                            Airport Lounges
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/business-travel-program class="footer-link"  >
+                                            Corporate Travel
+                                        </a>
+                                    </li>
+                                    <li class="footer-links__item">
+                                        <a href=/global-support class="footer-link"  >
+                                            Global Support
+                                        </a>
+                                    </li>
+                        </ul>
+                    </section>
+        </div>
+        <div class="footer__bottom">
+                <ol class="social-links">
+                        <li class="social-links__item">
+                            <a href="https://www.facebook.com/oneworldalliance" class="social-link" title="Opens Oneworld Facebook page"  >
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#facebook" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="https://www.instagram.com/oneworld/" class="social-link" title="Opens Oneworld Instagram page"  >
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#instagram" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="https://twitter.com/traveloneworld" class="social-link" title="Opens Oneworld Twitter page"  >
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#twitter" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="https://www.linkedin.com/company/oneworld-alliance/" class="social-link" title="Opens Oneworld LinkedIn page"  >
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#linkedin" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="https://www.youtube.com/channel/UCeafKxBlURQa_8t5btpGN5w" class="social-link" title="Opens Oneworld YouTube page"  >
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#youtube" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-links__item">
+                            <a href="https://www.tiktok.com/@traveloneworld" class="social-link" title="Opens Oneworld TikTok page" target=_blank rel=noopener>
+                                <svg class="social-link__icon">
+                                    <use xlink:href="#tiktok" />
+                                </svg>
+                                    <span class="screen-reader-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                </ol>
+            <div class="footer__copy-container">
+                <p>©2025 <b>one</b>world Management Company, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <section class="cookie-banner">
+        <div class="container">
+            <div class="cookie-banner__body">
+                <button class="cookie-banner__close">
+                    <svg>
+                        <use xlink:href="#close"></use>
+                    </svg>
+                </button>
+                <div class="cookie-banner__rtf rtf">
+                    <p>
+                        <p>By continuing to browse, you consent to the oneworld.com website <a href="/privacy-policy">privacy policy</a> and use of cookies.</p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var ONEWORLD_LEAVING_WHITELIST = [
+            //String list of allowed urls
+        ];
+    </script>
+    <div data-module="LeavingPopup" class="leaving-popup">
+        <div class="leaving-popup__card">
+            <h2 class="leaving-popup__card__title">
+                You&#x27;re Now Leaving oneworld.com
+            </h2>
+            <p class="leaving-popup__card__body">
+                <p>You will be redirected from oneworld.com to a third-party website or app that may follow different accessibility guidelines and may not have language-translation options. Additionally, <strong>one</strong>world's website terms and conditions, privacy and security policies do not apply to the site or app you're about to visit. Please review its terms and conditions, privacy and security policies to see how they apply to you.</p>
+
+            </p>
+            <p class="leaving-popup__card__link-url"></p>
+            <div class="leaving-popup__card__button-container">
+                <a href="#" class="btn btn--secondary leaving-popup__card__close-button">
+                    Cancel
+                </a>
+                <a href="#" class="btn leaving-popup__card__link-button">
+                    Proceed
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Load svgsheet -->
+    <script>
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", "/images/svgsheet.svg", true);
+        ajax.send();
+        ajax.onload = function () {
+            var div = document.createElement("div");
+            div.style.display = 'none';
+            div.innerHTML = ajax.responseText;
+            document.body.insertBefore(div, document.body.childNodes[0]);
+        }
+    </script>
+
+    <!-- JavaScript -->
+    <script src="/js/vendors~main.d217629219a08cd6ea53.bundle.js"></script>
+    <script src="/js/main.bundle.js"></script>
+
+</body>
+
+</html>

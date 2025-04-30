@@ -115,11 +115,10 @@ const SourcesInput = ({ value = [], onChange, defaultMode = 'include' }) => {
       filterOption={filterOption}
       filterSort={sortOptions}
       optionFilterProp="children"
-      listHeight={400}
       virtual={false}
       menuItemSelectedIcon={null}
       dropdownRender={(menu) => (
-        <div>
+        <div style={{ maxHeight: '400px', overflow: 'hidden' }}>
           <div style={{ 
             padding: '8px', 
             borderBottom: '1px solid #f0f0f0'
@@ -152,9 +151,18 @@ const SourcesInput = ({ value = [], onChange, defaultMode = 'include' }) => {
               </Radio.Button>
             </Radio.Group>
           </div>
-          {menu}
+          <div style={{ maxHeight: 'calc(400px - 48px)', overflowY: 'auto' }}>
+            {menu}
+          </div>
         </div>
       )}
+      dropdownStyle={{ 
+        padding: '0',
+        boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05)',
+        borderRadius: '8px',
+        zIndex: 1050
+      }}
+      className="sources-excluded-select"
       tagRender={(props) => {
         const { label, value, closable, onClose } = props;
         const source = sources.find(s => s.codename === value);
@@ -194,16 +202,6 @@ const SourcesInput = ({ value = [], onChange, defaultMode = 'include' }) => {
           </Tag>
         );
       }}
-      dropdownStyle={{ 
-        maxHeight: 400,
-        padding: '0',
-        boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05)',
-        borderRadius: '8px',
-        zIndex: 1050,
-        overflowY: 'auto',
-        overflowAnchor: 'none'
-      }}
-      className="sources-excluded-select"
     />
   );
 };

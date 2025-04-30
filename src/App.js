@@ -70,7 +70,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
             <NavLink to="/ac" icon={
               <img src="/AC.png" alt="AC" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>AC Route Builder</NavLink>
-            <NavLink to="/normal" icon={<HomeIcon />}>Normal Route Builder</NavLink>
+            <NavLink to="/normal" icon={<AirplaneIcon />}>Route Builder</NavLink>
             <NavLink to="/ua-expanded-saver" icon={
               <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>UA Expanded Saver</NavLink>
@@ -117,7 +117,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
             <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> UA Expanded Saver
           </Link>
           <Link to="/vj-delay-metrics" onClick={() => setMobileMenuOpen(false)}>
-            <HomeIcon /> VJ Delay Metrics
+            <img src="/VJ.png" alt="VJ" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> VJ Delay Metrics
           </Link>
         </div>
       </Drawer>
