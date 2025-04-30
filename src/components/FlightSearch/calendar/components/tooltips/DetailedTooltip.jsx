@@ -393,7 +393,9 @@ const createDetailedTooltip = (classCode, flights, route, currencyFilter = { ena
         }
         
         // Calculate the actual day difference between departure and arrival
-        const dayDifference = Math.floor((arrivesAtDate - departsAtDate) / (24 * 60 * 60 * 1000));
+        const departsDay = departsAtDate.getUTCDate();
+        const arrivesDay = arrivesAtDate.getUTCDate();
+        const dayDifference = arrivesDay - departsDay;
         
         // Add trip to collection with its source and additional data for sorting
         allTrips.push({
@@ -437,7 +439,10 @@ const createDetailedTooltip = (classCode, flights, route, currencyFilter = { ena
       } 
       // Handle date/time fields
       else if (sortField === 'departs' || sortField === 'arrives') {
-        comparison = a[sortField].localeCompare(b[sortField]);
+        // Create Date objects for comparison
+        const dateA = new Date(a.trip[sortField === 'departs' ? 'DepartsAt' : 'ArrivesAt']);
+        const dateB = new Date(b.trip[sortField === 'departs' ? 'DepartsAt' : 'ArrivesAt']);
+        comparison = dateA - dateB;
       }
       // Handle text fields
       else {
@@ -520,7 +525,9 @@ const createDetailedTooltip = (classCode, flights, route, currencyFilter = { ena
       }
       
       // Calculate the actual day difference between departure and arrival
-      const dayDifference = Math.floor((arrivesAtDate - departsAtDate) / (24 * 60 * 60 * 1000));
+      const departsDay = departsAtDate.getUTCDate();
+      const arrivesDay = arrivesAtDate.getUTCDate();
+      const dayDifference = arrivesDay - departsDay;
       
       // Create the row
       const row = document.createElement('div');
