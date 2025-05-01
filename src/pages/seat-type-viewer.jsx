@@ -366,7 +366,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
           border: '1px solid #f0f0f0'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <BarChartOutlined style={{ marginRight: '8px', fontSize: '18px' }} />
             <Title level={5} style={{ margin: 0 }}>Aircraft Variant Analysis</Title>
@@ -375,8 +375,9 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
           <Select
             value={selectedVariant}
             onChange={setSelectedVariant}
-            style={{ width: 300 }}
+            style={{ width: '450px !important', minWidth: '450px', maxWidth: '100%' }}
             placeholder="Select variant to analyze"
+            className="variant-select-dropdown"
           >
             {variantStats.map(stat => (
               <Option key={stat.variant} value={stat.variant}>

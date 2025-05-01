@@ -1,0 +1,414 @@
+{
+  "configurations_by_type": {
+    "Boeing 737 MAX 8": [
+      {
+        "variant": "BM1",
+        "config": "J8/Y168 (176)",
+        "note": "MiQ Recliners",
+        "color": "#d64161"
+      }
+    ],
+    "Airbus A320": [
+      {
+        "variant": "A21",
+        "config": "J12/Y132 (144)",
+        "note": "A320Hv1",
+        "color": "#ff7676"
+      },
+      {
+        "variant": "A22",
+        "config": "J12/Y132 (144)",
+        "note": "A320Hv2",
+        "color": "#ffb6b6"
+      },
+      {
+        "variant": "A23",
+        "config": "J12/Y120 (132)",
+        "note": "A320L - Diamond",
+        "color": "#ff9e9e"
+      }
+    ],
+    "Airbus A330-200": [
+      {
+        "variant": "A32",
+        "config": "J24/Y236 (260)",
+        "note": "Diamond",
+        "color": "#5aaa95"
+      }
+    ],
+    "Airbus A330-300": [
+      {
+        "variant": "A33",
+        "config": "J30/Y275 (305)",
+        "note": "Diamond",
+        "color": "#86c3b7"
+      },
+      {
+        "variant": "A34",
+        "config": "J24/Y230 (254)",
+        "note": "Apex Suite",
+        "color": "#4a8c7c"
+      }
+    ],
+    "Airbus A350-900": [
+      {
+        "variant": "A51",
+        "config": "J36/Y247 (283)",
+        "note": "Super Diamond",
+        "color": "#6b9ac4"
+      },
+      {
+        "variant": "A52",
+        "config": "J36/Y247 (283)",
+        "note": "QSuite (36J)",
+        "color": "#8fc1e3"
+      }
+    ],
+    "Airbus A350-1000": [
+      {
+        "variant": "A61",
+        "config": "J46/Y281 (327)",
+        "note": "QSuite (46J)",
+        "color": "#f3cd87"
+      },
+      {
+        "variant": "A62",
+        "config": "J24/Y327 (351)",
+        "note": "QSuite (24J)",
+        "color": "#f7e3b2"
+      }
+    ],
+    "Airbus A380": [
+      {
+        "variant": "A81",
+        "config": "F8/J48/Y461 (517)",
+        "note": "Super Diamond",
+        "color": "#9b59b6"
+      }
+    ],
+    "Boeing 787-8": [
+      {
+        "variant": "B81",
+        "config": "J22/Y232 (254)",
+        "note": "Super Diamond",
+        "color": "#f39c12"
+      },
+      {
+        "variant": "B82",
+        "config": "J22/Y232 (254)",
+        "note": "Apex",
+        "color": "#e67e22"
+      }
+    ],
+    "Boeing 787-9": [
+      {
+        "variant": "B91",
+        "config": "J30/Y281 (311)",
+        "note": "Adient Ascent",
+        "color": "#3498db"
+      }
+    ],
+    "Boeing 777-200LR": [
+      {
+        "variant": "B21",
+        "config": "J42/Y230 (272)",
+        "note": "QSuite",
+        "color": "#2980b9"
+      },
+      {
+        "variant": "B22",
+        "config": "J42/Y217 (259)",
+        "note": "MiniPods",
+        "color": "#1abc9c"
+      }
+    ],
+    "Boeing 777-300ER": [
+      {
+        "variant": "B31",
+        "config": "J37/Y302 (339)",
+        "note": "7D1 - Super Diamond",
+        "color": "#8e44ad"
+      },
+      {
+        "variant": "B32",
+        "config": "J42/Y312 (354)",
+        "note": "7D3 - Safran Cirrus II",
+        "color": "#9b59b6"
+      },
+      {
+        "variant": "B33",
+        "config": "J24/Y388 (412)",
+        "note": "QSuite (24J)",
+        "color": "#d35400"
+      },
+      {
+        "variant": "B34",
+        "config": "J42/Y312 (354)",
+        "note": "QSuite (42J)",
+        "color": "#e74c3c"
+      },
+      {
+        "variant": "B35",
+        "config": "J24/Y388 (412)",
+        "note": "MiniPods (24J)",
+        "color": "#c0392b"
+      },
+      {
+        "variant": "B36",
+        "config": "J42/Y312 (354)",
+        "note": "MiniPods (42J)",
+        "color": "#e67e22"
+      }
+    ]
+  },
+  "tail_number_distribution": {
+    "A7-BSA": "BM1",
+    "A7-BSB": "BM1",
+    "A7-BSC": "BM1",
+    "A7-BSD": "BM1",
+    "A7-BSE": "BM1",
+    "A7-BSF": "BM1",
+    "A7-BSG": "BM1",
+    "A7-BSH": "BM1",
+    "A7-BSI": "BM1",
+    
+    "A7-AHA": "A21",
+    "A7-AHB": "A21",
+    "A7-AHC": "A21",
+    "A7-AHD": "A21",
+    "A7-AHE": "A21",
+    "A7-AHG": "A21",
+    "A7-AHH": "A21",
+    "A7-AHI": "A21",
+    "A7-AHJ": "A21",
+    
+    "A7-LAB": "A22",
+    "A7-LAC": "A22",
+    "A7-LAD": "A22",
+    "A7-LAE": "A22",
+    "A7-LAF": "A22",
+    "A7-LAG": "A22",
+    "A7-LAH": "A22",
+    
+    "A7-AHL": "A23",
+    "A7-AHO": "A23",
+    "A7-AHP": "A23",
+    "A7-AHQ": "A23",
+    "A7-AHR": "A23",
+    "A7-AHS": "A23",
+    "A7-AHT": "A23",
+    "A7-AHU": "A23",
+    "A7-AHW": "A23",
+    "A7-AHX": "A23",
+    "A7-AHY": "A23",
+    
+    "A7-ACM": "A32",
+    
+    "A7-AED": "A33",
+    "A7-AEE": "A33",
+    "A7-AEF": "A33",
+    "A7-AEG": "A33",
+    "A7-AEJ": "A33",
+    "A7-AEN": "A33",
+    "A7-AEO": "A33",
+    
+    "A7-AER": "A34",
+    
+    "A7-ALA": "A51",
+    "A7-ALB": "A51",
+    "A7-ALC": "A51",
+    "A7-ALD": "A51",
+    "A7-ALE": "A51",
+    "A7-ALF": "A51",
+    "A7-ALG": "A51",
+    "A7-ALH": "A51",
+    "A7-ALI": "A51",
+    "A7-ALJ": "A51",
+    "A7-ALK": "A51",
+    "A7-ALL": "A51",
+    "A7-ALM": "A51",
+    "A7-ALN": "A51",
+    "A7-ALO": "A51",
+    "A7-ALP": "A51",
+    "A7-ALQ": "A51",
+    "A7-ALR": "A51",
+    "A7-ALS": "A51",
+    "A7-ALT": "A51",
+    "A7-ALU": "A51",
+    "A7-ALV": "A51",
+    "A7-ALW": "A51",
+    "A7-ALX": "A51",
+    
+    "A7-ALY": "A52",
+    "A7-ALZ": "A52",
+    "A7-AME": "A52",
+    "A7-AMF": "A52",
+    "A7-AMG": "A52",
+    "A7-AMH": "A52",
+    "A7-AMI": "A52",
+    "A7-AMJ": "A52",
+    "A7-AMK": "A52",
+    "A7-AML": "A52",
+    
+    "A7-ANA": "A61",
+    "A7-ANB": "A61",
+    "A7-ANC": "A61",
+    "A7-AND": "A61",
+    "A7-ANE": "A61",
+    "A7-ANF": "A61",
+    "A7-ANG": "A61",
+    "A7-ANH": "A61",
+    "A7-ANI": "A61",
+    "A7-ANJ": "A61",
+    "A7-ANK": "A61",
+    "A7-ANL": "A61",
+    "A7-ANM": "A61",
+    "A7-ANN": "A61",
+    "A7-ANO": "A61",
+    "A7-ANP": "A61",
+    "A7-ANQ": "A61",
+    "A7-ANR": "A61",
+    "A7-ANS": "A61",
+    "A7-ANT": "A61",
+    
+    "A7-AOA": "A62",
+    "A7-AOB": "A62",
+    "A7-AOC": "A62",
+    "A7-AOD": "A62",
+    
+    "A7-APC": "A81",
+    "A7-APD": "A81",
+    "A7-APE": "A81",
+    "A7-APF": "A81",
+    "A7-APG": "A81",
+    "A7-APH": "A81",
+    "A7-API": "A81",
+    "A7-APJ": "A81",
+    
+    "A7-BCA": "B81",
+    "A7-BCB": "B81",
+    "A7-BCC": "B81",
+    "A7-BCD": "B81",
+    "A7-BCE": "B81",
+    "A7-BCF": "B81",
+    "A7-BCG": "B81",
+    "A7-BCH": "B81",
+    "A7-BCI": "B81",
+    "A7-BCJ": "B81",
+    "A7-BCK": "B81",
+    "A7-BCL": "B81",
+    "A7-BCM": "B81",
+    "A7-BCN": "B81",
+    "A7-BCO": "B81",
+    "A7-BCP": "B81",
+    "A7-BCQ": "B81",
+    "A7-BCR": "B81",
+    "A7-BCS": "B81",
+    "A7-BCT": "B81",
+    "A7-BCU": "B81",
+    "A7-BCV": "B81",
+    "A7-BCW": "B81",
+    "A7-BCX": "B81",
+    "A7-BCY": "B81",
+    "A7-BCZ": "B81",
+    "A7-BDA": "B81",
+    "A7-BDB": "B81",
+    "A7-BDC": "B81",
+    "A7-BDD": "B81",
+    
+    "A7-BUA": "B82",
+    
+    "A7-BHA": "B91",
+    "A7-BHB": "B91",
+    "A7-BHC": "B91",
+    "A7-BHD": "B91",
+    "A7-BHE": "B91",
+    "A7-BHF": "B91",
+    "A7-BHG": "B91",
+    "A7-BHH": "B91",
+    "A7-BHI": "B91",
+    "A7-BHJ": "B91",
+    "A7-BHK": "B91",
+    "A7-BHL": "B91",
+    "A7-BHM": "B91",
+    "A7-BHN": "B91",
+    "A7-BHO": "B91",
+    "A7-BHP": "B91",
+    "A7-BHQ": "B91",
+    "A7-BHR": "B91",
+    "A7-BHS": "B91",
+    "A7-BHT": "B91",
+    
+    "A7-BBA": "B21",
+    "A7-BBB": "B21",
+    "A7-BBC": "B21",
+    "A7-BBG": "B21",
+    "A7-BBI": "B21",
+    
+    "A7-BBF": "B22",
+    "A7-BBH": "B22",
+    
+    "A7-BOE": "B31",
+    "A7-BOF": "B31",
+    "A7-BOG": "B31",
+    
+    "A7-BOA": "B32",
+    "A7-BOB": "B32",
+    "A7-BOC": "B32",
+    "A7-BOD": "B32",
+    "A7-BOH": "B32",
+    "A7-BOI": "B32",
+    
+    "A7-BAT": "B33",
+    "A7-BAU": "B33",
+    "A7-BAV": "B33",
+    "A7-BAW": "B33",
+    "A7-BAX": "B33",
+    "A7-BAY": "B33",
+    "A7-BAZ": "B33",
+    "A7-BEA": "B33",
+    "A7-BEB": "B33",
+    "A7-BEC": "B33",
+    
+    "A7-BAC": "B34",
+    "A7-BAE": "B34",
+    "A7-BAF": "B34",
+    "A7-BAG": "B34",
+    "A7-BAI": "B34",
+    "A7-BAM": "B34",
+    "A7-BAO": "B34",
+    "A7-BED": "B34",
+    "A7-BEE": "B34",
+    "A7-BEF": "B34",
+    "A7-BEG": "B34",
+    "A7-BEH": "B34",
+    "A7-BEI": "B34",
+    "A7-BEJ": "B34",
+    "A7-BEK": "B34",
+    "A7-BEL": "B34",
+    "A7-BEM": "B34",
+    "A7-BEN": "B34",
+    "A7-BEO": "B34",
+    "A7-BEP": "B34",
+    "A7-BEQ": "B34",
+    "A7-BER": "B34",
+    "A7-BES": "B34",
+    "A7-BET": "B34",
+    "A7-BEU": "B34",
+    "A7-BEV": "B34",
+    "A7-BEW": "B34",
+    "A7-BEX": "B34",
+    
+    "A7-BAP": "B35",
+    "A7-BAS": "B35",
+    
+    "A7-BAA": "B36",
+    "A7-BAB": "B36",
+    "A7-BAH": "B36",
+    "A7-BAJ": "B36",
+    "A7-BAK": "B36",
+    "A7-BAL": "B36",
+    "A7-BAN": "B36",
+    "A7-BAQ": "B36"
+  }
+} 

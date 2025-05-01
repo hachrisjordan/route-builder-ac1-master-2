@@ -4,7 +4,7 @@
         {
           "variant": "X35",
           "config": "F6/J54/W24/Y155 (239)",
-          "note": "New A350-1000",
+          "note": "A350-1000 (Safran Unity)",
           "color": "#f3cd87"
         }
       ],
@@ -60,7 +60,7 @@
         {
           "variant": "W84",
           "config": "F8/J49/W40/Y147 (244)",
-          "note": "Old 777-300ER",
+          "note": "Old F + Apex",
           "color": "#9b59b6"
         }
       ],
