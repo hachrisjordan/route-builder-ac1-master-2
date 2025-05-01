@@ -233,7 +233,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
 
     const variantCounts = new Map();
     const variantInfo = new Map();
-    const validData = registrationData.filter(item => item.registration !== 'None');
+    const validData = registrationData.filter(item => isValidRegistration(item.registration, airline));
     
     // Count each variant appearance
     validData.forEach(item => {
@@ -605,7 +605,7 @@ const SeatTypeViewer = () => {
     
     setLoading(true);
     try {
-      const response = await fetch(`http://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
+      const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch data');
@@ -665,11 +665,11 @@ const SeatTypeViewer = () => {
 
   const getFilteredRegistrationData = () => {
     if (selectedVariants.length === 0 || !seatData) {
-      return registrationData;
+      return registrationData.filter(item => isValidRegistration(item.registration, selectedAirline));
     }
     
     return registrationData.filter(item => {
-      if (item.registration === 'None') return false;
+      if (!isValidRegistration(item.registration, selectedAirline)) return false;
       
       const variant = seatData.tail_number_distribution[item.registration];
       return variant && selectedVariants.includes(variant);
