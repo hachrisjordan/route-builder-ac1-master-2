@@ -42,6 +42,18 @@ const getAircraftDetails = (registration, airline, seatData) => {
   return null;
 };
 
+// Function to validate registration format by airline
+const isValidRegistration = (registration, airline) => {
+  if (!registration || registration === 'None') return false;
+  
+  // Validate Japan Airlines registrations must start with JA
+  if (airline === 'JL' && !registration.startsWith('JA')) {
+    return false;
+  }
+  
+  return true;
+};
+
 // Calendar component exactly matching NormalRouteBuilderCalendar
 const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, seatData }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
@@ -63,7 +75,7 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
   // Create a map of dates to registration numbers
   const registrationByDate = {};
   registrationData.forEach(item => {
-    if (item.registration !== 'None') {
+    if (isValidRegistration(item.registration, airline)) {
       registrationByDate[item.date] = item.registration;
     }
   });
@@ -281,9 +293,14 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       const cutoffDate = new Date(now);
       cutoffDate.setDate(cutoffDate.getDate() - days);
       
+      // Convert date strings to Date objects for proper comparison
       const filteredData = registrationData.filter(item => {
-        if (item.registration === 'None') return false;
-        const itemDate = new Date(item.date);
+        if (!isValidRegistration(item.registration, airline)) return false;
+        
+        // Parse the date string into a Date object
+        const [year, month, day] = item.date.split('-').map(Number);
+        const itemDate = new Date(year, month - 1, day); // Month is 0-based in JS Date
+        
         return itemDate >= cutoffDate && itemDate <= now;
       });
       
@@ -299,7 +316,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
         percentage: (variantCount / filteredData.length) * 100
       };
     });
-  }, [selectedVariant, registrationData, seatData]);
+  }, [selectedVariant, registrationData, seatData, airline]);
   
   // Calculate day-of-week percentages
   const dayAnalysis = useMemo(() => {
@@ -309,9 +326,12 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
     const dayStats = Array(7).fill(0).map(() => ({ total: 0, variant: 0 }));
     
     registrationData.forEach(item => {
-      if (item.registration === 'None') return;
+      if (!isValidRegistration(item.registration, airline)) return;
       
-      const date = new Date(item.date);
+      // Parse the date string into a Date object
+      const [year, month, day] = item.date.split('-').map(Number);
+      const date = new Date(year, month - 1, day); // Month is 0-based in JS Date
+      
       const dayOfWeek = date.getDay(); // 0 is Sunday, 6 is Saturday
       
       dayStats[dayOfWeek].total++;
@@ -326,7 +346,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       label: dayLabels[index],
       percentage: stats.total === 0 ? 0 : (stats.variant / stats.total) * 100
     }));
-  }, [selectedVariant, registrationData, seatData]);
+  }, [selectedVariant, registrationData, seatData, airline]);
   
   // Get color for selected variant
   const selectedVariantColor = useMemo(() => {
@@ -576,6 +596,12 @@ const SeatTypeViewer = () => {
     if (!selectedAirline || !flightNumber) {
       return;
     }
+    
+    // Clear previous data when starting a new search
+    setRegistrationData([]);
+    setDataFetched(false);
+    setSelectedVariants([]);
+    setAvailableVariants([]);
     
     setLoading(true);
     try {
