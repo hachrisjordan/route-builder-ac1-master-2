@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF'];
+const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
