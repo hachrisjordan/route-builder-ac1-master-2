@@ -610,7 +610,7 @@ const SeatTypeViewer = () => {
     
     setLoading(true);
     try {
-      const response = await fetch(`http://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
+      const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch data');
