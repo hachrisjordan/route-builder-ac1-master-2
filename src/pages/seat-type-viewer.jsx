@@ -16,13 +16,26 @@ const monthNames = [
 ];
 
 // Function to get aircraft details from registration number
-const getAircraftDetails = (registration, airline, seatData) => {
+const getAircraftDetails = (registration, airline, seatData, date) => {
   if (!registration || registration === 'None' || !seatData) {
     return null;
   }
   
-  // Check if we have seat data for this airline
-  const variant = seatData.tail_number_distribution?.[registration];
+  // Get the variant configuration
+  let variant = seatData.tail_number_distribution[registration];
+  
+  // Handle date-based configuration changes
+  if (variant && typeof variant === 'object' && variant.changes) {
+    // Sort changes by date in descending order
+    const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Find the most recent change that applies to the given date
+    const applicableChange = sortedChanges.find(change => new Date(date) >= new Date(change.date));
+    
+    // Use the applicable change's variant, or fall back to default
+    variant = applicableChange ? applicableChange.variant : variant.default;
+  }
+  
   if (!variant) return null;
   
   // Find aircraft type and config information
@@ -143,7 +156,7 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
           const date = new Date(year, month, day);
           const dateStr = date.toISOString().split('T')[0];
           const registration = registrationByDate[dateStr];
-          const aircraftDetails = getAircraftDetails(registration, airline, seatData);
+          const aircraftDetails = getAircraftDetails(registration, airline, seatData, dateStr);
           
           return (
             <div key={i} style={{
@@ -578,15 +591,33 @@ const SeatTypeViewer = () => {
     if (selectedAirline) {
       const fetchSeatData = async () => {
         setSeatDataLoading(true);
+        const url = `${STORAGE_BASE_URL}/seat_${selectedAirline}.json`;
+        console.log(`[Seat Config Debug] Attempting to fetch seat config from: ${url}`);
+        
         try {
-          const response = await fetch(`${STORAGE_BASE_URL}/seat_${selectedAirline}.json`);
+          const response = await fetch(url);
+          console.log(`[Seat Config Debug] Response status: ${response.status}`);
+          
           if (!response.ok) {
-            throw new Error(`Failed to fetch seat data for ${selectedAirline}`);
+            console.error(`[Seat Config Debug] Failed to fetch seat data. Status: ${response.status}`);
+            throw new Error(`Failed to fetch seat data for ${selectedAirline}. Status: ${response.status}`);
           }
+          
           const data = await response.json();
+          console.log(`[Seat Config Debug] Successfully fetched seat data:`, {
+            airline: selectedAirline,
+            configCount: Object.keys(data.configs_by_type || {}).length,
+            tailCount: Object.keys(data.tail_number_distribution || {}).length,
+            configs: data.configs_by_type
+          });
           setSeatData(data);
         } catch (error) {
-          console.error('Error fetching seat data:', error);
+          console.error('[Seat Config Debug] Error details:', {
+            error: error.message,
+            stack: error.stack,
+            url: url,
+            airline: selectedAirline
+          });
           message.error(`No seat configuration data available for ${selectedAirline}`);
           setSeatData(null);
         } finally {
@@ -611,31 +642,57 @@ const SeatTypeViewer = () => {
     
     setLoading(true);
     try {
+      console.log('[Flight Search Debug] Starting search for:', {
+        airline: selectedAirline,
+        flightNumber: flightNumber
+      });
+      
       const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
+      console.log('[Flight Search Debug] Response status:', response.status);
       
       if (!response.ok) {
-        throw new Error('Failed to fetch data');
+        throw new Error(`Failed to fetch data. Status: ${response.status}`);
       }
       
       const data = await response.json();
+      console.log('[Flight Search Debug] Raw response data:', data);
+      
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid response format: expected an array');
+      }
+      
       setRegistrationData(data);
       setDataFetched(true);
       
       // Extract unique variants for filter options
       if (seatData) {
+        console.log('[Flight Search Debug] Processing variants with seat data:', {
+          configs: seatData.configs_by_type,
+          tails: seatData.tail_number_distribution
+        });
         const variants = new Set();
         const variantInfo = new Map();
         
         data.forEach(item => {
           if (item.registration !== 'None') {
             const variant = seatData.tail_number_distribution[item.registration];
+            console.log('[Flight Search Debug] Processing registration:', {
+              registration: item.registration,
+              variant: variant,
+              configs: seatData.configs_by_type
+            });
+            
             if (variant) {
               variants.add(variant);
               
               // Get aircraft type and note for this variant
-              for (const [aircraftType, configs] of Object.entries(seatData.configurations_by_type)) {
+              for (const [aircraftType, configs] of Object.entries(seatData.configs_by_type || {})) {
                 const config = configs.find(c => c.variant === variant);
                 if (config) {
+                  console.log('[Flight Search Debug] Found matching config:', {
+                    aircraftType,
+                    config
+                  });
                   variantInfo.set(variant, {
                     aircraftType,
                     note: config.note
@@ -647,18 +704,31 @@ const SeatTypeViewer = () => {
           }
         });
         
-        const variantOptions = Array.from(variants).map(variant => ({
-          value: variant,
-          label: variant,
-          aircraftType: variantInfo.get(variant)?.aircraftType || '',
-          note: variantInfo.get(variant)?.note || ''
-        }));
+        const variantOptions = Array.from(variants).map(variant => {
+          const info = variantInfo.get(variant);
+          console.log('[Flight Search Debug] Creating variant option:', {
+            variant,
+            info
+          });
+          return {
+            value: variant,
+            label: variant,
+            aircraftType: info?.aircraftType || '',
+            note: info?.note || ''
+          };
+        });
         
+        console.log('[Flight Search Debug] Generated variant options:', variantOptions);
         setAvailableVariants(variantOptions);
         setSelectedVariants([]);
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('[Flight Search Debug] Error details:', {
+        error: error.message,
+        stack: error.stack,
+        airline: selectedAirline,
+        flightNumber: flightNumber
+      });
       message.error('Failed to fetch flight data. Please try again.');
     } finally {
       setLoading(false);
