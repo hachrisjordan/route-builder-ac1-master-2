@@ -3,10 +3,11 @@ import { Select, Input, Button, Space, Card, message, Typography, Modal, Checkbo
 import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined } from '@ant-design/icons';
 import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
+import seatAF from '../data/seat_AF.json';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH','BA','EY','DL','UA','AA','KL','SQ'];
+const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
@@ -36,10 +37,16 @@ const getAircraftDetails = (registration, airline, seatData, date) => {
     variant = applicableChange ? applicableChange.variant : variant.default;
   }
   
+  // If variant is still an object, use the default value
+  if (variant && typeof variant === 'object' && variant.default) {
+    variant = variant.default;
+  }
+  
   if (!variant) return null;
   
   // Find aircraft type and config information
-  for (const [aircraftType, configs] of Object.entries(seatData.configurations_by_type || {})) {
+  const configsByType = seatData.configs_by_type || seatData.configurations_by_type;
+  for (const [aircraftType, configs] of Object.entries(configsByType || {})) {
     const config = configs.find(c => c.variant === variant);
     if (config) {
       return {
@@ -240,7 +247,7 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
 const VariantAnalysis = ({ registrationData, airline, seatData }) => {
   // Available variants with count information
   const variantStats = useMemo(() => {
-    if (!registrationData || !airline || !seatData || !seatData.configurations_by_type) {
+    if (!registrationData || !airline || !seatData) {
       return [];
     }
 
@@ -250,13 +257,32 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
     
     // Count each variant appearance
     validData.forEach(item => {
-      const variant = seatData.tail_number_distribution[item.registration];
+      let variant = seatData.tail_number_distribution[item.registration];
+      
+      // Handle date-based configuration changes
+      if (variant && typeof variant === 'object' && variant.changes) {
+        // Sort changes by date in descending order
+        const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Find the most recent change that applies to the given date
+        const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+        
+        // Use the applicable change's variant, or fall back to default
+        variant = applicableChange ? applicableChange.variant : variant.default;
+      }
+      
+      // Handle special case for object variants
+      if (variant && typeof variant === 'object' && variant.default) {
+        variant = variant.default;
+      }
+      
       if (variant) {
         variantCounts.set(variant, (variantCounts.get(variant) || 0) + 1);
         
         // Get aircraft type and note for this variant
         if (!variantInfo.has(variant)) {
-          for (const [aircraftType, configs] of Object.entries(seatData.configurations_by_type)) {
+          const configsByType = seatData.configs_by_type || seatData.configurations_by_type;
+          for (const [aircraftType, configs] of Object.entries(configsByType || {})) {
             const config = configs.find(c => c.variant === variant);
             if (config) {
               variantInfo.set(variant, {
@@ -317,7 +343,25 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       
       // Then count ones matching the selected variant
       const variantCount = allFlightsInPeriod.filter(item => {
-        const variant = seatData.tail_number_distribution[item.registration];
+        let variant = seatData.tail_number_distribution[item.registration];
+        
+        // Handle date-based configuration changes
+        if (variant && typeof variant === 'object' && variant.changes) {
+          // Sort changes by date in descending order
+          const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+          
+          // Find the most recent change that applies to the given date
+          const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+          
+          // Use the applicable change's variant, or fall back to default
+          variant = applicableChange ? applicableChange.variant : variant.default;
+        }
+        
+        // Handle special case for object variants
+        if (variant && typeof variant === 'object' && variant.default) {
+          variant = variant.default;
+        }
+        
         return variant === selectedVariant;
       }).length;
       
@@ -325,7 +369,9 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       
       return {
         label: periodLabels[index],
-        percentage: (variantCount / totalCount) * 100
+        percentage: totalCount === 0 ? 0 : (variantCount / totalCount) * 100,
+        variantCount,
+        totalCount
       };
     });
   }, [selectedVariant, registrationData, seatData, airline]);
@@ -348,7 +394,25 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       
       dayStats[dayOfWeek].total++;
       
-      const variant = seatData.tail_number_distribution[item.registration];
+      let variant = seatData.tail_number_distribution[item.registration];
+      
+      // Handle date-based configuration changes
+      if (variant && typeof variant === 'object' && variant.changes) {
+        // Sort changes by date in descending order
+        const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Find the most recent change that applies to the given date
+        const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+        
+        // Use the applicable change's variant, or fall back to default
+        variant = applicableChange ? applicableChange.variant : variant.default;
+      }
+      
+      // Handle special case for object variants
+      if (variant && typeof variant === 'object' && variant.default) {
+        variant = variant.default;
+      }
+      
       if (variant === selectedVariant) {
         dayStats[dayOfWeek].variant++;
       }
@@ -356,7 +420,9 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
     
     return dayStats.map((stats, index) => ({
       label: dayLabels[index],
-      percentage: stats.total === 0 ? 0 : (stats.variant / stats.total) * 100
+      percentage: stats.total === 0 ? 0 : (stats.variant / stats.total) * 100,
+      variantCount: stats.variant,
+      totalCount: stats.total
     }));
   }, [selectedVariant, registrationData, seatData, airline]);
   
@@ -388,7 +454,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
           <Select
             value={selectedVariant}
             onChange={setSelectedVariant}
-            style={{ width: '450px !important', minWidth: '450px', maxWidth: '100%' }}
+            style={{ width: '550px !important', minWidth: '550px', maxWidth: '100%' }}
             placeholder="Select variant to analyze"
             className="variant-select-dropdown"
           >
@@ -440,7 +506,25 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
               
               // Then count ones matching the selected variant
               const variantCount = allFlightsInPeriod.filter(item => {
-                const variant = seatData.tail_number_distribution[item.registration];
+                let variant = seatData.tail_number_distribution[item.registration];
+                
+                // Handle date-based configuration changes
+                if (variant && typeof variant === 'object' && variant.changes) {
+                  // Sort changes by date in descending order
+                  const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+                  
+                  // Find the most recent change that applies to the given date
+                  const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+                  
+                  // Use the applicable change's variant, or fall back to default
+                  variant = applicableChange ? applicableChange.variant : variant.default;
+                }
+                
+                // Handle special case for object variants
+                if (variant && typeof variant === 'object' && variant.default) {
+                  variant = variant.default;
+                }
+                
                 return variant === selectedVariant;
               }).length;
               
@@ -514,7 +598,25 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
                   if (dayOfWeek === index) {
                     dayStats.total++;
                     
-                    const variant = seatData.tail_number_distribution[item.registration];
+                    let variant = seatData.tail_number_distribution[item.registration];
+                    
+                    // Handle date-based configuration changes
+                    if (variant && typeof variant === 'object' && variant.changes) {
+                      // Sort changes by date in descending order
+                      const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+                      
+                      // Find the most recent change that applies to the given date
+                      const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+                      
+                      // Use the applicable change's variant, or fall back to default
+                      variant = applicableChange ? applicableChange.variant : variant.default;
+                    }
+                    
+                    // Handle special case for object variants
+                    if (variant && typeof variant === 'object' && variant.default) {
+                      variant = variant.default;
+                    }
+                    
                     if (variant === selectedVariant) {
                       dayStats.variant++;
                     }
@@ -591,33 +693,16 @@ const SeatTypeViewer = () => {
     if (selectedAirline) {
       const fetchSeatData = async () => {
         setSeatDataLoading(true);
-        const url = `${STORAGE_BASE_URL}/seat_${selectedAirline}.json`;
-        console.log(`[Seat Config Debug] Attempting to fetch seat config from: ${url}`);
-        
         try {
-          const response = await fetch(url);
-          console.log(`[Seat Config Debug] Response status: ${response.status}`);
-          
+          // Fetch from URL for all airlines including AF
+          const response = await fetch(`${STORAGE_BASE_URL}/seat_${selectedAirline}.json`);
           if (!response.ok) {
-            console.error(`[Seat Config Debug] Failed to fetch seat data. Status: ${response.status}`);
-            throw new Error(`Failed to fetch seat data for ${selectedAirline}. Status: ${response.status}`);
+            throw new Error(`Failed to fetch seat data for ${selectedAirline}`);
           }
-          
           const data = await response.json();
-          console.log(`[Seat Config Debug] Successfully fetched seat data:`, {
-            airline: selectedAirline,
-            configCount: Object.keys(data.configs_by_type || {}).length,
-            tailCount: Object.keys(data.tail_number_distribution || {}).length,
-            configs: data.configs_by_type
-          });
           setSeatData(data);
         } catch (error) {
-          console.error('[Seat Config Debug] Error details:', {
-            error: error.message,
-            stack: error.stack,
-            url: url,
-            airline: selectedAirline
-          });
+          console.error('Error fetching seat data:', error);
           message.error(`No seat configuration data available for ${selectedAirline}`);
           setSeatData(null);
         } finally {
@@ -642,93 +727,55 @@ const SeatTypeViewer = () => {
     
     setLoading(true);
     try {
-      console.log('[Flight Search Debug] Starting search for:', {
-        airline: selectedAirline,
-        flightNumber: flightNumber
-      });
-      
       const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
-      console.log('[Flight Search Debug] Response status:', response.status);
       
       if (!response.ok) {
-        throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        throw new Error('Failed to fetch data');
       }
       
       const data = await response.json();
-      console.log('[Flight Search Debug] Raw response data:', data);
-      
-      if (!data || !Array.isArray(data)) {
-        throw new Error('Invalid response format: expected an array');
-      }
-      
+      console.log('Flight data response:', data);
       setRegistrationData(data);
       setDataFetched(true);
       
       // Extract unique variants for filter options
       if (seatData) {
-        console.log('[Flight Search Debug] Processing variants with seat data:', {
-          configs: seatData.configs_by_type,
-          tails: seatData.tail_number_distribution
-        });
+        console.log('Seat data:', seatData);
         const variants = new Set();
         const variantInfo = new Map();
         
-        data.forEach(item => {
-          if (item.registration !== 'None') {
-            const variant = seatData.tail_number_distribution[item.registration];
-            console.log('[Flight Search Debug] Processing registration:', {
-              registration: item.registration,
-              variant: variant,
-              configs: seatData.configs_by_type
+        // Get all variants from the seat data
+        const configsByType = seatData.configs_by_type || seatData.configurations_by_type;
+        for (const [aircraftType, configs] of Object.entries(configsByType || {})) {
+          configs.forEach(config => {
+            variants.add(config.variant);
+            variantInfo.set(config.variant, {
+              aircraftType,
+              note: config.note
             });
-            
-            if (variant) {
-              variants.add(variant);
-              
-              // Get aircraft type and note for this variant
-              for (const [aircraftType, configs] of Object.entries(seatData.configs_by_type || {})) {
-                const config = configs.find(c => c.variant === variant);
-                if (config) {
-                  console.log('[Flight Search Debug] Found matching config:', {
-                    aircraftType,
-                    config
-                  });
-                  variantInfo.set(variant, {
-                    aircraftType,
-                    note: config.note
-                  });
-                  break;
-                }
-              }
-            }
-          }
-        });
+          });
+        }
+        
+        console.log('All variants:', Array.from(variants));
         
         const variantOptions = Array.from(variants).map(variant => {
           const info = variantInfo.get(variant);
-          console.log('[Flight Search Debug] Creating variant option:', {
-            variant,
-            info
-          });
-          return {
+          const option = {
             value: variant,
             label: variant,
             aircraftType: info?.aircraftType || '',
             note: info?.note || ''
           };
+          console.log('Created variant option:', option);
+          return option;
         });
         
-        console.log('[Flight Search Debug] Generated variant options:', variantOptions);
+        console.log('Final variant options:', variantOptions);
         setAvailableVariants(variantOptions);
         setSelectedVariants([]);
       }
     } catch (error) {
-      console.error('[Flight Search Debug] Error details:', {
-        error: error.message,
-        stack: error.stack,
-        airline: selectedAirline,
-        flightNumber: flightNumber
-      });
+      console.error('Error fetching data:', error);
       message.error('Failed to fetch flight data. Please try again.');
     } finally {
       setLoading(false);
@@ -747,7 +794,25 @@ const SeatTypeViewer = () => {
     return registrationData.filter(item => {
       if (!isValidRegistration(item.registration, selectedAirline)) return false;
       
-      const variant = seatData.tail_number_distribution[item.registration];
+      let variant = seatData.tail_number_distribution[item.registration];
+      
+      // Handle date-based configuration changes
+      if (variant && typeof variant === 'object' && variant.changes) {
+        // Sort changes by date in descending order
+        const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Find the most recent change that applies to the given date
+        const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+        
+        // Use the applicable change's variant, or fall back to default
+        variant = applicableChange ? applicableChange.variant : variant.default;
+      }
+      
+      // Handle special case for object variants
+      if (variant && typeof variant === 'object' && variant.default) {
+        variant = variant.default;
+      }
+      
       return variant && selectedVariants.includes(variant);
     });
   };
@@ -809,7 +874,7 @@ const SeatTypeViewer = () => {
             options={sortedAirlines.map(renderAirlineOption)}
             filterOption={(input, option) => {
               const airlineCode = option.value.toLowerCase();
-              const airlineName = option.label.props.children[1].props.children.toLowerCase();
+              const airlineName = option.label.props.children[1].props.children[0].toLowerCase();
               input = input.toLowerCase();
               return airlineCode.includes(input) || airlineName.includes(input);
             }}
@@ -887,18 +952,21 @@ const SeatTypeViewer = () => {
           onChange={handleVariantChange}
         >
           <Row gutter={[16, 16]}>
-            {availableVariants.map(variant => (
-              <Col span={24} key={variant.value}>
-                <Checkbox value={variant.value}>
-                  <span style={{ fontWeight: 'bold' }}>
-                    {variant.aircraftType} ({variant.value})
-                  </span>
-                  <span style={{ fontStyle: 'italic', marginLeft: '10px' }}>
-                    - {variant.note}
-                  </span>
-                </Checkbox>
-              </Col>
-            ))}
+            {availableVariants.map(variant => {
+              console.log('Rendering variant checkbox:', variant);
+              return (
+                <Col span={24} key={variant.value}>
+                  <Checkbox value={variant.value}>
+                    <span style={{ fontWeight: 'bold' }}>
+                      {variant.aircraftType} ({variant.value})
+                    </span>
+                    <span style={{ fontStyle: 'italic', marginLeft: '10px' }}>
+                      - {variant.note}
+                    </span>
+                  </Checkbox>
+                </Col>
+              );
+            })}
           </Row>
         </Checkbox.Group>
         
