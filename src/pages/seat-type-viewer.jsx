@@ -293,27 +293,26 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       const cutoffDate = new Date(now);
       cutoffDate.setDate(cutoffDate.getDate() - days);
       
-      // Convert date strings to Date objects for proper comparison
-      const filteredData = registrationData.filter(item => {
+      // First filter by date range and valid registration
+      const allFlightsInPeriod = registrationData.filter(item => {
         if (!isValidRegistration(item.registration, airline)) return false;
         
-        // Parse the date string into a Date object
         const [year, month, day] = item.date.split('-').map(Number);
-        const itemDate = new Date(year, month - 1, day); // Month is 0-based in JS Date
-        
+        const itemDate = new Date(year, month - 1, day);
         return itemDate >= cutoffDate && itemDate <= now;
       });
       
-      if (filteredData.length === 0) return { label: periodLabels[index], percentage: 0 };
-      
-      const variantCount = filteredData.filter(item => {
+      // Then count ones matching the selected variant
+      const variantCount = allFlightsInPeriod.filter(item => {
         const variant = seatData.tail_number_distribution[item.registration];
         return variant === selectedVariant;
       }).length;
       
+      const totalCount = allFlightsInPeriod.length;
+      
       return {
         label: periodLabels[index],
-        percentage: (variantCount / filteredData.length) * 100
+        percentage: (variantCount / totalCount) * 100
       };
     });
   }, [selectedVariant, registrationData, seatData, airline]);
@@ -416,18 +415,22 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
               const cutoffDate = new Date(now);
               cutoffDate.setDate(cutoffDate.getDate() - [3, 7, 14, 28, 60, 180, 360][index]);
               
-              const filteredData = registrationData.filter(item => {
-                if (item.registration === 'None') return false;
-                const itemDate = new Date(item.date);
+              // First filter by date range and valid registration
+              const allFlightsInPeriod = registrationData.filter(item => {
+                if (!isValidRegistration(item.registration, airline)) return false;
+                
+                const [year, month, day] = item.date.split('-').map(Number);
+                const itemDate = new Date(year, month - 1, day);
                 return itemDate >= cutoffDate && itemDate <= now;
               });
               
-              const variantCount = filteredData.filter(item => {
+              // Then count ones matching the selected variant
+              const variantCount = allFlightsInPeriod.filter(item => {
                 const variant = seatData.tail_number_distribution[item.registration];
                 return variant === selectedVariant;
               }).length;
               
-              const totalCount = filteredData.length;
+              const totalCount = allFlightsInPeriod.length;
               
               return (
                 <div 
@@ -483,24 +486,26 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
             gap: '8px'
           }}>
             {dayAnalysis.map((day, index) => {
-              // Calculate flight counts for this day
+              // Calculate flight counts for this day with proper filtering
               const dayStats = { total: 0, variant: 0 };
               
-              registrationData.forEach(item => {
-                if (item.registration === 'None') return;
-                
-                const date = new Date(item.date);
-                const dayOfWeek = date.getDay(); // 0 is Sunday, 6 is Saturday
-                
-                if (dayOfWeek === index) {
-                  dayStats.total++;
+              // Only iterate through valid registrations
+              registrationData.filter(item => isValidRegistration(item.registration, airline))
+                .forEach(item => {
+                  const [year, month, day] = item.date.split('-').map(Number);
+                  const date = new Date(year, month - 1, day);
                   
-                  const variant = seatData.tail_number_distribution[item.registration];
-                  if (variant === selectedVariant) {
-                    dayStats.variant++;
+                  const dayOfWeek = date.getDay();
+                  
+                  if (dayOfWeek === index) {
+                    dayStats.total++;
+                    
+                    const variant = seatData.tail_number_distribution[item.registration];
+                    if (variant === selectedVariant) {
+                      dayStats.variant++;
+                    }
                   }
-                }
-              });
+                });
               
               return (
                 <div 
@@ -605,7 +610,7 @@ const SeatTypeViewer = () => {
     
     setLoading(true);
     try {
-      const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
+      const response = await fetch(`http://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch data');
