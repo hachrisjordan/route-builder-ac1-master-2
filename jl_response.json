@@ -1,0 +1,1822 @@
+[
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-08",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-07",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-06",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-05",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-04",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-03",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-02",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-05-01",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-30",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-29",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-28",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-27",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-26",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-25",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-24",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-23",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-22",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-21",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-20",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-19",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-18",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-17",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-16",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-15",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-14",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-13",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-12",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-11",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-10",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-09",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-08",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-07",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-06",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-05",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-04",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-03",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-02",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-04-01",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-31",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-30",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-29",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-28",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-27",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-26",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-25",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-24",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-23",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-22",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-20",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-19",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-18",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-17",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-16",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-15",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-14",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-13",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-12",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-11",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-10",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-09",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-08",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-07",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-06",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-05",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-04",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-03",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-02",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-03-01",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-28",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-27",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-26",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-25",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-24",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-23",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-22",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-21",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-20",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-19",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-18",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-17",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-16",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-15",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-14",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-13",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-12",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-11",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-10",
+        "registration": "JA09WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-09",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-08",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-07",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-06",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-05",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-04",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-03",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-02",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-02-01",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-31",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-30",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-29",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-28",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-19",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-18",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-17",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-16",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-15",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-14",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-13",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-12",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-11",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-10",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-09",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-08",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-07",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-06",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-05",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-04",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-03",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-02",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2025-01-01",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-31",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-30",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-29",
+        "registration": "JA08WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-28",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-27",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-26",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-25",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-24",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-23",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-22",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-21",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-20",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-19",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-18",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-17",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-16",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-15",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-14",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-13",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-12",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-11",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-10",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-09",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-08",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-07",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-06",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-05",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-04",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-03",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-02",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-12-01",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-30",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-29",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-28",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-27",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-26",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-25",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-24",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-23",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-22",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-21",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-20",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-19",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-18",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-17",
+        "registration": "JA01WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-16",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-15",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-13",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-12",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-11",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-10",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-09",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-08",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-07",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-06",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-05",
+        "registration": "JA05WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-04",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-03",
+        "registration": "JA04WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-02",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-11-01",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-31",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-30",
+        "registration": "JA02WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-29",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-28",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-27",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-26",
+        "registration": "JA03WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-25",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-24",
+        "registration": "JA06WJ"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-23",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-22",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-21",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-20",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-19",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-18",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-17",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-16",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-15",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-14",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-13",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-12",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-11",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-10",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-09",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-08",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-08",
+        "registration": "None"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-07",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-06",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-05",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-04",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-03",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-02",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-10-01",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-30",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-29",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-28",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-27",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-26",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-25",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-24",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-23",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-22",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-21",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-20",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-19",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-18",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-17",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-16",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-15",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-14",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-13",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-12",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-11",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-10",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-10",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-09",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-08",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-07",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-06",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-05",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-04",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-03",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-02",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-09-01",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-31",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-30",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-29",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-28",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-27",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-26",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-25",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-24",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-23",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-22",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-21",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-20",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-19",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-18",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-17",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-16",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-15",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-14",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-13",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-12",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-11",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-10",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-09",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-08",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-07",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-06",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-05",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-04",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-03",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-02",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-08-01",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-31",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-30",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-29",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-28",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-27",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-26",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-25",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-24",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-23",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-22",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-21",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-20",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-19",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-18",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-17",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-16",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-15",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-14",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-13",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-12",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-11",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-10",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-09",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-08",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-07",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-06",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-03",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-02",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-07-01",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-30",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-29",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-28",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-27",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-26",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-25",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-24",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-23",
+        "registration": "JA737J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-22",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-21",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-20",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-19",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-18",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-17",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-16",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-15",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-14",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-13",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-12",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-11",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-10",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-09",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-08",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-07",
+        "registration": "JA742J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-06",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-05",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-04",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-03",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-02",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-06-01",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-31",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-30",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-29",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-28",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-27",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-26",
+        "registration": "JA732J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-25",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-24",
+        "registration": "JA741J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-23",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-22",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-21",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-20",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-19",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-18",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-17",
+        "registration": "JA733J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-16",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-15",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-14",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-13",
+        "registration": "JA743J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-12",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-11",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-10",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-09",
+        "registration": "JA739J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-08",
+        "registration": "JA738J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-07",
+        "registration": "JA735J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-06",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-05",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-04",
+        "registration": "JA736J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-03",
+        "registration": "JA734J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-02",
+        "registration": "JA731J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-05-01",
+        "registration": "JA740J"
+    },
+    {
+        "flightNumber": "JL44",
+        "date": "2024-04-30",
+        "registration": "JA731J"
+    }
+]

@@ -1,0 +1,258 @@
+{
+    "configurations_by_type": {
+      "Airbus A350-1000": [
+        {
+          "variant": "X35",
+          "config": "F6/J54/W24/Y155 (239)",
+          "note": "New A350-1000",
+          "color": "#f3cd87"
+        }
+      ],
+      "Airbus A350-900": [
+        {
+          "variant": "X12",
+          "config": "F12/J56/Y323 (391)",
+          "note": "Domestic (56J)",
+          "color": "#6b9ac4"
+        },
+        {
+          "variant": "X11",
+          "config": "F12/J94/Y263 (369)",
+          "note": "Domestic (94J)",
+          "color": "#8fc1e3"
+        }
+      ],
+      "Boeing 737-800": [
+        {
+          "variant": "V32",
+          "config": "J20/Y145 (165)",
+          "note": "Domestic",
+          "color": "#d64161"
+        },
+        {
+          "variant": "V40",
+          "config": "J12/Y132 (144)",
+          "note": "International",
+          "color": "#ff7676"
+        }
+      ],
+      "Boeing 767-300ER": [
+        {
+          "variant": "A25",
+          "config": "F5/J42/Y205 (252)",
+          "note": "Domestic (with First)",
+          "color": "#5aaa95"
+        },
+        {
+          "variant": "A44",
+          "config": "J24/Y175 (199)",
+          "note": "International",
+          "color": "#86c3b7"
+        },
+        {
+          "variant": "A28",
+          "config": "J42/Y219 (261)",
+          "note": "Domestic (non First)",
+          "color": "#4a8c7c"
+        }
+      ],
+      "Boeing 777-300ER": [
+        {
+          "variant": "W84",
+          "config": "F8/J49/W40/Y147 (244)",
+          "note": "Old 777-300ER",
+          "color": "#9b59b6"
+        }
+      ],
+      "Boeing 787-8": [
+        {
+          "variant": "E03",
+          "config": "J30/Y176 (206)",
+          "note": "Flat Shell Neo",
+          "color": "#f39c12"
+        },
+        {
+          "variant": "E12",
+          "config": "J30/Y156 (186)",
+          "note": "Apex",
+          "color": "#e67e22"
+        },
+        {
+          "variant": "E21",
+          "config": "F6/J58/Y227 (291)",
+          "note": "Domestic",
+          "color": "#d35400"
+        }
+      ],
+      "Boeing 787-9": [
+        {
+          "variant": "E71",
+          "config": "J44/W35/Y116 (195)",
+          "note": "Apex",
+          "color": "#3498db"
+        },
+        {
+          "variant": "E91",
+          "config": "J52/W35/Y116 (203)",
+          "note": "Sky Suite III (52J)",
+          "color": "#2980b9"
+        },
+        {
+          "variant": "E92",
+          "config": "J28/W21/Y190 (239)",
+          "note": "Sky Suite III (28J)",
+          "color": "#1abc9c"
+        }
+      ]
+    },
+    "tail_number_distribution": {
+      "JA01WJ": "X35",
+      "JA02WJ": "X35",
+      "JA03WJ": "X35",
+      "JA04WJ": "X35",
+      "JA05WJ": "X35",
+      "JA06WJ": "X35",
+      "JA07WJ": "X35",
+      "JA08WJ": "X35",
+      "JA09WJ": "X35",
+      "JA01XJ": "X12",
+      "JA02XJ": "X12",
+      "JA03XJ": "X12",
+      "JA04XJ": "X11",
+      "JA05XJ": "X11",
+      "JA06XJ": "X11",
+      "JA07XJ": "X11",
+      "JA08XJ": "X11",
+      "JA09XJ": "X11",
+      "JA10XJ": "X12",
+      "JA11XJ": "X12",
+      "JA12XJ": "X12",
+      "JA14XJ": "X12",
+      "JA15XJ": "X12",
+      "JA16XJ": "X12",
+      "JA301J": "V32",
+      "JA302J": "V32",
+      "JA304J": "V40",
+      "JA305J": "V40",
+      "JA306J": "V32",
+      "JA307J": "V32",
+      "JA308J": "V32",
+      "JA309J": "V32",
+      "JA311J": "V32",
+      "JA312J": "V40",
+      "JA314J": "V32",
+      "JA315J": "V40",
+      "JA316J": "V32",
+      "JA317J": "V40",
+      "JA318J": "V32",
+      "JA319J": "V32",
+      "JA320J": "V40",
+      "JA321J": "V40",
+      "JA322J": "V32",
+      "JA323J": "V32",
+      "JA327J": "V32",
+      "JA328J": "V32",
+      "JA329J": "V32",
+      "JA330J": "V32",
+      "JA331J": "V32",
+      "JA332J": "V32",
+      "JA333J": "V32",
+      "JA334J": "V32",
+      "JA335J": "V32",
+      "JA336J": "V32",
+      "JA337J": "V32",
+      "JA338J": "V32",
+      "JA339J": "V32",
+      "JA340J": "V32",
+      "JA341J": "V32",
+      "JA342J": "V32",
+      "JA343J": "V32",
+      "JA344J": "V32",
+      "JA345J": "V32",
+      "JA346J": "V32",
+      "JA347J": "V32",
+      "JA349J": "V32",
+      "JA601J": "A25",
+      "JA602J": "A25",
+      "JA603J": "A25",
+      "JA606J": "A44",
+      "JA607J": "A44",
+      "JA608J": "A44",
+      "JA610J": "A44",
+      "JA611J": "A44",
+      "JA612J": "A44",
+      "JA613J": "A44",
+      "JA614J": "A44",
+      "JA615J": "A44",
+      "JA616J": "A44",
+      "JA617J": "A44",
+      "JA618J": "A44",
+      "JA619J": "A44",
+      "JA620J": "A44",
+      "JA621J": "A44",
+      "JA622J": "A44",
+      "JA623J": "A44",
+      "JA655J": "A28",
+      "JA656J": "A28",
+      "JA657J": "A28",
+      "JA658J": "A28",
+      "JA659J": "A28",
+      "JA731J": "W84",
+      "JA732J": "W84",
+      "JA733J": "W84",
+      "JA735J": "W84",
+      "JA736J": "W84",
+      "JA737J": "W84",
+      "JA738J": "W84",
+      "JA739J": "W84",
+      "JA740J": "W84",
+      "JA741J": "W84",
+      "JA742J": "W84",
+      "JA743J": "W84",
+      "JA821J": "E03",
+      "JA823J": "E03",
+      "JA829J": "E03",
+      "JA830J": "E03",
+      "JA831J": "E03",
+      "JA832J": "E03",
+      "JA833J": "E03",
+      "JA834J": "E03",
+      "JA835J": "E03",
+      "JA836J": "E12",
+      "JA837J": "E12",
+      "JA838J": "E12",
+      "JA839J": "E12",
+      "JA840J": "E12",
+      "JA841J": "E12",
+      "JA842J": "E12",
+      "JA843J": "E12",
+      "JA844J": "E12",
+      "JA845J": "E12",
+      "JA846J": "E21",
+      "JA847J": "E21",
+      "JA848J": "E21",
+      "JA849J": "E21",
+      "JA861J": "E71",
+      "JA862J": "E71",
+      "JA863J": "E71",
+      "JA864J": "E71",
+      "JA865J": "E71",
+      "JA866J": "E71",
+      "JA867J": "E71",
+      "JA868J": "E71",
+      "JA869J": "E91",
+      "JA870J": "E91",
+      "JA871J": "E91",
+      "JA872J": "E91",
+      "JA873J": "E92",
+      "JA874J": "E92",
+      "JA875J": "E92",
+      "JA876J": "E92",
+      "JA877J": "E92",
+      "JA878J": "E92",
+      "JA879J": "E92",
+      "JA880J": "E92",
+      "JA881J": "E91",
+      "JA882J": "E91"
+    }
+  }
