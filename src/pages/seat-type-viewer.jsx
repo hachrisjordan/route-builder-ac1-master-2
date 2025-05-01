@@ -744,19 +744,50 @@ const SeatTypeViewer = () => {
         const variants = new Set();
         const variantInfo = new Map();
         
-        // Get all variants from the seat data
-        const configsByType = seatData.configs_by_type || seatData.configurations_by_type;
-        for (const [aircraftType, configs] of Object.entries(configsByType || {})) {
-          configs.forEach(config => {
-            variants.add(config.variant);
-            variantInfo.set(config.variant, {
-              aircraftType,
-              note: config.note
-            });
-          });
-        }
+        // Only collect variants that appear in the registration data
+        data.forEach(item => {
+          if (!isValidRegistration(item.registration, selectedAirline)) return;
+          
+          let variant = seatData.tail_number_distribution[item.registration];
+          
+          // Handle date-based configuration changes
+          if (variant && typeof variant === 'object' && variant.changes) {
+            // Sort changes by date in descending order
+            const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Find the most recent change that applies to the given date
+            const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+            
+            // Use the applicable change's variant, or fall back to default
+            variant = applicableChange ? applicableChange.variant : variant.default;
+          }
+          
+          // Handle special case for object variants
+          if (variant && typeof variant === 'object' && variant.default) {
+            variant = variant.default;
+          }
+          
+          if (variant) {
+            variants.add(variant);
+            
+            // Get aircraft type and note for this variant
+            if (!variantInfo.has(variant)) {
+              const configsByType = seatData.configs_by_type || seatData.configurations_by_type;
+              for (const [aircraftType, configs] of Object.entries(configsByType || {})) {
+                const config = configs.find(c => c.variant === variant);
+                if (config) {
+                  variantInfo.set(variant, {
+                    aircraftType,
+                    note: config.note
+                  });
+                  break;
+                }
+              }
+            }
+          }
+        });
         
-        console.log('All variants:', Array.from(variants));
+        console.log('Available variants:', Array.from(variants));
         
         const variantOptions = Array.from(variants).map(variant => {
           const info = variantInfo.get(variant);
