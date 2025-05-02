@@ -7,7 +7,7 @@ import seatAF from '../data/seat_AF.json';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY'];
+const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
