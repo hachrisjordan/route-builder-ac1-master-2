@@ -7,7 +7,7 @@ import seatAF from '../data/seat_AF.json';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS'];
+const ALLOWED_AIRLINES = ['JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
@@ -226,6 +226,14 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
                         display: 'inline-block'
                       }}>
                         {registration}
+                        {seatData.aircraft_names && seatData.aircraft_names[registration] && (
+                          <>
+                            <br />
+                            <span style={{ fontSize: '12px', opacity: 0.9 }}>
+                              {seatData.aircraft_names[registration]}
+                            </span>
+                          </>
+                        )}
                       </div>
                     </>
                   ) : (
