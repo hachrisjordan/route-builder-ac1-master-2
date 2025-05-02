@@ -392,29 +392,31 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
       
       const dayOfWeek = date.getDay(); // 0 is Sunday, 6 is Saturday
       
-      dayStats[dayOfWeek].total++;
-      
-      let variant = seatData.tail_number_distribution[item.registration];
-      
-      // Handle date-based configuration changes
-      if (variant && typeof variant === 'object' && variant.changes) {
-        // Sort changes by date in descending order
-        const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+      if (dayOfWeek >= 0 && dayOfWeek < 7) {
+        dayStats[dayOfWeek].total++;
         
-        // Find the most recent change that applies to the given date
-        const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+        let variant = seatData.tail_number_distribution[item.registration];
         
-        // Use the applicable change's variant, or fall back to default
-        variant = applicableChange ? applicableChange.variant : variant.default;
-      }
-      
-      // Handle special case for object variants
-      if (variant && typeof variant === 'object' && variant.default) {
-        variant = variant.default;
-      }
-      
-      if (variant === selectedVariant) {
-        dayStats[dayOfWeek].variant++;
+        // Handle date-based configuration changes
+        if (variant && typeof variant === 'object' && variant.changes) {
+          // Sort changes by date in descending order
+          const sortedChanges = [...variant.changes].sort((a, b) => new Date(b.date) - new Date(a.date));
+          
+          // Find the most recent change that applies to the given date
+          const applicableChange = sortedChanges.find(change => new Date(item.date) >= new Date(change.date));
+          
+          // Use the applicable change's variant, or fall back to default
+          variant = applicableChange ? applicableChange.variant : variant.default;
+        }
+        
+        // Handle special case for object variants
+        if (variant && typeof variant === 'object' && variant.default) {
+          variant = variant.default;
+        }
+        
+        if (variant === selectedVariant) {
+          dayStats[dayOfWeek].variant++;
+        }
       }
     });
     
