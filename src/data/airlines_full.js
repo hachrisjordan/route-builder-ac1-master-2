@@ -145,7 +145,6 @@ const airlines = [
   { value: 'KH', label: 'Aloha Air Cargo (KH)' },
   { value: 'AL', label: 'AlpAvia (AL)' },
   { value: '0A', label: 'Alphaland Aviation (0A)' },
-  { value: 'AS', label: 'AlphaSky (AS)' },
   { value: '5A', label: 'Alpine Air Express (5A)' },
   { value: '6R', label: 'Alrosa (6R)' },
   { value: 'MZ', label: 'Amakusa Airlines (MZ)' },
