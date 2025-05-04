@@ -464,7 +464,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
           <Select
             value={selectedVariant}
             onChange={setSelectedVariant}
-            style={{ width: '650px !important', minWidth: '650px', maxWidth: '100%' }}
+            style={{ width: '750px !important', minWidth: '750px', maxWidth: '100%' }}
             placeholder="Select variant to analyze"
             className="variant-select-dropdown"
           >
