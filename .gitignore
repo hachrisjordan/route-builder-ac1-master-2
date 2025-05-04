@@ -1,4 +1,3 @@
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
@@ -7,7 +6,6 @@
 *.pack
 
 .env.local
-node_modules/.cache/.eslintcache
-/node_modules/.cache
+node_modules/
+.next/
 gcp-mcp/
-/node_modules/.cache/default-development
