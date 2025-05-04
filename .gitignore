@@ -8,6 +8,5 @@
 .env.local
 .env
 node_modules/
-.next/
 gcp-mcp/
 .DS_Store
