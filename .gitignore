@@ -6,6 +6,7 @@
 *.pack
 
 .env.local
+.env
 node_modules/
 .next/
 gcp-mcp/
