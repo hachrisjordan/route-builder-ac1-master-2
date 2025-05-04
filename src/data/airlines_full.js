@@ -693,7 +693,6 @@ const airlines = [
   { value: 'US', label: 'Silkavia (US)' },
   { value: '3M', label: 'Silver Airways (3M)' },
   { value: 'SQ', label: 'Singapore Airlines (SQ)' },
-  { value: 'SA', label: 'Sirius Aero (SA)' },
   { value: 'KI', label: 'SKS Airways (KI)' },
   { value: 'H2', label: 'SKY Airline (H2)' },
   { value: 'ZA', label: 'Sky Angkor Airlines (ZA)' },
