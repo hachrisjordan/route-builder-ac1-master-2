@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Select, Input, Button, Space, Card, message, Typography, Modal, Checkbox, Row, Col } from 'antd';
-import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined } from '@ant-design/icons';
+import { Select, Input, Button, Space, message, Typography, Modal, Checkbox, Row, Col } from 'antd';
+import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
 import seatAF from '../data/seat_AF.json';
@@ -681,6 +681,41 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
   );
 };
 
+// Helper function to parse search input (copied from SearchForm)
+const parseSearchInput = (inputValue) => {
+  if (!inputValue) return '';
+  try {
+    if (typeof inputValue === 'object' && inputValue !== null) {
+      if (inputValue._searchText) {
+        return String(inputValue._searchText).toLowerCase();
+      } else if (inputValue.input) {
+        return String(inputValue.input).toLowerCase();
+      } else if (inputValue.searchText) {
+        return String(inputValue.searchText).toLowerCase();
+      } else if (inputValue.value) {
+        return String(inputValue.value).toLowerCase();
+      } else if (inputValue.searchValue) {
+        return String(inputValue.searchValue).toLowerCase();
+      } else {
+        const str = String(inputValue);
+        if (str.startsWith('{') && str.includes('searchValue')) {
+          try {
+            const parsed = JSON.parse(str);
+            if (parsed.searchValue) {
+              return String(parsed.searchValue).toLowerCase();
+            }
+          } catch (e) {}
+        }
+        return '';
+      }
+    } else {
+      return String(inputValue || '').toLowerCase();
+    }
+  } catch (error) {
+    return '';
+  }
+};
+
 const SeatTypeViewer = () => {
   const [selectedAirline, setSelectedAirline] = useState(null);
   const [flightNumber, setFlightNumber] = useState('');
@@ -692,6 +727,10 @@ const SeatTypeViewer = () => {
   const [availableVariants, setAvailableVariants] = useState([]);
   const [seatData, setSeatData] = useState(null);
   const [seatDataLoading, setSeatDataLoading] = useState(false);
+  // Advanced search state
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+  const [origin, setOrigin] = useState(null);
+  const [arrival, setArrival] = useState(null);
 
   // Filter and sort allowed airlines
   const sortedAirlines = airlines
@@ -728,21 +767,25 @@ const SeatTypeViewer = () => {
     if (!selectedAirline || !flightNumber) {
       return;
     }
-    
     // Clear previous data when starting a new search
     setRegistrationData([]);
     setDataFetched(false);
     setSelectedVariants([]);
     setAvailableVariants([]);
-    
     setLoading(true);
     try {
-      const response = await fetch(`https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`);
-      
+      // Build API URL with optional origin/destination
+      let apiUrl = `https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`;
+      const params = [];
+      if (origin) params.push(`origin=${encodeURIComponent(origin)}`);
+      if (arrival) params.push(`destination=${encodeURIComponent(arrival)}`);
+      if (params.length > 0) {
+        apiUrl += `?${params.join('&')}`;
+      }
+      const response = await fetch(apiUrl);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
-      
       const data = await response.json();
       console.log('Flight data response:', data);
       setRegistrationData(data);
@@ -888,6 +931,74 @@ const SeatTypeViewer = () => {
     };
   };
 
+  // Airport options (copied from SearchForm)
+  const airports = require('../data/airports').airports || require('../data/airports');
+  const airportSelectProps = {
+    showSearch: true,
+    allowClear: true,
+    suffixIcon: null,
+    options: airports.map(airport => ({
+      value: airport.IATA,
+      label: `${airport.IATA} - ${airport.Name} (${airport.Country})`,
+      iata: airport.IATA,
+      name: airport.Name,
+      country: airport.Country
+    })),
+    optionRender: (option) => {
+      const iataCode = option.value;
+      const airportName = option.data.name;
+      const country = option.data.country;
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', padding: '4px 0' }}>
+          <span style={{ fontWeight: 'bold' }}>{iataCode}</span>
+          <span style={{ fontSize: '12px', color: '#666' }}>
+            {airportName} ({country})
+          </span>
+        </div>
+      );
+    },
+    filterOption: (input, option) => {
+      if (!input) return true;
+      const searchText = parseSearchInput(input);
+      const iata = String(option.value || '').toLowerCase();
+      const label = String(option.label || '').toLowerCase();
+      return iata.includes(searchText) || label.includes(searchText);
+    },
+    filterSort: (optionA, optionB, inputValue) => {
+      if (!inputValue) return String(optionA.value || '').localeCompare(String(optionB.value || ''));
+      const input = parseSearchInput(inputValue);
+      const iataA = String(optionA.value || '').toLowerCase();
+      const iataB = String(optionB.value || '').toLowerCase();
+      let scoreA = 0;
+      let scoreB = 0;
+      if (iataA === input) scoreA = 1000;
+      if (iataB === input) scoreB = 1000;
+      if (iataA.startsWith(input) && iataA !== input) scoreA = 500;
+      if (iataB.startsWith(input) && iataB !== input) scoreB = 500;
+      if (iataA.includes(input) && !iataA.startsWith(input)) scoreA = 200;
+      if (iataB.includes(input) && !iataB.startsWith(input)) scoreB = 200;
+      const labelA = String(optionA.label || '').toLowerCase();
+      const labelB = String(optionB.label || '').toLowerCase();
+      if (scoreA === 0 && labelA.includes(input)) scoreA = 10;
+      if (scoreB === 0 && labelB.includes(input)) scoreB = 10;
+      if (scoreA !== scoreB) {
+        return scoreB - scoreA;
+      }
+      return String(iataA).localeCompare(String(iataB));
+    },
+    listHeight: 256,
+    virtual: true,
+    dropdownStyle: {
+      maxHeight: 400,
+      padding: '8px 0',
+      boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05)',
+      borderRadius: '8px',
+      zIndex: 1050,
+      overflowY: 'auto',
+      overflowAnchor: 'none'
+    }
+  };
+
   return (
     <div style={{ 
       display: 'flex',
@@ -896,17 +1007,20 @@ const SeatTypeViewer = () => {
       margin: '24px auto',
       padding: '0 16px'
     }}>
-      <Card 
-        style={{ 
+      <div
+        style={{
           borderRadius: '8px',
           boxShadow: '0 1px 2px rgba(0, 0, 0, 0.05)',
           padding: '16px',
           display: 'flex',
-          justifyContent: 'center',
-          width: 'fit-content'
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: 'fit-content',
+          background: '#fff',
+          marginBottom: 16
         }}
       >
-        <Space size="middle">
+        <Space size="middle" align="center">
           <Select
             showSearch
             style={{ width: 300 }}
@@ -920,7 +1034,6 @@ const SeatTypeViewer = () => {
               return airlineCode.includes(input) || airlineName.includes(input);
             }}
           />
-          
           <Input
             placeholder="Flight #"
             value={flightNumber}
@@ -928,7 +1041,14 @@ const SeatTypeViewer = () => {
             style={{ width: 120 }}
             maxLength={4}
           />
-          
+          <Button
+            type="text"
+            size="small"
+            style={{ padding: 0, marginLeft: 0, marginRight: 4, verticalAlign: 'middle' }}
+            icon={isAdvancedOpen ? <UpOutlined /> : <DownOutlined />}
+            onClick={() => setIsAdvancedOpen(v => !v)}
+            aria-label={isAdvancedOpen ? 'Hide advanced search' : 'Show advanced search'}
+          />
           <Button 
             type="primary"
             onClick={handleSearch}
@@ -938,7 +1058,31 @@ const SeatTypeViewer = () => {
             Search
           </Button>
         </Space>
-      </Card>
+        {isAdvancedOpen && (
+          <div style={{ marginTop: 16, display: 'flex', gap: 16, alignItems: 'center', flexDirection: 'row' }}>
+            <div>
+              <div style={{ fontWeight: 500, marginBottom: 4 }}>Origin</div>
+              <Select
+                {...airportSelectProps}
+                value={origin}
+                onChange={setOrigin}
+                placeholder="Select origin airport..."
+                style={{ width: 260 }}
+              />
+            </div>
+            <div>
+              <div style={{ fontWeight: 500, marginBottom: 4 }}>Arrival</div>
+              <Select
+                {...airportSelectProps}
+                value={arrival}
+                onChange={setArrival}
+                placeholder="Select arrival airport..."
+                style={{ width: 260 }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
       
       {dataFetched && (
         <div 
