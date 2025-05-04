@@ -21,16 +21,7 @@ body {
     overflow-x: auto;
     min-height: 100%;
   }
-  
-  #root {
-    transform: scale(calc(100vw / 1920));
-    width: 1920px;
-    min-height: 100vh;
-    transform-origin: top left;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+
   
   /* Create a container to allow scrolling */
   body::after {

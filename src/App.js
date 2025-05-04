@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
-import { Layout, Menu, Button, Drawer, Tooltip } from 'antd';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Layout, Button, Drawer } from 'antd';
 import { AirplaneIcon, MenuIcon, HomeIcon, CloseIcon } from './components/Icons';
 import './App.css';
 import FlightSearch from './pages/FlightSearch';
@@ -8,58 +8,30 @@ import NormalRouteBuilderPage from './pages/NormalRouteBuilder';
 import UAExpandedSaverPage from './pages/UAExpandedSaverPage';
 import VJDelayMetricsPage from './pages/VJDelayMetricsPage';
 import SeatTypeViewer from './pages/seat-type-viewer';
-
+import NavLink from './components/NavLink';
 const { Header, Content, Footer } = Layout;
-
-// Custom NavLink component that handles active state
-const NavLink = ({ to, children, icon, className }) => {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-  
-  return (
-    <Link 
-      to={to} 
-      className={`nav-link ${isActive ? 'active' : ''} ${className || ''}`}
-    >
-      {icon && <span className="nav-icon">{icon}</span>}
-      <span className="nav-text">{children}</span>
-    </Link>
-  );
-};
 
 // Main app component
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   
-  // Handle scroll effect for header
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <Router>
       <AppContent 
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        scrolled={scrolled}
       />
     </Router>
   );
 }
 
 // Separate component to access useLocation hook inside Router context
-function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
-  const location = useLocation();
+function AppContent({ mobileMenuOpen, setMobileMenuOpen }) {
   
   return (
     <Layout className="layout">
-      <Header className={`app-header ${scrolled ? 'scrolled' : ''}`}>
+      <Header className="app-header">
         <div className="header-container">
           <div className="logo-container">
             <AirplaneIcon className="logo-icon" />
@@ -106,7 +78,7 @@ function AppContent({ mobileMenuOpen, setMobileMenuOpen, scrolled }) {
         width={280}
         closeIcon={<CloseIcon />}
         className="mobile-nav-drawer"
-        headerStyle={{ padding: '16px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}
+        styles={{ header: { padding: '16px', borderBottom: '1px solid rgba(0,0,0,0.06)' } }}
       >
         <div className="mobile-nav">
           <Link to="/ac" onClick={() => setMobileMenuOpen(false)}>
