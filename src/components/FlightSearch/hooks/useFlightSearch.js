@@ -33,6 +33,8 @@ export default function useFlightSearch() {
 
     setIsLoading(true);
     try {
+      // put this url in .env
+      // also, look into data fetching with react query, you get a lot of state management for free + caching, revalidation, etc
       const response = await fetch('https://backend-284998006367.us-central1.run.app/api/find-routes', {
         method: 'POST',
         headers: {
