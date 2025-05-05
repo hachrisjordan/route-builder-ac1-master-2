@@ -7,7 +7,7 @@ import seatAF from '../data/seat_AF.json';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['DL','HA','B6','AA','UA','NK','F9','G4','AS','A3','NZ','OZ','MS','SA','TP','SN','AV','OU','MX','ME','KQ','MF','RO','AR','AM','SK','ZH','LA','AY','JX','FJ','KL','RJ','UL','AT','AC','LO','IB','CA','MU','TK','GA','MH','JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM','ET','PR','OS'];
+const ALLOWED_AIRLINES = ['DE','EN','CZ','DL','HA','B6','AA','UA','NK','F9','G4','AS','A3','NZ','OZ','MS','SA','TP','SN','AV','OU','MX','ME','KQ','MF','RO','AR','AM','SK','ZH','LA','AY','JX','FJ','KL','RJ','UL','AT','AC','LO','IB','CA','MU','TK','GA','MH','JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM','ET','PR','OS'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
