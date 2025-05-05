@@ -114,7 +114,6 @@ const airlines = [
   { value: 'D7', label: 'AirAsia X (D7)' },
   { value: 'PA', label: 'airblue (PA)' },
   { value: 'RU', label: 'AirBridgeCargo Airlines (RU)' },
-  { value: '4Y', label: 'Airbus Transport International (4Y)' },
   { value: 'SB', label: 'Aircalin (SB)' },
   { value: 'ED', label: 'AirExplore (ED)' },
   { value: 'FS', label: 'Airfast Indonesia (FS)' },
