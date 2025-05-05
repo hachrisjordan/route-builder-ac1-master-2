@@ -74,6 +74,81 @@ const isValidRegistration = (registration, airline) => {
   return true;
 };
 
+// Helper function to get ontime status
+const getOntimeStatus = (ontime, date) => {
+  if (!ontime) return null;
+  
+  if (ontime === 'CANCELED') {
+    return {
+      color: '#000000',
+      text: 'Canceled'
+    };
+  }
+
+  // Check for diverted flights
+  if (ontime.startsWith('Diverted to')) {
+    return {
+      color: '#9c27b0', // Purple
+      text: ontime
+    };
+  }
+
+  // Check if the flight is in the future
+  const flightDate = new Date(date);
+  const today = new Date();
+  const isFuture = flightDate > today;
+  
+  // Check if the flight is more than 2 days old
+  const diffTime = Math.abs(today - flightDate);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (ontime === 'N/A') {
+    if (isFuture) {
+      return null; // Don't show anything for future flights with N/A
+    }
+    if (diffDays > 2) {
+      return {
+        color: '#9e9e9e', // Grey color for historical N/A
+        text: 'No info'
+      };
+    }
+    return null; // Don't show anything for recent N/A
+  }
+
+  const minutes = parseInt(ontime);
+  if (isNaN(minutes)) return null;
+
+  let color, text;
+  
+  if (minutes <= 0) {
+    color = '#4caf50'; // Green
+  } else if (minutes < 30) {
+    color = '#ffc107'; // Yellow
+  } else {
+    color = '#f44336'; // Red
+  }
+
+  if (minutes === 0) {
+    text = 'Arrived on time';
+  } else if (minutes < 0) {
+    text = `Arrived ${Math.abs(minutes)}m early`;
+  } else {
+    // Format time for delays over 60 minutes
+    if (minutes >= 60) {
+      const hours = Math.floor(minutes / 60);
+      const remainingMinutes = minutes % 60;
+      const timeStr = remainingMinutes > 0 
+        ? `${hours}h${remainingMinutes}m`
+        : `${hours}h`;
+      text = `Arrived ${timeStr} late`;
+    } else {
+      text = `Arrived ${minutes}m late`;
+    }
+  }
+
+  return { color, text };
+};
+
 // Calendar component exactly matching NormalRouteBuilderCalendar
 const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, seatData }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
@@ -92,12 +167,15 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   
-  // Create a map of dates to registration numbers
+  // Create a map of dates to registration numbers and ontime data
   const registrationByDate = {};
   registrationData.forEach(item => {
-    if (isValidRegistration(item.registration, airline)) {
-      registrationByDate[item.date] = item.registration;
-    }
+    // Store data even if registration is N/A
+    registrationByDate[item.date] = {
+      registration: item.registration,
+      ontime: item.ontime,
+      date: item.date // Store the date for historical check
+    };
   });
 
   return (
@@ -162,8 +240,11 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
           const day = i + 1;
           const date = new Date(year, month, day);
           const dateStr = date.toISOString().split('T')[0];
-          const registration = registrationByDate[dateStr];
-          const aircraftDetails = getAircraftDetails(registration, airline, seatData, dateStr);
+          const dayData = registrationByDate[dateStr];
+          const registration = dayData?.registration;
+          const ontime = dayData?.ontime;
+          const aircraftDetails = registration && registration !== 'N/A' ? getAircraftDetails(registration, airline, seatData, dateStr) : null;
+          const status = getOntimeStatus(ontime, dateStr);
           
           return (
             <div key={i} style={{
@@ -173,17 +254,53 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
               width: '190px',
               display: 'flex',
               flexDirection: 'column',
-              textAlign: 'center'
+              textAlign: 'center',
+              position: 'relative'
             }}>
               <div style={{ 
-                marginBottom: '8px', 
+                marginBottom: '16px',
                 fontWeight: 'bold',
                 paddingBottom: '4px',
-                textAlign: 'right'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                position: 'relative',
+                fontSize: '14px'
               }}>
-                {day}
+                {/* Status group */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  position: 'absolute',
+                  left: 0,
+                  fontSize: '12px'
+                }}>
+                  {status && (
+                    <>
+                      <div style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: status.color,
+                        border: '1px solid #ddd',
+                        flexShrink: 0
+                      }} />
+                      <span style={{
+                        fontSize: '12px',
+                        color: status.color,
+                        whiteSpace: 'nowrap',
+                        fontWeight: 'bold'
+                      }}>
+                        {status.text}
+                      </span>
+                    </>
+                  )}
+                </div>
+                {/* Date number - always on the right */}
+                <span style={{ marginLeft: 'auto' }}>{day}</span>
               </div>
-              {registration && (
+              {registration && registration !== 'N/A' && (
                 <div style={{ 
                   fontSize: '13px', 
                   flex: 1,
@@ -575,7 +692,7 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
                       {period.percentage.toFixed(1)}%
                     </Text>
                     <Text style={{ fontSize: '11px', color: '#888', display: 'block', marginTop: '4px' }}>
-                      {variantCount} out of {totalCount} flights
+                      {variantCount} / {totalCount} flights
                     </Text>
                   </div>
                 </div>
@@ -668,13 +785,262 @@ const VariantAnalysis = ({ registrationData, airline, seatData }) => {
                       {day.percentage.toFixed(1)}%
                     </Text>
                     <Text style={{ fontSize: '11px', color: '#888', display: 'block', marginTop: '4px' }}>
-                      {dayStats.variant} out of {dayStats.total} flights
+                      {dayStats.variant} / {dayStats.total} flights
                     </Text>
                   </div>
                 </div>
               );
             })}
           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Analysis component for delay statistics
+const DelayAnalysis = ({ registrationData }) => {
+  // Helper function to get color based on delay
+  const getDelayColor = (delay, canceledPercentage = 0) => {
+    if (canceledPercentage >= 50) return '#000000'; // Black for majority canceled
+    if (delay <= 0) return '#4caf50'; // Green
+    if (delay >= 120) return '#f44336'; // Red
+    
+    // Linear interpolation between colors
+    const ratio = delay / 120;
+    if (delay <= 30) {
+      // Green to Yellow
+      const r = Math.round(76 + (255 - 76) * (delay / 30));
+      const g = Math.round(175 + (193 - 175) * (delay / 30));
+      const b = Math.round(80 + (7 - 80) * (delay / 30));
+      return `rgb(${r}, ${g}, ${b})`;
+    } else {
+      // Yellow to Red
+      const r = Math.round(255 + (244 - 255) * ((delay - 30) / 90));
+      const g = Math.round(193 + (67 - 193) * ((delay - 30) / 90));
+      const b = Math.round(7 + (54 - 7) * ((delay - 30) / 90));
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+  };
+
+  // Helper function to get delay category
+  const getDelayCategory = (delay) => {
+    if (delay === 'CANCELED') return 'Canceled';
+    if (delay.startsWith('Diverted to')) return 'Diverted';
+    if (delay < 0) return 'On Time';
+    if (delay <= 15) return '0-15 min';
+    if (delay <= 30) return '15-30 min';
+    if (delay <= 60) return '30-60 min';
+    if (delay <= 120) return '1-2 hours';
+    return '2+ hours';
+  };
+
+  // Calculate delay statistics
+  const delayStats = useMemo(() => {
+    if (!registrationData) return null;
+
+    const now = new Date();
+    const periodLabels = ['Last 3 days', 'Last 7 days', 'Last 14 days', 'Last 28 days', 'Last 60 days', 'Last 180 days', 'Last 360 days'];
+    const periods = [3, 7, 14, 28, 60, 180, 360];
+    
+    return periods.map((days, index) => {
+      const cutoffDate = new Date(now);
+      cutoffDate.setDate(cutoffDate.getDate() - days);
+      
+      // Filter flights in the period
+      const flightsInPeriod = registrationData.filter(item => {
+        const [year, month, day] = item.date.split('-').map(Number);
+        const itemDate = new Date(year, month - 1, day);
+        return itemDate >= cutoffDate && itemDate <= now && item.ontime !== 'N/A';
+      });
+      
+      // Calculate statistics
+      const totalFlights = flightsInPeriod.length;
+      if (totalFlights === 0) return null;
+
+      const onTimeFlights = flightsInPeriod.filter(item => parseInt(item.ontime) <= 0).length;
+      const onTimePercentage = (onTimeFlights / totalFlights) * 100;
+      
+      // Calculate average delay (including all flights)
+      const totalDelay = flightsInPeriod.reduce((sum, item) => {
+        const delay = parseInt(item.ontime);
+        return isNaN(delay) ? sum : sum + delay;
+      }, 0);
+      const averageDelay = totalDelay / totalFlights;
+
+      // Calculate delay distribution
+      const delayCategories = {
+        'Canceled': 0,
+        'Diverted': 0,
+        'On Time': 0,
+        '0-15 min': 0,
+        '15-30 min': 0,
+        '30-60 min': 0,
+        '1-2 hours': 0,
+        '2+ hours': 0
+      };
+
+      flightsInPeriod.forEach(item => {
+        const category = getDelayCategory(item.ontime);
+        delayCategories[category]++;
+      });
+
+      // Calculate canceled percentage
+      const canceledPercentage = (delayCategories['Canceled'] / totalFlights) * 100;
+
+      // Format average delay
+      let formattedDelay;
+      if (averageDelay >= 60) {
+        const hours = Math.floor(averageDelay / 60);
+        const minutes = Math.round(averageDelay % 60);
+        formattedDelay = minutes > 0 ? `${hours}h${minutes}m` : `${hours}h`;
+      } else {
+        formattedDelay = `${Math.round(averageDelay)}m`;
+      }
+
+      return {
+        label: periodLabels[index],
+        onTimePercentage,
+        averageDelay: formattedDelay,
+        rawAverageDelay: averageDelay,
+        totalFlights,
+        onTimeFlights,
+        delayDistribution: delayCategories,
+        canceledPercentage
+      };
+    }).filter(Boolean);
+  }, [registrationData]);
+
+  if (!delayStats || delayStats.length === 0) return null;
+
+  return (
+    <div style={{ marginTop: '20px', width: '100%', maxWidth: '1340px' }}>
+      <div 
+        style={{ 
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          padding: '24px',
+          backgroundColor: 'white',
+          border: '1px solid #f0f0f0'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <BarChartOutlined style={{ marginRight: '8px', fontSize: '18px' }} />
+          <Title level={5} style={{ margin: 0 }}>Delay Analysis</Title>
+        </div>
+        
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(7, 1fr)', 
+          gap: '8px'
+        }}>
+          {delayStats.map((period, index) => {
+            const color = getDelayColor(period.rawAverageDelay, period.canceledPercentage);
+            return (
+              <div key={index} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div 
+                  style={{
+                    padding: '12px',
+                    backgroundColor: 'white',
+                    border: '1px solid #4caf5020',
+                    borderRadius: '8px',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                    textAlign: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '100px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '100%',
+                    height: `${period.onTimePercentage}%`,
+                    backgroundColor: '#4caf5020',
+                    zIndex: 0
+                  }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <Text style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>
+                      {period.label}
+                    </Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: '18px', color: color }}>
+                      {period.averageDelay} ({period.onTimePercentage.toFixed(1)}%)
+                    </Text>
+                    <Text style={{ fontSize: '11px', color: '#888', display: 'block', marginTop: '4px' }}>
+                      {period.onTimeFlights} / {period.totalFlights} flights on time
+                    </Text>
+                  </div>
+                </div>
+                
+                {/* Delay Distribution Bar Chart */}
+                <div style={{ 
+                  padding: '8px',
+                  backgroundColor: 'white',
+                  border: '1px solid #e0e0e0',
+                  borderRadius: '8px',
+                  fontSize: '10px'
+                }}>
+                  {Object.entries(period.delayDistribution)
+                    .sort(([a], [b]) => {
+                      // Custom order: On Time -> 0-15 -> 15-30 -> 30-60 -> 1-2 -> 2+ -> Diverted -> Canceled
+                      const order = {
+                        'On Time': 0,
+                        '0-15 min': 1,
+                        '15-30 min': 2,
+                        '30-60 min': 3,
+                        '1-2 hours': 4,
+                        '2+ hours': 5,
+                        'Diverted': 6,
+                        'Canceled': 7
+                      };
+                      return (order[a] || 0) - (order[b] || 0);
+                    })
+                    .map(([category, count]) => {
+                    const percentage = (count / period.totalFlights) * 100;
+                    let categoryColor;
+                    switch(category) {
+                      case 'Canceled': categoryColor = '#000000'; break;
+                      case 'Diverted': categoryColor = '#9c27b0'; break;
+                      case 'On Time': categoryColor = '#4caf50'; break;
+                      case '0-15 min': categoryColor = '#8bc34a'; break;
+                      case '15-30 min': categoryColor = '#ffc107'; break;
+                      case '30-60 min': categoryColor = '#ff9800'; break;
+                      case '1-2 hours': categoryColor = '#ff5722'; break;
+                      case '2+ hours': categoryColor = '#f44336'; break;
+                      default: categoryColor = '#9e9e9e';
+                    }
+                    
+                    return (
+                      <div key={category} style={{ marginBottom: '4px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                          <span>{category}</span>
+                          <span>{count} ({percentage.toFixed(1)}%)</span>
+                        </div>
+                        <div style={{ 
+                          width: '100%', 
+                          height: '4px', 
+                          backgroundColor: '#f0f0f0',
+                          borderRadius: '2px',
+                          overflow: 'hidden'
+                        }}>
+                          <div style={{
+                            width: `${percentage}%`,
+                            height: '100%',
+                            backgroundColor: categoryColor,
+                            transition: 'width 0.3s ease'
+                          }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -1117,11 +1483,16 @@ const SeatTypeViewer = () => {
       )}
       
       {dataFetched && seatData && (
-        <VariantAnalysis
-          registrationData={registrationData}
-          airline={selectedAirline}
-          seatData={seatData}
-        />
+        <>
+          <VariantAnalysis
+            registrationData={registrationData}
+            airline={selectedAirline}
+            seatData={seatData}
+          />
+          <DelayAnalysis
+            registrationData={registrationData}
+          />
+        </>
       )}
       
       <Modal
