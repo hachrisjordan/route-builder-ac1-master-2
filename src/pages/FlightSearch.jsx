@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card } from 'antd';
 import SearchForm from '../components/FlightSearch/SearchForm';
 import ResultsTable from '../components/FlightSearch/ResultsTable';
 import FlightDetailsModal from '../components/FlightSearch/FlightDetailsModal';
