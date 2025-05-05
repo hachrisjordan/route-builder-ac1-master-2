@@ -827,7 +827,7 @@ const DelayAnalysis = ({ registrationData }) => {
   const getDelayCategory = (delay) => {
     if (delay === 'CANCELED') return 'Canceled';
     if (delay.startsWith('Diverted to')) return 'Diverted';
-    if (delay < 0) return 'On Time';
+    if (delay <= 0) return 'On Time';
     if (delay <= 15) return '0-15 min';
     if (delay <= 30) return '15-30 min';
     if (delay <= 60) return '30-60 min';
