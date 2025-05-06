@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Select, Input, Button, Space, message, Typography, Modal, Checkbox, Row, Col } from 'antd';
+import { Select, Input, Button, Space, message, Typography, Modal, Checkbox, Row, Col, Tooltip } from 'antd';
 import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
@@ -330,7 +330,9 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
                         marginBottom: '8px',
                         fontSize: '12px'
                       }}>
-                        {aircraftDetails.note}
+                        <SeatMapTooltip airline={airline} variant={aircraftDetails.variant}>
+                          {aircraftDetails.note}
+                        </SeatMapTooltip>
                       </div>
                       <div style={{ 
                         fontWeight: 'bold',
@@ -1080,6 +1082,50 @@ const parseSearchInput = (inputValue) => {
   } catch (error) {
     return '';
   }
+};
+
+// Helper: SeatMapTooltip
+const SeatMapTooltip = ({ airline, variant, children }) => {
+  const [imgExists, setImgExists] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
+  const url = `${STORAGE_BASE_URL}/seatmap/${airline}_${variant}.png`;
+
+  React.useEffect(() => {
+    if (!airline || !variant) return;
+    setChecked(false);
+    setImgExists(false);
+    const img = new window.Image();
+    img.src = url;
+    img.onload = () => {
+      setImgExists(true);
+      setChecked(true);
+    };
+    img.onerror = () => {
+      setImgExists(false);
+      setChecked(true);
+    };
+    // eslint-disable-next-line
+  }, [airline, variant]);
+
+  if (!airline || !variant) return children;
+  if (!checked) return children; // Don't wrap until checked
+  if (!imgExists) return children;
+
+  return (
+    <Tooltip
+      title={
+        <div>
+          <img src={url} alt="Seat map" style={{ maxWidth: 1200, maxHeight: 900, display: 'block' }} loading="lazy" />
+          <div style={{ fontSize: 12, color: '#888', marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
+        </div>
+      }
+      overlayStyle={{ padding: 0 }}
+      mouseEnterDelay={0.2}
+      placement="right"
+    >
+      <span style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}>{children}</span>
+    </Tooltip>
+  );
 };
 
 const SeatTypeViewer = () => {
