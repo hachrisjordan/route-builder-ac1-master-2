@@ -440,3 +440,14 @@ input[type="number"]:focus {
   flex-direction: row;
   align-items: flex-end;
 }
+
+html, body, #root, .ant-layout, .layout {
+  height: 100%;
+  min-height: 100%;
+}
+
+.ant-layout-content.app-content {
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+}

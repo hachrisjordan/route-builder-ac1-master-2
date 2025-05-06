@@ -12,6 +12,7 @@ import NormalRouteBuilderPage from './pages/NormalRouteBuilder';
 import UAExpandedSaverPage from './pages/UAExpandedSaverPage';
 import VJDelayMetricsPage from './pages/VJDelayMetricsPage';
 import SeatTypeViewer from './pages/seat-type-viewer';
+import MapView from './pages/map-view';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -42,6 +43,7 @@ function AppContent() {
           <Route path="/ua-expanded-saver" element={<UAExpandedSaverPage />} />
           <Route path="/vj-delay-metrics" element={<VJDelayMetricsPage />} />
           <Route path="/seat-type-viewer" element={<SeatTypeViewer />} />
+          <Route path="/map-view" element={<MapView />} />
           <Route path="/" element={<Navigate to="/ac" replace />} />
         </Routes>
       </Layout.Content>

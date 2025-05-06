@@ -5,10 +5,14 @@
   "dependencies": {
     "@ant-design/icons": "^5.6.1",
     "@heroicons/react": "^2.2.0",
+    "@turf/turf": "^7.2.0",
     "antd": "^5.24.1",
+    "arc": "^0.1.4",
     "convex": "^1.21.0",
+    "csv-parse": "^5.6.0",
     "dayjs": "^1.11.13",
     "lucide-react": "^0.503.0",
+    "mapbox-gl": "^3.11.1",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -41,12 +45,13 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-react-app": "^7.0.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@types/mapbox-gl": "^3.4.1",
+    "eslint": "^8.57.1",
+    "eslint-config-react-app": "^7.0.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   }
