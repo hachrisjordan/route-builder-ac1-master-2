@@ -1,37 +1,24 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Storage } from '@google-cloud/storage';
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const { Storage } = require('@google-cloud/storage');
+const path = require('path');
 
-interface SeatConfig {
-  configurations_by_type: {
-    [key: string]: Array<{
-      variant: string;
-      config: string;
-      note: string;
-      color: string;
-    }>;
-  };
-  tail_number_distribution: {
-    [key: string]: string;
-  };
-}
+const app = express();
+const port = process.env.PORT || 3001;
+const isProduction = process.env.NODE_ENV === 'production';
 
-// Initialize Google Cloud Storage client
-const storage = new Storage({
-  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
-  credentials: JSON.parse(process.env.GOOGLE_CLOUD_CREDENTIALS || '{}'),
-});
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Initialize Google Cloud Storage client without credentials for public bucket
+const storage = new Storage();
 
 const BUCKET_NAME = 'exchange-rates-fabled-emblem-451602';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  // Only allow POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+// API endpoint
+app.post('/api/seat-config', async (req, res) => {
   try {
     const { airlineCode, tailNumber, variant } = req.body;
 
@@ -68,7 +55,7 @@ export default async function handler(
 
     // Download the current file content
     const [fileContent] = await file.download();
-    const data = JSON.parse(fileContent.toString()) as SeatConfig;
+    const data = JSON.parse(fileContent.toString());
 
     // Check if tail number already exists
     if (data.tail_number_distribution[tailNumber]) {
@@ -112,7 +99,21 @@ export default async function handler(
     console.error('Error updating seat configuration:', error);
     return res.status(500).json({ 
       error: 'Failed to update seat configuration',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error.message
     });
   }
-} 
+});
+
+// Serve static files in production
+if (isProduction) {
+  app.use(express.static(path.join(__dirname, 'build')));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+}
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running on port ${port} in ${isProduction ? 'production' : 'development'} mode`);
+});
