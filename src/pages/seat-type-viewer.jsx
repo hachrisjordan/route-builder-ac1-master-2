@@ -1090,11 +1090,28 @@ const parseSearchInput = (inputValue) => {
 
 // Helper: SeatMapTooltip
 const SeatMapTooltip = ({ airline, variant, children, aircraftType }) => {
+  const [imgSize, setImgSize] = useState(300); // Default size for 1920px width
+
+  // Calculate image size based on viewport width
+  useEffect(() => {
+    const calculateSize = () => {
+      const viewportWidth = window.innerWidth;
+      // Calculate size as percentage of viewport width (300px is ~15.6% of 1920px)
+      const newSize = Math.round(viewportWidth * 0.156);
+      setImgSize(newSize);
+    };
+
+    calculateSize();
+    window.addEventListener('resize', calculateSize);
+    return () => window.removeEventListener('resize', calculateSize);
+  }, []);
+
   const [imgExists, setImgExists] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
   const [img1Exists, setImg1Exists] = React.useState(false);
   const [img2Exists, setImg2Exists] = React.useState(false);
   const [checkedDouble, setCheckedDouble] = React.useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   const isDoubleDecker = aircraftType && (aircraftType.includes('747') || aircraftType.includes('380'));
   const url = `${STORAGE_BASE_URL}/seatmap/${airline}_${variant}.png`;
@@ -1138,56 +1155,196 @@ const SeatMapTooltip = ({ airline, variant, children, aircraftType }) => {
     // eslint-disable-next-line
   }, [airline, variant, isDoubleDecker]);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setModalVisible(true);
+  };
+
   if (!airline || !variant) return children;
   if (isDoubleDecker) {
     if (!checkedDouble) return children;
     if (!img1Exists && !img2Exists) return children;
     return (
-      <Tooltip
-        title={
-          <div>
-            <div style={{ display: 'flex', gap: 24, justifyContent: 'center', alignItems: 'flex-start', overflowX: 'auto' }}>
-              {img1Exists && (
-                <div style={{ textAlign: 'center' }}>
-                  <img src={url1} alt="Lower Deck" style={{ maxWidth: '48vw', maxHeight: 900, width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
-                  <div style={{ fontSize: 14, color: '#fff', marginTop: 4 }}>Lower Deck</div>
-                </div>
-              )}
-              {img2Exists && (
-                <div style={{ textAlign: 'center' }}>
-                  <img src={url2} alt="Upper Deck" style={{ maxWidth: '48vw', maxHeight: 900, width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
-                  <div style={{ fontSize: 14, color: '#fff', marginTop: 4 }}>Upper Deck</div>
-                </div>
-              )}
+      <>
+        <Tooltip
+          title={
+            <div>
+              <div style={{ display: 'flex', gap: 24, justifyContent: 'center', alignItems: 'flex-start', overflowX: 'auto' }}>
+                {img1Exists && (
+                  <div style={{ textAlign: 'center' }}>
+                    <img src={url1} alt="Lower Deck" style={{ maxWidth: '48vw', maxHeight: 900, width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
+                    <div style={{ fontSize: 14, color: '#fff', marginTop: 4 }}>Lower Deck</div>
+                  </div>
+                )}
+                {img2Exists && (
+                  <div style={{ textAlign: 'center' }}>
+                    <img src={url2} alt="Upper Deck" style={{ maxWidth: '48vw', maxHeight: 900, width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
+                    <div style={{ fontSize: 14, color: '#fff', marginTop: 4 }}>Upper Deck</div>
+                  </div>
+                )}
+              </div>
+              <div style={{ fontSize: 12, color: '#fff', marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
             </div>
-            <div style={{ fontSize: 12, color: '#fff', marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
+          }
+          overlayStyle={{ padding: 0, maxWidth: 1400, overflowX: 'auto' }}
+          mouseEnterDelay={0.2}
+          placement="right"
+        >
+          <span style={{ cursor: 'pointer', textDecoration: 'underline dotted' }} onClick={handleClick}>{children}</span>
+        </Tooltip>
+        <Modal
+          open={modalVisible}
+          onCancel={() => setModalVisible(false)}
+          footer={null}
+          width="auto"
+          style={{ top: 20 }}
+          bodyStyle={{ padding: 0 }}
+        >
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 16, 
+            padding: 16,
+            alignItems: 'center'
+          }}>
+            {img2Exists && (
+              <div style={{ 
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 8
+              }}>
+                <div style={{ 
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }}>Upper Deck</div>
+                <div style={{ 
+                  textAlign: 'center',
+                  transform: 'rotate(-90deg)',
+                  transformOrigin: 'center',
+                  width: `${imgSize}px`,
+                  height: `${imgSize}px`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '8px'
+                }}>
+                  <img 
+                    src={url2} 
+                    alt="Upper Deck" 
+                    style={{ 
+                      width: `${imgSize}px`,
+                      height: 'auto',
+                      display: 'block'
+                    }} 
+                    loading="lazy" 
+                  />
+                </div>
+              </div>
+            )}
+            {img1Exists && (
+              <div style={{ 
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 8
+              }}>
+                <div style={{ 
+                  fontSize: 16,
+                  fontWeight: 'bold'
+                }}>Lower Deck</div>
+                <div style={{ 
+                  textAlign: 'center',
+                  transform: 'rotate(-90deg)',
+                  transformOrigin: 'center',
+                  width: `${imgSize}px`,
+                  height: `${imgSize}px`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '8px'
+                }}>
+                  <img 
+                    src={url1} 
+                    alt="Lower Deck" 
+                    style={{ 
+                      width: `${imgSize}px`,
+                      height: 'auto',
+                      display: 'block'
+                    }} 
+                    loading="lazy" 
+                  />
+                </div>
+              </div>
+            )}
+            <div style={{ fontSize: 12, marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
           </div>
-        }
-        overlayStyle={{ padding: 0, maxWidth: 1400, overflowX: 'auto' }}
-        mouseEnterDelay={0.2}
-        placement="right"
-      >
-        <span style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}>{children}</span>
-      </Tooltip>
+        </Modal>
+      </>
     );
   }
   // Single deck
   if (!checked) return children;
   if (!imgExists) return children;
   return (
-    <Tooltip
-      title={
-        <div>
-          <img src={url} alt="Seat map" style={{ maxWidth: 1200, maxHeight: 900, display: 'block' }} loading="lazy" />
-          <div style={{ fontSize: 12, color: '#fff', marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
+    <>
+      <Tooltip
+        title={
+          <div>
+            <img src={url} alt="Seat map" style={{ maxWidth: 1200, maxHeight: 900, display: 'block' }} loading="lazy" />
+            <div style={{ fontSize: 12, color: '#fff', marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
+          </div>
+        }
+        overlayStyle={{ padding: 0 }}
+        mouseEnterDelay={0.2}
+        placement="right"
+      >
+        <span style={{ cursor: 'pointer', textDecoration: 'underline dotted' }} onClick={handleClick}>{children}</span>
+      </Tooltip>
+      <Modal
+        open={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        footer={null}
+        width="auto"
+        style={{ top: 20 }}
+        bodyStyle={{ padding: 0 }}
+      >
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center',
+          padding: 16
+        }}>
+          <div style={{ 
+            textAlign: 'center',
+            transform: 'rotate(-90deg)',
+            transformOrigin: 'center',
+            width: `${imgSize}px`,
+            height: `${imgSize}px`,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '8px'
+          }}>
+            <img 
+              src={url} 
+              alt="Seat map" 
+              style={{ 
+                width: `${imgSize}px`,
+                height: 'auto',
+                display: 'block'
+              }} 
+              loading="lazy" 
+            />
+          </div>
+          <div style={{ fontSize: 12, marginTop: 8, textAlign: 'center' }}>Source: aeroLOPA</div>
         </div>
-      }
-      overlayStyle={{ padding: 0 }}
-      mouseEnterDelay={0.2}
-      placement="right"
-    >
-      <span style={{ cursor: 'pointer', textDecoration: 'underline dotted' }}>{children}</span>
-    </Tooltip>
+      </Modal>
+    </>
   );
 };
 
