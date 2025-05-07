@@ -150,7 +150,7 @@ const getOntimeStatus = (ontime, date) => {
 
 // Calendar component exactly matching NormalRouteBuilderCalendar
 const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, seatData }) => {
-  const [currentDate, setCurrentDate] = useState(dayjs());
+  const [currentDate, setCurrentDate] = useState(dayjs().utc());
   
   const goToPrevMonth = () => {
     setCurrentDate(currentDate.subtract(1, 'month'));
@@ -163,8 +163,8 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
   const year = currentDate.year();
   const month = currentDate.month();
   const monthName = monthNames[month];
-  const firstDayOfMonth = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDayOfMonth = new Date(Date.UTC(year, month, 1)).getUTCDay();
+  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
   
   // Create a map of dates to registration numbers and ontime data
   const registrationByDate = {};
@@ -237,7 +237,7 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
         {/* Days of the month */}
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = i + 1;
-          const date = new Date(year, month, day);
+          const date = new Date(Date.UTC(year, month, day));
           const dateStr = date.toISOString().split('T')[0];
           const dayData = registrationByDate[dateStr];
           const registration = dayData?.registration;
