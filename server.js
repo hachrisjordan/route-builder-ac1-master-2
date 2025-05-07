@@ -4,18 +4,26 @@ const cors = require('cors');
 const { Storage } = require('@google-cloud/storage');
 const path = require('path');
 
+// Set timezone to Japan
+process.env.TZ = process.env.TZ || 'Asia/Tokyo';
+
 const app = express();
 const port = process.env.PORT || 3001;
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json());
 
 // Initialize Google Cloud Storage client without credentials for public bucket
-const storage = new Storage();
+const storage = new Storage({
+  projectId: process.env.GOOGLE_CLOUD_PROJECT
+});
 
-const BUCKET_NAME = 'exchange-rates-fabled-emblem-451602';
+const BUCKET_NAME = process.env.BUCKET_NAME || 'exchange-rates-fabled-emblem-451602';
 
 // API endpoint
 app.post('/api/seat-config', async (req, res) => {
