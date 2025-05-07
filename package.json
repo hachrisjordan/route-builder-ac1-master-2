@@ -52,7 +52,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "@types/google-cloud__storage": "^3.0.0",
     "@types/mapbox-gl": "^3.4.1",
     "@types/mapbox__mapbox-sdk": "^0.15.0",
     "eslint": "^8.57.1",
