@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node server.js",
+    "server": "node dev-server.js",
     "dev": "concurrently \"npm run start\" \"npm run server\"",
     "prod:build": "npm run build && NODE_ENV=production npm run server",
     "vercel-build": "npm run build"

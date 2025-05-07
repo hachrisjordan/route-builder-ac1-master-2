@@ -117,3 +117,6 @@ if (isProduction) {
 app.listen(port, () => {
   console.log(`Server running on port ${port} in ${isProduction ? 'production' : 'development'} mode`);
 });
+
+// Export the Express API
+module.exports = app;
