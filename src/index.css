@@ -22,11 +22,12 @@ body {
     min-height: 100%;
   }
 
+  
   /* Create a container to allow scrolling */
   body::after {
     content: '';
     display: block;
-    height: 100vh;
+    height: calc(100vh * (1920 / 100vw));
     width: 100%;
   }
 }
