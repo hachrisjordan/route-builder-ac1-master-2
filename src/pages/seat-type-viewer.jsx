@@ -3,6 +3,11 @@ import { Select, Input, Button, Space, message, Typography, Modal, Checkbox, Row
 import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import seatAF from '../data/seat_AF.json';
+
+// Configure dayjs with UTC plugin
+dayjs.extend(utc);
 
 const { Title, Text } = Typography;
 const { Option } = Select;
