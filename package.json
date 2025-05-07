@@ -4,24 +4,19 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.6.1",
-    "@google-cloud/storage": "^7.16.0",
+    "@google-cloud/storage": "^7.7.0",
     "@heroicons/react": "^2.2.0",
-<<<<<<< Updated upstream
-=======
-    "@mapbox/mapbox-gl-geocoder": "^5.0.3",
-    "@mapbox/mapbox-sdk": "^0.16.1",
+    "@mapbox/mapbox-gl-geocoder": "^6.0.0",
+    "@mapbox/mapbox-sdk": "^0.15.4",
     "@turf/turf": "^7.2.0",
-    "@types/google-cloud__storage": "^1.7.2",
->>>>>>> Stashed changes
     "antd": "^5.24.1",
+    "arc": "^0.1.4",
     "convex": "^1.21.0",
+    "csv-parse": "^5.6.0",
     "dayjs": "^1.11.13",
     "lucide-react": "^0.503.0",
-<<<<<<< Updated upstream
-=======
     "mapbox-gl": "^3.11.1",
-    "next": "^15.3.2",
->>>>>>> Stashed changes
+    "next": "^14.1.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -54,20 +49,16 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-react-app": "^7.0.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< Updated upstream
-=======
-    "@types/mapbox__mapbox-gl-geocoder": "^5.0.0",
-    "@types/mapbox__mapbox-sdk": "^0.16.2",
+    "@types/google-cloud__storage": "^3.0.0",
     "@types/mapbox-gl": "^3.4.1",
+    "@types/mapbox-gl-geocoder": "^4.7.7",
+    "@types/mapbox__mapbox-sdk": "^0.15.0",
     "eslint": "^8.57.1",
     "eslint-config-react-app": "^7.0.1",
->>>>>>> Stashed changes
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   }
