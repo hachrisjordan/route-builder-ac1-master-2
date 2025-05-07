@@ -30,6 +30,7 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
               <img src="/VJ.png" alt="VJ" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>VJ Delay Metrics</NavLink>
             <NavLink to="/seat-type-viewer" icon={<AirplaneIcon />}>Seat Type Viewer</NavLink>
+            <NavLink to="/map-view" icon={<AirplaneIcon />}>Map View</NavLink>
           </nav>
           
           {/* Mobile menu button */}
@@ -74,6 +75,9 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
           </Link>
           <Link to="/seat-type-viewer" onClick={() => setMobileMenuOpen(false)}>
             <AirplaneIcon /> Seat Type Viewer
+          </Link>
+          <Link to="/map-view" onClick={() => setMobileMenuOpen(false)}>
+            <AirplaneIcon /> Map View
           </Link>
         </div>
       </Drawer>

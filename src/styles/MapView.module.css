@@ -1,0 +1,75 @@
+.mapViewCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: fit-content;
+  min-width: 600px;
+}
+
+.formItem {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.elementLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.airportSelect {
+  width: 100%;
+}
+
+.airportSelect :global(.ant-select-selector) {
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  height: auto !important;
+}
+
+.airportSelect :global(.ant-select-selection-item) {
+  padding: 0 !important;
+}
+
+.airportSelect :global(.ant-select-selection-placeholder) {
+  color: #9CA3AF;
+}
+
+.airportSelect :global(.ant-select-dropdown) {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.airportSelect :global(.ant-select-item) {
+  padding: 8px 12px;
+}
+
+.airportSelect :global(.ant-select-item-option-selected) {
+  background-color: #F3F4F6;
+}
+
+.airportSelect :global(.ant-select-item-option-active) {
+  background-color: #F9FAFB;
+}
+
+.searchButton {
+  height: 32px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  white-space: nowrap;
+  min-width: 88px;
+}
+
+.searchButton :global(.anticon) {
+  font-size: 16px;
+} 
