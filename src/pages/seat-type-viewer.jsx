@@ -3,11 +3,15 @@ import { Select, Input, Button, Space, message, Typography, Modal, Checkbox, Row
 import { LeftOutlined, RightOutlined, FilterOutlined, BarChartOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import seatAF from '../data/seat_AF.json';
+
+// Configure dayjs with UTC plugin
+dayjs.extend(utc);
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const ALLOWED_AIRLINES = ['VJ','DE','4Y','WK','EW','FI','AZ','HO','VA','EN','CZ','DL','HA','B6','AA','UA','NK','F9','G4','AS','A3','NZ','OZ','MS','SA','TP','SN','AV','OU','MX','ME','KQ','MF','RO','AR','AM','SK','ZH','LA','AY','JX','FJ','KL','RJ','UL','AT','AC','LO','IB','CA','MU','TK','GA','MH','JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM','ET','PR','OS'];
+const ALLOWED_AIRLINES = ['WS','VJ','DE','4Y','WK','EW','FI','AZ','HO','VA','EN','CZ','DL','HA','B6','AA','UA','NK','F9','G4','AS','A3','NZ','OZ','MS','SA','TP','SN','AV','OU','MX','ME','KQ','MF','RO','AR','AM','SK','ZH','LA','AY','JX','FJ','KL','RJ','UL','AT','AC','LO','IB','CA','MU','TK','GA','MH','JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM','ET','PR','OS'];
 const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
@@ -151,7 +155,7 @@ const getOntimeStatus = (ontime, date) => {
 
 // Calendar component exactly matching NormalRouteBuilderCalendar
 const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, seatData }) => {
-  const [currentDate, setCurrentDate] = useState(dayjs());
+  const [currentDate, setCurrentDate] = useState(dayjs().utc());
   
   const goToPrevMonth = () => {
     setCurrentDate(currentDate.subtract(1, 'month'));
@@ -164,8 +168,8 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
   const year = currentDate.year();
   const month = currentDate.month();
   const monthName = monthNames[month];
-  const firstDayOfMonth = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDayOfMonth = new Date(Date.UTC(year, month, 1)).getUTCDay();
+  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
   
   // Create a map of dates to registration numbers and ontime data
   const registrationByDate = {};
@@ -238,7 +242,7 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
         {/* Days of the month */}
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = i + 1;
-          const date = new Date(year, month, day);
+          const date = new Date(Date.UTC(year, month, day));
           const dateStr = date.toISOString().split('T')[0];
           const dayData = registrationByDate[dateStr];
           const registration = dayData?.registration;
