@@ -38,7 +38,7 @@ class HoverPopup extends mapboxgl.Popup {
  * Clicking outside any point unselects.
  * Routes are shown when an airport is selected.
  */
-const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
+const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {}, routesData }) => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const selectedIataRef = useRef(null);
@@ -49,8 +49,8 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
   const hoverPopupRef = useRef(null);
   const [selectedAirport, setSelectedAirport] = useState(null);
   const [selectedRoute, setSelectedRoute] = useState(null);
-  const [routesGeojson, setRoutesGeojson] = useState(null);
   const [airportsGeojson, setAirportsGeojson] = useState(null);
+  const [filteredRoutes, setFilteredRoutes] = useState([]);
 
   // Log state changes
   useEffect(() => {
@@ -79,14 +79,14 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
     // Reset map visual state
     if (mapRef.current) {
       mapRef.current.setLayoutProperty('route-lines', 'visibility', 'none');
-      mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', 1);
+      
+      // Reset airport colors
       mapRef.current.setPaintProperty('airport-circles', 'circle-color', [
         'case',
         ['==', ['get', 'iata'], hoveredIataRef.current],
         '#00E5FF',
         [
-          'match',
-          ['get', 'size'],
+          'match', ['get', 'size'],
           'XL', '#ff3b30',
           'L', '#ff9500',
           'M', '#34c759',
@@ -94,6 +94,17 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
           '#007aff'
         ]
       ]);
+
+      // Reset airport sizes
+      mapRef.current.setPaintProperty('airport-circles', 'circle-radius', [
+        'case',
+        ['==', ['get', 'iata'], hoveredIataRef.current],
+        6,
+        4
+      ]);
+
+      // Reset airport opacity
+      mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', 1);
     }
 
     // Hide flight info panel
@@ -125,7 +136,6 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
         return res.json();
       })
       .then(data => {
-        setRoutesGeojson(data);
         console.log('Loaded routes GeoJSON:', data.features?.length, 'features');
       })
       .catch(err => {
@@ -149,7 +159,54 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
       });
   }, []);
 
-  // Filter routes based on selected airport and airline filter
+  // Update filteredRoutes when airline filter changes
+  useEffect(() => {
+    if (!mapRef.current || !mapRef.current.isStyleLoaded()) return;
+
+    // If no airports are selected but airline filter is active
+    if (!selectedIataRef.current && airlinesFilter?.airlines?.length > 0) {
+      // Get all routes for the selected airlines
+      const relevantRoutes = routesData.features.filter(route => {
+        if (airlinesFilter.mode === 'include') {
+          return airlinesFilter.airlines.includes(route.properties.carrier);
+        } else {
+          return !airlinesFilter.airlines.includes(route.properties.carrier);
+        }
+      });
+
+      setFilteredRoutes(relevantRoutes);
+
+      // Get all airports that have routes with ANY of the selected airlines
+      const relevantAirports = new Set();
+      relevantRoutes.forEach(route => {
+        relevantAirports.add(route.properties.from);
+        relevantAirports.add(route.properties.to);
+      });
+
+      console.log('Relevant airports for airlines:', Array.from(relevantAirports));
+
+      // Update airport opacity
+      mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', [
+        'case',
+        ['in', ['get', 'iata'], ['literal', Array.from(relevantAirports)]],
+        1,
+        0.2
+      ]);
+
+      // Hide all routes
+      mapRef.current.setLayoutProperty('route-lines', 'visibility', 'none');
+    } else if (selectedIataRef.current) {
+      // If an airport is selected, use the existing filter logic
+      filterRoutesByAirport(selectedIataRef.current);
+    } else {
+      // If no filter is active, reset everything
+      setFilteredRoutes([]);
+      mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', 1);
+      mapRef.current.setLayoutProperty('route-lines', 'visibility', 'none');
+    }
+  }, [airlinesFilter, routesData]);
+
+  // Update filteredRoutes when an airport is selected
   const filterRoutesByAirport = (iata) => {
     if (!mapRef.current || !mapRef.current.isStyleLoaded()) return;
     if (!mapRef.current.getLayer('route-lines')) {
@@ -159,6 +216,7 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
     console.log('Filtering routes for airport:', iata);
     if (!iata) {
       mapRef.current.setFilter('route-lines', ['==', ['get', 'from'], '']);
+      setFilteredRoutes([]);
       return;
     }
 
@@ -174,9 +232,10 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
       mapRef.current.setFilter('route-lines', airportFilter);
       
       // Get all routes from the selected airport
-      const routes = routesGeojson.features.filter(f => 
+      const routes = routesData.features.filter(f => 
         f.properties.from === iata || f.properties.to === iata
       );
+      setFilteredRoutes(routes);
 
       // Get unique connected airports
       const connectedAirports = new Set();
@@ -214,13 +273,14 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
     mapRef.current.setFilter('route-lines', combinedFilter);
 
     // Get filtered routes
-    const routes = routesGeojson.features.filter(f => {
+    const routes = routesData.features.filter(f => {
       const matchesAirport = f.properties.from === iata || f.properties.to === iata;
       const matchesAirline = airlinesFilter.mode === 'include' 
         ? airlinesFilter.airlines.includes(f.properties.carrier)
         : !airlinesFilter.airlines.includes(f.properties.carrier);
       return matchesAirport && matchesAirline;
     });
+    setFilteredRoutes(routes);
 
     // Get unique connected airports from filtered routes
     const connectedAirports = new Set();
@@ -243,16 +303,9 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
     ]);
   };
 
-  // Update route filter when airline filter changes
-  useEffect(() => {
-    if (mapRef.current && mapRef.current.isStyleLoaded() && selectedIataRef.current) {
-      filterRoutesByAirport(selectedIataRef.current);
-    }
-  }, [airlinesFilter]);
-
   // Create the map only once
   useEffect(() => {
-    if (!mapContainerRef.current || !routesGeojson || !airportsGeojson) return;
+    if (!mapContainerRef.current || !routesData || !airportsGeojson) return;
 
     // Initialize popups with custom classes
     firstPopupRef.current = new SelectedPopup({
@@ -336,7 +389,7 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
         left: 0;
         top: 0;
         bottom: 0;
-        width: 500px;
+        width: 600px;
         background: white;
         box-shadow: 2px 0 8px rgba(0,0,0,0.1);
         z-index: 1;
@@ -349,12 +402,15 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
         transform: translateX(0);
       }
       .flight-info-panel h3 {
-        margin: 0 0 20px;
+        margin: 20px 0 12px;
         color: #333;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 600;
-        padding-bottom: 12px;
-        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .flight-info-panel h3:first-child {
+        margin-top: 0;
       }
       .flight-card {
         background: #fff;
@@ -427,6 +483,145 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
       .flight-detail-value.distance {
         color: #3498db;
       }
+      .flight-legs {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 0;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+      .flight-leg {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .leg-route {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+      .leg-details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .leg-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .leg-detail-label {
+        font-size: 11px;
+        color: #666;
+        font-weight: 500;
+      }
+      .leg-detail-value {
+        font-size: 13px;
+        color: #333;
+        font-weight: 500;
+      }
+      .total-duration {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+      }
+      .total-distance {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #eee;
+        font-size: 13px;
+        color: #666;
+        font-weight: 500;
+        text-align: right;
+      }
+      .leg-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+      .airline-logos {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .leg-distance {
+        color: #666;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .airline-logo-container {
+        cursor: pointer;
+      }
+      .airline-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        border-radius: 4px;
+        border: 2px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+      .airline-logo:hover {
+        border-color: #9B59B6;
+      }
+      .airline-details {
+        display: none;
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 12px;
+        transition: all 0.3s ease;
+      }
+      .airline-details.expanded {
+        display: block;
+      }
+      .airline-details .airline-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+      .airline-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+      }
+      .info-item .label {
+        color: #666;
+      }
+      .info-item .value {
+        color: #333;
+        font-weight: 500;
+      }
+      .route-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+      }
+      .route-info:hover {
+        background-color: #f8f9fa;
+      }
+      .route {
+        font-weight: 500;
+        color: #333;
+      }
+      .right-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
     `;
     document.head.appendChild(style);
 
@@ -475,7 +670,7 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
         console.log('Adding routes source');
         mapRef.current.addSource('routes', {
           type: 'geojson',
-          data: routesGeojson,
+          data: routesData,
         });
       }
 
@@ -646,20 +841,116 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
             window.dispatchEvent(new CustomEvent('airportSelected', {
               detail: { selectedAirport: iata }
             }));
+            
+            // Show second airport popup
+            secondPopupRef.current
+              .setLngLat(feature.geometry.coordinates)
+              .setHTML(`
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="overflow: hidden; text-overflow: ellipsis;">${cityName} (${iata})</span>
+                  <button class="close-button" onclick="window.handleDeselect()">×</button>
+                </div>
+              `)
+              .addTo(mapRef.current);
 
+            // Update airport colors
+          mapRef.current.setPaintProperty('airport-circles', 'circle-color', [
+            'case',
+              ['==', ['get', 'iata'], selectedIataRef.current], '#9B59B6',
+              ['==', ['get', 'iata'], iata], '#9B59B6',
+              ['==', ['get', 'iata'], hoveredIataRef.current], '#00E5FF',
+              [
+                'match', ['get', 'size'],
+                'XL', '#ff3b30',
+                'L', '#ff9500',
+                'M', '#34c759',
+                'S', '#007aff',
+                '#007aff'
+              ]
+          ]);
+
+            // Update airport sizes
+            mapRef.current.setPaintProperty('airport-circles', 'circle-radius', [
+              'case',
+              ['==', ['get', 'iata'], selectedIataRef.current], 8,
+              ['==', ['get', 'iata'], iata], 8,
+              ['==', ['get', 'iata'], hoveredIataRef.current], 6,
+              4
+            ]);
+            
             // Find and highlight the route between them
-            const route = routesGeojson.features.find(f => 
+            const route = routesData.features.find(f => 
               (f.properties.from === selectedIataRef.current && f.properties.to === iata) ||
               (f.properties.from === iata && f.properties.to === selectedIataRef.current)
             );
+
+            console.log('Direct route search:', {
+              from: selectedIataRef.current,
+              to: iata,
+              found: !!route,
+              totalRoutes: routesData.features.length
+            });
+
+            // Find one-stop routes
+            const fromAirport = airportsGeojson.features.find(f => f.properties.iata === selectedIataRef.current);
+            const toAirport = airportsGeojson.features.find(f => f.properties.iata === iata);
+            
+            console.log('Finding one-stop routes:', {
+              from: fromAirport?.properties.iata,
+              to: toAirport?.properties.iata,
+              fromFound: !!fromAirport,
+              toFound: !!toAirport
+            });
+
+            const oneStopRoutes = findOneStopRoutes(fromAirport, toAirport, routesData, airportsGeojson);
+
+            console.log('One-stop routes found:', {
+              count: oneStopRoutes.length,
+              routes: oneStopRoutes.map(r => ({
+                via: r.connection.properties.iata,
+                firstLeg: `${r.firstLeg.properties.from}-${r.firstLeg.properties.to}`,
+                secondLeg: `${r.secondLeg.properties.from}-${r.secondLeg.properties.to}`
+              }))
+            });
+
+            // Sort one-stop routes by total duration
+            const sortedOneStopRoutes = [...oneStopRoutes].sort((a, b) => 
+              a.totalDuration - b.totalDuration
+            );
+
+            // If no direct routes and fewer than 5 one-stop routes, find two-stop routes
+            let sortedTwoStopRoutes = [];
+            if (!route && sortedOneStopRoutes.length < 5) {
+              console.log('No direct routes and fewer than 5 one-stop routes, finding two-stop routes');
+              const twoStopRoutes = findTwoStopRoutes(fromAirport, toAirport, routesData, airportsGeojson);
+              console.log('Two-stop routes found:', {
+                count: twoStopRoutes.length,
+                routes: twoStopRoutes.map(r => ({
+                  via: `${r.firstConnection.properties.iata}-${r.secondConnection.properties.iata}`,
+                  firstLeg: `${r.firstLeg.properties.from}-${r.firstLeg.properties.to}`,
+                  secondLeg: `${r.secondLeg.properties.from}-${r.secondLeg.properties.to}`,
+                  finalLeg: `${r.finalLeg.properties.from}-${r.finalLeg.properties.to}`
+                }))
+              });
+              sortedTwoStopRoutes = [...twoStopRoutes].sort((a, b) => a.totalDuration - b.totalDuration);
+            }
 
             if (route) {
               setSelectedRoute(route);
               
               // Find all unique routes from first to second airport only
-              const allRoutes = routesGeojson.features.filter(f => 
+              const allRoutes = routesData.features.filter(f => 
                 f.properties.from === selectedIataRef.current && f.properties.to === iata
-          );
+              );
+
+              console.log('All routes found:', {
+                count: allRoutes.length,
+                routes: allRoutes.map(r => ({
+                  from: r.properties.from,
+                  to: r.properties.to,
+                  carrier: r.properties.carrier
+                }))
+              });
 
               // Remove duplicate routes (same carrier and aircraft)
               const uniqueRoutes = allRoutes.reduce((acc, route) => {
@@ -670,30 +961,39 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
                 return acc;
               }, {});
 
+              console.log('Unique routes:', {
+                count: Object.keys(uniqueRoutes).length,
+                routes: Object.values(uniqueRoutes).map(r => ({
+                  from: r.properties.from,
+                  to: r.properties.to,
+                  carrier: r.properties.carrier
+                }))
+              });
+
               // Filter routes based on airline filter if active
               const filteredRoutes = Object.values(uniqueRoutes).filter(route => {
                 if (!airlinesFilter?.airlines?.length) return true;
                 
                 if (airlinesFilter.mode === 'include') {
                   return airlinesFilter.airlines.includes(route.properties.carrier);
-            } else {
+                } else {
                   return !airlinesFilter.airlines.includes(route.properties.carrier);
                 }
               });
 
-              // Show popup for second airport
-              const secondAirport = airportsGeojson.features.find(f => f.properties.iata === iata);
-              if (secondAirport) {
-                secondPopupRef.current
-                  .setLngLat(secondAirport.geometry.coordinates)
-                  .setHTML(`
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span style="overflow: hidden; text-overflow: ellipsis;">${secondAirport.properties.cityName} (${iata})</span>
-                      <button class="close-button" onclick="window.handleDeselect()">×</button>
-                    </div>
-                  `)
-                  .addTo(mapRef.current);
-              }
+              console.log('Filtered routes:', {
+                count: filteredRoutes.length,
+                routes: filteredRoutes.map(r => ({
+                  from: r.properties.from,
+                  to: r.properties.to,
+                  carrier: r.properties.carrier
+                }))
+              });
+
+              // Sort direct routes by duration
+              const sortedDirectRoutes = [...filteredRoutes].sort((a, b) => 
+                a.properties.duration - b.properties.duration
+              );
 
               // Show flight info panel
               const panel = document.querySelector('.flight-info-panel');
@@ -722,7 +1022,8 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
                 };
 
                 panel.innerHTML = `
-                  ${filteredRoutes.map((route, index) => {
+                  <h3>Direct Flights</h3>
+                  ${sortedDirectRoutes.map((route, index) => {
                     const airline = getAirlineInfo(route.properties.carrier);
                     const aircraftList = route.properties.aircraft_codes.split(',').map(code => getAircraftInfo(code.trim())).join('<br>');
                     return `
@@ -751,28 +1052,699 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
                       </div>
                     `;
                   }).join('')}
+
+                  ${sortedOneStopRoutes.length > 0 ? `
+                    <h3>Other Options</h3>
+                    ${sortedOneStopRoutes.map((route, index) => {
+                      // Get all unique airlines for each leg
+                      const firstLegAirlines = new Map();
+                      const secondLegAirlines = new Map();
+
+                      route.firstLegOptions.forEach(leg => {
+                        if (!firstLegAirlines.has(leg.properties.carrier)) {
+                          firstLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+
+                      route.secondLegOptions.forEach(leg => {
+                        if (!secondLegAirlines.has(leg.properties.carrier)) {
+                          secondLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+                      
+                      return `
+                        <div class="flight-card one-stop-route" 
+                             data-index="${index}"
+                             onmouseenter="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', ['==', ['get', 'from'], '${route.firstLeg.properties.from}'], ['==', ['get', 'to'], '${route.firstLeg.properties.to}']],
+                               ['all', ['==', ['get', 'from'], '${route.secondLeg.properties.from}'], ['==', ['get', 'to'], '${route.secondLeg.properties.to}']]
+                             ]); window.mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');"
+                             onmouseleave="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', 
+                                 ['==', ['get', 'from'], '${selectedIataRef.current}'],
+                                 ['==', ['get', 'to'], '${secondIataRef.current}']
+                               ],
+                               ['all',
+                                 ['==', ['get', 'from'], '${secondIataRef.current}'],
+                                 ['==', ['get', 'to'], '${selectedIataRef.current}']
+                               ]
+                             ]);">
+                          <div class="flight-route collapsed-view" onclick="this.parentElement.classList.toggle('expanded')">
+                            <div class="route">Via ${route.connection.properties.cityName}</div>
+                            <div class="total-duration">${formatDuration(route.totalDuration)}</div>
+                          </div>
+                          <div class="flight-legs">
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.firstLeg.properties.from} → ${route.firstLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#first-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.firstLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="first-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.secondLeg.properties.from} → ${route.secondLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#second-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.secondLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="second-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="total-distance">
+                            Total Distance: ${formatDistance(route.totalDistance)}
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
+                  ` : ''}
                 `;
+
+                // Add styles for the new layout
+                const style = document.createElement('style');
+                style.textContent = `
+                  .one-stop-route {
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+                  }
+
+                  .one-stop-route:hover {
+                    background-color: #f8f9fa;
+                  }
+
+                  .one-stop-route .flight-legs,
+                  .one-stop-route .total-distance {
+                    display: none;
+                  }
+                  .one-stop-route.expanded .flight-legs,
+                  .one-stop-route.expanded .total-distance {
+                    display: block;
+                  }
+                  .one-stop-route .collapsed-view {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 16px;
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                    margin-bottom: 0;
+                  }
+                  .one-stop-route .collapsed-view .route {
+                    flex: 1;
+                  }
+                  .one-stop-route .collapsed-view .total-duration {
+                    margin-left: auto;
+                    margin-right: 8px;
+                    font-weight: 500;
+                    color: #666;
+                  }
+                  .one-stop-route .collapsed-view:hover {
+                    background: #e9ecef;
+                  }
+                  .one-stop-route .collapsed-view::after {
+                    content: '▼';
+                    font-size: 12px;
+                    color: #666;
+                    transition: transform 0.2s ease;
+                  }
+                  .one-stop-route.expanded .collapsed-view::after {
+                    transform: rotate(180deg);
+                  }
+                  .flight-legs {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    margin: 16px 0;
+                    padding: 16px;
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                  }
+                  .flight-leg {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    padding: 16px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+                  }
+                  .flight-leg:not(:last-child) {
+                    border-bottom: 1px dashed #e9ecef;
+                    padding-bottom: 20px;
+                  }
+                  .flight-leg .leg-route {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                  }
+                  .airline-logos {
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                  }
+                  .airline-logo-container {
+                    position: relative;
+                    cursor: pointer;
+                  }
+                  .airline-logo-container .airline-logo {
+                    width: 32px;
+                    height: 32px;
+                    object-fit: contain;
+                    border-radius: 4px;
+                    border: 2px solid transparent;
+                    transition: border-color 0.2s ease;
+                  }
+                  .airline-logo-container:hover .airline-logo {
+                    border-color: #9B59B6;
+                  }
+                  .airline-logo-container .airline-details {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    padding: 12px;
+                    min-width: 200px;
+                    z-index: 10;
+                    margin-top: 8px;
+                  }
+                  .airline-logo-container.expanded .airline-details {
+                    display: block;
+                  }
+                  .airline-details::before {
+                    content: '';
+                    position: absolute;
+                    top: -6px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-bottom: 6px solid white;
+                  }
+                  .airline-details .airline-name {
+                    font-weight: 600;
+                    color: #333;
+                    margin-bottom: 8px;
+                    text-align: center;
+                  }
+                  .airline-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                  }
+                  .info-item {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 13px;
+                  }
+                  .info-item .label {
+                    color: #666;
+                  }
+                  .info-item .value {
+                    color: #333;
+                    font-weight: 500;
+                  }
+                  .total-distance {
+                    margin-top: 12px;
+                    padding-top: 12px;
+                    border-top: 1px solid #e9ecef;
+                    font-size: 13px;
+                    color: #666;
+                    font-weight: 500;
+                    text-align: right;
+                  }
+                `;
+                document.head.appendChild(style);
+
                 panel.classList.add('visible');
               }
 
               // Highlight only the selected routes
-          mapRef.current.setFilter('route-lines', [
-            'any',
+              mapRef.current.setFilter('route-lines', [
+                'any',
                 ...filteredRoutes.map(route => [
                   'all',
                   ['==', ['get', 'from'], route.properties.from],
                   ['==', ['get', 'to'], route.properties.to]
                 ])
-          ]);
-          mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');
+              ]);
+              mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');
 
               // Update airport opacity based on filtered routes
-          mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', [
-            'case',
+              mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', [
+                'case',
                 ['in', ['get', 'iata'], ['literal', [selectedIataRef.current, iata]]],
-            1,
-            0.2
-          ]);
+                1,
+                0.2
+              ]);
+            } else {
+              // No direct routes, show one-stop and two-stop routes
+              const panel = document.querySelector('.flight-info-panel');
+              if (panel) {
+                const formatDuration = (minutes) => {
+                  const hours = Math.floor(minutes / 60);
+                  const remainingMinutes = minutes % 60;
+                  return `${hours}h ${remainingMinutes}m`;
+                };
+
+                const formatDistance = (miles) => {
+                  const kilometers = (miles * 1.60934).toFixed(1);
+                  return `${miles.toFixed(1)} mi (${kilometers} km)`;
+                };
+
+                const getAirlineInfo = (code) => {
+                  const airline = airlines.find(a => a.value === code);
+                  return {
+                    name: airline.label,
+                    logo: `/${code.toLowerCase()}.png`
+                  };
+                };
+
+                const getAircraftInfo = (code) => {
+                  return aircraftCodes[code] || code;
+                };
+
+                panel.innerHTML = `
+                  ${sortedOneStopRoutes.length > 0 ? `
+                    <h3>Available Routes</h3>
+                    ${sortedOneStopRoutes.map((route, index) => {
+                      // Get all unique airlines for each leg
+                      const firstLegAirlines = new Map();
+                      const secondLegAirlines = new Map();
+
+                      route.firstLegOptions.forEach(leg => {
+                        if (!firstLegAirlines.has(leg.properties.carrier)) {
+                          firstLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+
+                      route.secondLegOptions.forEach(leg => {
+                        if (!secondLegAirlines.has(leg.properties.carrier)) {
+                          secondLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+                      
+                      return `
+                        <div class="flight-card one-stop-route" 
+                             data-index="${index}"
+                             onmouseenter="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', ['==', ['get', 'from'], '${route.firstLeg.properties.from}'], ['==', ['get', 'to'], '${route.firstLeg.properties.to}']],
+                               ['all', ['==', ['get', 'from'], '${route.secondLeg.properties.from}'], ['==', ['get', 'to'], '${route.secondLeg.properties.to}']]
+                             ]); window.mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');"
+                             onmouseleave="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', 
+                                 ['==', ['get', 'from'], '${selectedIataRef.current}'],
+                                 ['==', ['get', 'to'], '${secondIataRef.current}']
+                               ],
+                               ['all',
+                                 ['==', ['get', 'from'], '${secondIataRef.current}'],
+                                 ['==', ['get', 'to'], '${selectedIataRef.current}']
+                               ]
+                             ]);">
+                          <div class="flight-route collapsed-view" onclick="this.parentElement.classList.toggle('expanded')">
+                            <div class="route">Via ${route.connection.properties.cityName}</div>
+                            <div class="total-duration">${formatDuration(route.totalDuration)}</div>
+                          </div>
+                          <div class="flight-legs">
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.firstLeg.properties.from} → ${route.firstLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#first-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.firstLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="first-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.secondLeg.properties.from} → ${route.secondLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#second-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.secondLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="second-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="total-distance">
+                            Total Distance: ${formatDistance(route.totalDistance)}
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
+                  ` : ''}
+
+                  ${sortedTwoStopRoutes.length > 0 ? `
+                    <h3>Other Options</h3>
+                    ${sortedTwoStopRoutes.map((route, index) => {
+                      // Get all unique airlines for each leg
+                      const firstLegAirlines = new Map();
+                      const secondLegAirlines = new Map();
+                      const finalLegAirlines = new Map();
+
+                      route.firstLegOptions.forEach(leg => {
+                        if (!firstLegAirlines.has(leg.properties.carrier)) {
+                          firstLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+
+                      route.secondLegOptions.forEach(leg => {
+                        if (!secondLegAirlines.has(leg.properties.carrier)) {
+                          secondLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+
+                      route.finalLegOptions.forEach(leg => {
+                        if (!finalLegAirlines.has(leg.properties.carrier)) {
+                          finalLegAirlines.set(leg.properties.carrier, {
+                            airline: getAirlineInfo(leg.properties.carrier),
+                            duration: leg.properties.duration,
+                            aircraft: getAircraftInfo(leg.properties.aircraft_codes.split(',')[0]),
+                            distance: leg.properties.distance
+                          });
+                        }
+                      });
+                      
+                      return `
+                        <div class="flight-card one-stop-route" 
+                             data-index="${index}"
+                             onmouseenter="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', ['==', ['get', 'from'], '${route.firstLeg.properties.from}'], ['==', ['get', 'to'], '${route.firstLeg.properties.to}']],
+                               ['all', ['==', ['get', 'from'], '${route.secondLeg.properties.from}'], ['==', ['get', 'to'], '${route.secondLeg.properties.to}']],
+                               ['all', ['==', ['get', 'from'], '${route.finalLeg.properties.from}'], ['==', ['get', 'to'], '${route.finalLeg.properties.to}']]
+                             ]); window.mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');"
+                             onmouseleave="window.mapRef.current.setFilter('route-lines', [
+                               'any',
+                               ['all', 
+                                 ['==', ['get', 'from'], '${selectedIataRef.current}'],
+                                 ['==', ['get', 'to'], '${secondIataRef.current}']
+                               ],
+                               ['all',
+                                 ['==', ['get', 'from'], '${secondIataRef.current}'],
+                                 ['==', ['get', 'to'], '${selectedIataRef.current}']
+                               ]
+                             ]);">
+                          <div class="flight-route collapsed-view" onclick="this.parentElement.classList.toggle('expanded')">
+                            <div class="route">Via ${route.firstConnection.properties.cityName} and ${route.secondConnection.properties.cityName}</div>
+                            <div class="total-duration">${formatDuration(route.totalDuration)}</div>
+                          </div>
+                          <div class="flight-legs">
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.firstLeg.properties.from} → ${route.firstLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#first-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.firstLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(firstLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="first-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.secondLeg.properties.from} → ${route.secondLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#second-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.secondLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(secondLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="second-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                            <div class="flight-leg">
+                              <div class="leg-route">
+                                <div class="route-info">
+                                  <div class="route">${route.finalLeg.properties.from} → ${route.finalLeg.properties.to}</div>
+                                  <div class="right-content">
+                                    <div class="airline-logos">
+                                      ${Array.from(finalLegAirlines.values()).map((option, i) => `
+                                        <div class="airline-logo-container">
+                                          <img src="${option.airline.logo}" 
+                                               alt="${option.airline.name}" 
+                                               class="airline-logo"
+                                               onclick="event.stopPropagation(); document.querySelector('#final-leg-airline-${index}-${i}').classList.toggle('expanded')" />
+                                        </div>
+                                      `).join('')}
+                                    </div>
+                                    <div class="leg-distance">${formatDistance(route.finalLeg.properties.distance)}</div>
+                                  </div>
+                                </div>
+                                ${Array.from(finalLegAirlines.values()).map((option, i) => `
+                                  <div class="airline-details" id="final-leg-airline-${index}-${i}">
+                                    <div class="airline-name">${option.airline.name}</div>
+                                    <div class="airline-info">
+                                      <div class="info-item">
+                                        <span class="label">Duration:</span>
+                                        <span class="value">${formatDuration(option.duration)}</span>
+                                      </div>
+                                      <div class="info-item">
+                                        <span class="label">Aircraft:</span>
+                                        <span class="value">${option.aircraft}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                `).join('')}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="total-distance">
+                            Total Distance: ${formatDistance(route.totalDistance)}
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
+                  ` : ''}
+                `;
+
+                panel.classList.add('visible');
+              }
+
+              // Show all one-stop and two-stop routes on the map
+              const routeFilters = [
+                ...sortedOneStopRoutes.map(route => [
+                  'any',
+                  ['all', ['==', ['get', 'from'], route.firstLeg.properties.from], ['==', ['get', 'to'], route.firstLeg.properties.to]],
+                  ['all', ['==', ['get', 'from'], route.secondLeg.properties.from], ['==', ['get', 'to'], route.secondLeg.properties.to]]
+                ]),
+                ...sortedTwoStopRoutes.map(route => [
+                  'any',
+                  ['all', ['==', ['get', 'from'], route.firstLeg.properties.from], ['==', ['get', 'to'], route.firstLeg.properties.to]],
+                  ['all', ['==', ['get', 'from'], route.secondLeg.properties.from], ['==', ['get', 'to'], route.secondLeg.properties.to]],
+                  ['all', ['==', ['get', 'from'], route.finalLeg.properties.from], ['==', ['get', 'to'], route.finalLeg.properties.to]]
+                ])
+              ];
+
+              if (routeFilters.length > 0) {
+                mapRef.current.setFilter('route-lines', ['any', ...routeFilters]);
+                mapRef.current.setLayoutProperty('route-lines', 'visibility', 'visible');
+              }
+
+              // Update airport opacity to show all connection airports
+              const connectionAirports = new Set([
+                selectedIataRef.current,
+                iata,
+                ...sortedOneStopRoutes.map(r => r.connection.properties.iata),
+                ...sortedTwoStopRoutes.map(r => r.firstConnection.properties.iata),
+                ...sortedTwoStopRoutes.map(r => r.secondConnection.properties.iata)
+              ]);
+
+              mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', [
+                'case',
+                ['in', ['get', 'iata'], ['literal', Array.from(connectionAirports)]],
+                1,
+                0.2
+              ]);
             }
           } else {
             console.log('Setting first airport:', iata);
@@ -817,7 +1789,60 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
       mapRef.current.on('click', (e) => {
         const features = mapRef.current.queryRenderedFeatures(e.point, { layers: ['airport-circles'] });
         if (!features.length) {
-          handleDeselect();
+          // Only deselect airports, don't reset the filter
+          selectedIataRef.current = null;
+          secondIataRef.current = null;
+          setSelectedAirport(null);
+          setSelectedRoute(null);
+
+          // Remove popups
+          if (firstPopupRef.current) firstPopupRef.current.remove();
+          if (secondPopupRef.current) secondPopupRef.current.remove();
+          
+          // Reset map visual state but maintain filter
+          if (mapRef.current) {
+          mapRef.current.setLayoutProperty('route-lines', 'visibility', 'none');
+          
+            // If airline filter is active, maintain the opacity
+            if (airlinesFilter?.airlines?.length > 0) {
+              // Get all routes for the selected airlines
+              const relevantRoutes = routesData.features.filter(route => {
+                if (airlinesFilter.mode === 'include') {
+                  return airlinesFilter.airlines.includes(route.properties.carrier);
+                } else {
+                  return !airlinesFilter.airlines.includes(route.properties.carrier);
+                }
+              });
+
+              // Get all airports that have routes with ANY of the selected airlines
+              const relevantAirports = new Set();
+              relevantRoutes.forEach(route => {
+                relevantAirports.add(route.properties.from);
+                relevantAirports.add(route.properties.to);
+              });
+
+              console.log('Maintaining filter for airports:', Array.from(relevantAirports));
+
+              mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', [
+            'case',
+                ['in', ['get', 'iata'], ['literal', Array.from(relevantAirports)]],
+                1,
+                0.2
+              ]);
+            } else {
+              mapRef.current.setPaintProperty('airport-circles', 'circle-opacity', 1);
+            }
+          }
+
+          // Hide flight info panel
+          const panel = document.querySelector('.flight-info-panel');
+          if (panel) {
+            panel.classList.remove('visible');
+          }
+
+          // Notify parent component to clear both airports
+          console.log('Notifying parent: clearing airports');
+          onAirportSelect({ departure: null, arrival: null });
         }
       });
     });
@@ -825,7 +1850,7 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
     return () => {
       if (mapRef.current) mapRef.current.remove();
     };
-  }, [routesGeojson, airportsGeojson]);
+  }, [routesData, airportsGeojson]);
 
   // Add effect to handle parent airport selection
   useEffect(() => {
@@ -887,6 +1912,277 @@ const MapboxMap = ({ airlinesFilter, onAirportSelect = () => {} }) => {
       window.removeEventListener('parentAirportSelect', handleParentAirportSelect);
     };
   }, [airportsGeojson]);
+
+  // Helper function to calculate Haversine distance between two points
+  const calculateHaversineDistance = (lat1, lon1, lat2, lon2) => {
+    const R = 6371; // Earth's radius in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  };
+
+  // Helper function to find one-stop routes
+  const findOneStopRoutes = (fromAirport, toAirport, routesData, airportsData) => {
+    const directDistance = calculateHaversineDistance(
+      fromAirport.geometry.coordinates[1],
+      fromAirport.geometry.coordinates[0],
+      toAirport.geometry.coordinates[1],
+      toAirport.geometry.coordinates[0]
+    );
+
+    const maxTotalDistance = directDistance * 1.2;
+
+    // Get all possible connecting airports
+    const possibleConnections = new Set();
+    routesData.features.forEach(route => {
+      if (route.properties.from === fromAirport.properties.iata || 
+          route.properties.to === fromAirport.properties.iata) {
+        possibleConnections.add(route.properties.from === fromAirport.properties.iata ? 
+          route.properties.to : route.properties.from);
+      }
+    });
+
+    const oneStopRoutes = [];
+
+    // For each possible connection, find routes
+    possibleConnections.forEach(connectionIata => {
+      // Find all first legs (from -> connection)
+      const firstLegs = routesData.features.filter(route => 
+        route.properties.from === fromAirport.properties.iata && 
+        route.properties.to === connectionIata
+      );
+
+      // Find all second legs (connection -> to)
+      const secondLegs = routesData.features.filter(route => 
+        route.properties.from === connectionIata && 
+        route.properties.to === toAirport.properties.iata
+      );
+
+      // If we have both legs, calculate total distance
+      if (firstLegs.length > 0 && secondLegs.length > 0) {
+        const connectionAirport = airportsData.features.find(a => 
+          a.properties.iata === connectionIata
+        );
+
+        if (connectionAirport) {
+          // Apply airline filter to both legs
+          const filteredFirstLegs = firstLegs.filter(route => {
+            if (!airlinesFilter?.airlines?.length) return true;
+            if (airlinesFilter.mode === 'include') {
+              return airlinesFilter.airlines.includes(route.properties.carrier);
+            } else {
+              return !airlinesFilter.airlines.includes(route.properties.carrier);
+            }
+          });
+
+          const filteredSecondLegs = secondLegs.filter(route => {
+            if (!airlinesFilter?.airlines?.length) return true;
+            if (airlinesFilter.mode === 'include') {
+              return airlinesFilter.airlines.includes(route.properties.carrier);
+            } else {
+              return !airlinesFilter.airlines.includes(route.properties.carrier);
+            }
+          });
+
+          // Only add routes where both legs pass the filter
+          if (filteredFirstLegs.length > 0 && filteredSecondLegs.length > 0) {
+            // Find the best combination (shortest total duration)
+            let bestFirstLeg = filteredFirstLegs[0];
+            let bestSecondLeg = filteredSecondLegs[0];
+            let bestTotalDuration = bestFirstLeg.properties.duration + bestSecondLeg.properties.duration;
+
+            // Try all combinations to find the shortest total duration
+            filteredFirstLegs.forEach(firstLeg => {
+              filteredSecondLegs.forEach(secondLeg => {
+                const totalDuration = firstLeg.properties.duration + secondLeg.properties.duration;
+                if (totalDuration < bestTotalDuration) {
+                  bestFirstLeg = firstLeg;
+                  bestSecondLeg = secondLeg;
+                  bestTotalDuration = totalDuration;
+                }
+              });
+            });
+
+            const firstLegDistance = bestFirstLeg.properties.distance;
+            const secondLegDistance = bestSecondLeg.properties.distance;
+            const totalDistance = firstLegDistance + secondLegDistance;
+
+            // Only add route if total distance is within 1.2x direct distance
+            if (totalDistance <= maxTotalDistance) {
+              oneStopRoutes.push({
+                connection: connectionAirport,
+                firstLeg: bestFirstLeg,
+                secondLeg: bestSecondLeg,
+                totalDistance,
+                totalDuration: bestTotalDuration,
+                firstLegOptions: filteredFirstLegs,
+                secondLegOptions: filteredSecondLegs
+              });
+            }
+          }
+        }
+      }
+    });
+
+    return oneStopRoutes;
+  };
+
+  // Helper function to find two-stop routes
+  const findTwoStopRoutes = (fromAirport, toAirport, routesData, airportsData) => {
+    const directDistance = calculateHaversineDistance(
+      fromAirport.geometry.coordinates[1],
+      fromAirport.geometry.coordinates[0],
+      toAirport.geometry.coordinates[1],
+      toAirport.geometry.coordinates[0]
+    );
+
+    const maxTotalDistance = directDistance * 1.2;
+
+    // Get all possible first connections
+    const firstConnections = new Set();
+    routesData.features.forEach(route => {
+      if (route.properties.from === fromAirport.properties.iata) {
+        firstConnections.add(route.properties.to);
+      }
+    });
+
+    const twoStopRoutes = [];
+
+    // For each first connection, find possible second connections
+    firstConnections.forEach(firstConnectionIata => {
+      const secondConnections = new Set();
+      routesData.features.forEach(route => {
+        if (route.properties.from === firstConnectionIata) {
+          secondConnections.add(route.properties.to);
+        }
+      });
+
+      // For each second connection, check if there's a route to destination
+      secondConnections.forEach(secondConnectionIata => {
+        const finalLegs = routesData.features.filter(route => 
+          route.properties.from === secondConnectionIata && 
+          route.properties.to === toAirport.properties.iata
+        );
+
+        if (finalLegs.length > 0) {
+          // Find all first legs (from -> first connection)
+          const firstLegs = routesData.features.filter(route => 
+            route.properties.from === fromAirport.properties.iata && 
+            route.properties.to === firstConnectionIata
+          );
+
+          // Find all second legs (first connection -> second connection)
+          const secondLegs = routesData.features.filter(route => 
+            route.properties.from === firstConnectionIata && 
+            route.properties.to === secondConnectionIata
+          );
+
+          if (firstLegs.length > 0 && secondLegs.length > 0) {
+            const firstConnectionAirport = airportsData.features.find(a => 
+              a.properties.iata === firstConnectionIata
+            );
+            const secondConnectionAirport = airportsData.features.find(a => 
+              a.properties.iata === secondConnectionIata
+            );
+
+            if (firstConnectionAirport && secondConnectionAirport) {
+              // Apply airline filter to all legs
+              const filteredFirstLegs = firstLegs.filter(route => {
+                if (!airlinesFilter?.airlines?.length) return true;
+                if (airlinesFilter.mode === 'include') {
+                  return airlinesFilter.airlines.includes(route.properties.carrier);
+                } else {
+                  return !airlinesFilter.airlines.includes(route.properties.carrier);
+                }
+              });
+
+              const filteredSecondLegs = secondLegs.filter(route => {
+                if (!airlinesFilter?.airlines?.length) return true;
+                if (airlinesFilter.mode === 'include') {
+                  return airlinesFilter.airlines.includes(route.properties.carrier);
+                } else {
+                  return !airlinesFilter.airlines.includes(route.properties.carrier);
+                }
+              });
+
+              const filteredFinalLegs = finalLegs.filter(route => {
+                if (!airlinesFilter?.airlines?.length) return true;
+                if (airlinesFilter.mode === 'include') {
+                  return airlinesFilter.airlines.includes(route.properties.carrier);
+                } else {
+                  return !airlinesFilter.airlines.includes(route.properties.carrier);
+                }
+              });
+
+              if (filteredFirstLegs.length > 0 && filteredSecondLegs.length > 0 && filteredFinalLegs.length > 0) {
+                // Find the best combination (shortest total duration)
+                let bestFirstLeg = filteredFirstLegs[0];
+                let bestSecondLeg = filteredSecondLegs[0];
+                let bestFinalLeg = filteredFinalLegs[0];
+                let bestTotalDuration = bestFirstLeg.properties.duration + 
+                                     bestSecondLeg.properties.duration + 
+                                     bestFinalLeg.properties.duration;
+
+                // Try all combinations to find the shortest total duration
+                filteredFirstLegs.forEach(firstLeg => {
+                  filteredSecondLegs.forEach(secondLeg => {
+                    filteredFinalLegs.forEach(finalLeg => {
+                      const totalDuration = firstLeg.properties.duration + 
+                                         secondLeg.properties.duration + 
+                                         finalLeg.properties.duration;
+                      if (totalDuration < bestTotalDuration) {
+                        bestFirstLeg = firstLeg;
+                        bestSecondLeg = secondLeg;
+                        bestFinalLeg = finalLeg;
+                        bestTotalDuration = totalDuration;
+                      }
+                    });
+                  });
+                });
+
+                const totalDistance = bestFirstLeg.properties.distance + 
+                                   bestSecondLeg.properties.distance + 
+                                   bestFinalLeg.properties.distance;
+
+                // Only add route if total distance is within 1.2x direct distance
+                if (totalDistance <= maxTotalDistance) {
+                  twoStopRoutes.push({
+                    firstConnection: firstConnectionAirport,
+                    secondConnection: secondConnectionAirport,
+                    firstLeg: bestFirstLeg,
+                    secondLeg: bestSecondLeg,
+                    finalLeg: bestFinalLeg,
+                    totalDistance,
+                    totalDuration: bestTotalDuration,
+                    firstLegOptions: filteredFirstLegs,
+                    secondLegOptions: filteredSecondLegs,
+                    finalLegOptions: filteredFinalLegs
+                  });
+                }
+              }
+            }
+          }
+        }
+      });
+    });
+
+    return twoStopRoutes;
+  };
+
+  // Make the map reference and filtered routes available globally
+  useEffect(() => {
+    window.mapRef = mapRef;
+    window.filteredRoutes = filteredRoutes;
+    return () => {
+      delete window.mapRef;
+      delete window.filteredRoutes;
+    };
+  }, [filteredRoutes]);
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>

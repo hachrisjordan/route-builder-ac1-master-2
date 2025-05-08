@@ -56,6 +56,8 @@ const MapView = () => {
   });
   const [airlinesSearchText, setAirlinesSearchText] = useState('');
   const [availableAirlines, setAvailableAirlines] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [routesData, setRoutesData] = useState(null);
 
   // Transform airports data to array format
   const airportsList = Object.values(airportsData).map(airport => ({
@@ -64,6 +66,47 @@ const MapView = () => {
     Country: airport.Country,
     Name: airport.Name
   }));
+
+  // Fetch routes and extract unique airlines
+  useEffect(() => {
+    setIsLoading(true);
+    fetch('https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/routes.geojson')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch routes.geojson');
+        return res.json();
+      })
+      .then(data => {
+        setRoutesData(data);
+        
+        // Extract unique airlines from routes
+        const uniqueAirlines = new Set();
+        data.features.forEach(route => {
+          if (route.properties.carrier) {
+            uniqueAirlines.add(route.properties.carrier);
+          }
+        });
+
+        // Map airline codes to their full data and sort by name
+        const airlinesList = Array.from(uniqueAirlines)
+          .map(code => {
+            const airline = airlines.find(a => a.value === code);
+            return airline ? {
+              code: airline.value,
+              name: airline.label
+            } : null;
+          })
+          .filter(Boolean) // Remove any null entries
+          .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically by name
+
+        console.log('Available airlines:', airlinesList);
+        setAvailableAirlines(airlinesList);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load routes GeoJSON:', err);
+        setIsLoading(false);
+      });
+  }, []);
 
   // Handle airport selection from map
   const handleMapAirportSelect = (selectedAirports) => {
@@ -125,50 +168,6 @@ const MapView = () => {
 
     window.addEventListener('airportDeselected', handleMapDeselection);
     return () => window.removeEventListener('airportDeselected', handleMapDeselection);
-  }, []);
-
-  // Fetch routes and extract unique airlines
-  useEffect(() => {
-    fetch('https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/routes.geojson')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch routes.geojson');
-        return res.json();
-      })
-      .then(data => {
-        // Extract unique airlines from routes
-        const uniqueAirlines = new Set();
-        data.features.forEach(route => {
-          if (route.properties.carrier) {
-            uniqueAirlines.add(route.properties.carrier);
-          }
-        });
-
-        console.log('Found airline codes:', Array.from(uniqueAirlines));
-
-        // Map airline codes to their full data
-        const airlinesList = Array.from(uniqueAirlines)
-          .map(code => {
-            // Find airline by matching the value (which is the IATA code)
-            const airline = airlines.find(a => a.value === code);
-            if (airline) {
-              console.log('Matched airline:', code, airline);
-              return {
-                code: airline.value,
-                name: airline.label
-              };
-            }
-            console.log('No match found for airline code:', code);
-            return null;
-          })
-          .filter(Boolean) // Remove any null entries
-          .sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically by name
-
-        console.log('Available airlines:', airlinesList);
-        setAvailableAirlines(airlinesList);
-      })
-      .catch(err => {
-        console.error('Failed to load routes GeoJSON:', err);
-      });
   }, []);
 
   // Only add individual airports, not groups
@@ -261,6 +260,7 @@ const MapView = () => {
         <MapboxMap 
           airlinesFilter={airlinesFilter}
           onAirportSelect={handleMapAirportSelect}
+          routesData={routesData}
         />
       </div>
       {/* Overlay search bar */}
@@ -330,7 +330,6 @@ const MapView = () => {
             width: 'fit-content',
           }}
         >
-          <div className={styles.elementLabel}>Airlines:</div>
           <Dropdown 
             overlay={
               <AirlinesFilter 
@@ -350,9 +349,9 @@ const MapView = () => {
               style={{ 
                 fontWeight: airlinesFilter.airlines.length > 0 ? 600 : 400
               }}
-          >
+            >
               Airlines {airlinesFilter.airlines.length > 0 && `(${airlinesFilter.airlines.length})`}
-          </Button>
+            </Button>
           </Dropdown>
         </div>
       </div>
