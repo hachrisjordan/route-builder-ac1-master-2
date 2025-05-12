@@ -26,9 +26,9 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
             <NavLink to="/ua-expanded-saver" icon={
               <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
             }>UA Expanded Saver</NavLink>
-            <NavLink to="/vj-delay-metrics" icon={
+            {/* <NavLink to="/vj-delay-metrics" icon={
               <img src="/VJ.png" alt="VJ" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} />
-            }>VJ Delay Metrics</NavLink>
+            }>VJ Delay Metrics</NavLink> */}
             <NavLink to="/seat-type-viewer" icon={<AirplaneIcon />}>Seat Type Viewer</NavLink>
           </nav>
           
@@ -69,9 +69,9 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
           <Link to="/ua-expanded-saver" onClick={() => setMobileMenuOpen(false)}>
             <img src="/UA.png" alt="UA" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> UA Expanded Saver
           </Link>
-          <Link to="/vj-delay-metrics" onClick={() => setMobileMenuOpen(false)}>
+          {/* <Link to="/vj-delay-metrics" onClick={() => setMobileMenuOpen(false)}>
             <img src="/VJ.png" alt="VJ" style={{ width: '18px', height: '18px', marginRight: '8px', borderRadius: '3px' }} /> VJ Delay Metrics
-          </Link>
+          </Link> */}
           <Link to="/seat-type-viewer" onClick={() => setMobileMenuOpen(false)}>
             <AirplaneIcon /> Seat Type Viewer
           </Link>

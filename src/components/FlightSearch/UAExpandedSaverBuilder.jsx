@@ -162,9 +162,9 @@ const UAExpandedSaverBuilder = ({ onSearch, isLoading, errors, cachedApiKey, sav
     loading: loading,
     options: airports.map(airport => ({
       value: airport.IATA,
-      label: `${airport.IATA} - ${airport.Name} (${airport.Country})`,
+      label: `${airport.IATA} - ${airport.CityName} (${airport.Country})`,
       iata: airport.IATA,
-      name: airport.Name,
+      name: airport.CityName,
       country: airport.Country,
       zone: airport.copazone
     })),

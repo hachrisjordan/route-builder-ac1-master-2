@@ -425,7 +425,7 @@ const ResultsTable = ({
 
   const renderConnectionsDropdown = () => {
     // Create a map of IATA codes to airport names
-    const airportMap = new Map(airports.map(airport => [airport.IATA, airport.Name]));
+    const airportMap = new Map(airports.map(airport => [airport.IATA, airport.CityName]));
 
     const filteredAirports = uniqueAirports.filter(airport => {
       const airportName = airportMap.get(airport) || '';

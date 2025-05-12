@@ -2412,7 +2412,7 @@ const NormalFlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRang
       const airport = airportMap.get(code);
       return {
         code: code,
-        name: airport ? `${airport.Name} (${airport.Country})` : code,
+        name: airport ? `${airport.CityName} (${airport.Country})` : code,
         isGroup: false
       };
     });
@@ -2421,7 +2421,7 @@ const NormalFlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRang
       const airport = airportMap.get(code);
       return {
         code: code,
-        name: airport ? `${airport.Name} (${airport.Country})` : code,
+        name: airport ? `${airport.CityName} (${airport.Country})` : code,
         isGroup: false
       };
     });

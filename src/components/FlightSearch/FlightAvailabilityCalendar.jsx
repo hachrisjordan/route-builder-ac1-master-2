@@ -263,7 +263,7 @@ const FlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRangeSelec
     .map(iata => {
       const airport = airports.find(a => a.IATA === iata);
       return {
-        label: airport ? `${airport.IATA} - ${airport.Name}` : iata,
+        label: airport ? `${airport.IATA} - ${airport.CityName}` : iata,
         value: iata
       };
     });
@@ -314,6 +314,16 @@ const FlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRangeSelec
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const getCityNameFromIATA = (iata) => {
+    const airport = airports.find(a => a.IATA === iata);
+    return airport ? airport.CityName : iata;
+  };
+
+  const formatRouteWithCityNames = (route) => {
+    const [from, to] = route.split('-');
+    return `${getCityNameFromIATA(from)} to ${getCityNameFromIATA(to)}`;
+  };
 
   return (
     <div>

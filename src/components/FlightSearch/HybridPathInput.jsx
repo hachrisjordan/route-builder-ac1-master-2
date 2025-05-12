@@ -68,7 +68,7 @@ const HybridPathInput = ({ value, onChange, placeholder = 'Enter path (e.g. NRT/
     ...airportGroupOptions,
     ...airports.map(airport => ({
       value: airport.IATA,
-      label: `${airport.IATA} - ${airport.Name} (${airport.Country})`,
+      label: `${airport.IATA} - ${airport.CityName} (${airport.Country})`,
       isGroup: false
     }))
   ];

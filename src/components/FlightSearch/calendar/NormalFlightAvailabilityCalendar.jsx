@@ -262,7 +262,7 @@ const NormalFlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRang
         const airport = airportMap.get(code);
         return {
           code,
-          name: airport ? `${airport.Name} (${airport.Country})` : code,
+          name: airport ? `${airport.CityName} (${airport.Country})` : code,
           iata: code,
           isGroup: false,
           isIntermediate: intermediates.has(code)
@@ -276,7 +276,7 @@ const NormalFlightAvailabilityCalendar = ({ flightData, currentRoute, onDateRang
         const airport = airportMap.get(code);
         return {
           code,
-          name: airport ? `${airport.Name} (${airport.Country})` : code,
+          name: airport ? `${airport.CityName} (${airport.Country})` : code,
           iata: code,
           isGroup: false,
           isIntermediate: intermediates.has(code)

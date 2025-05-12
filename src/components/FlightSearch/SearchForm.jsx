@@ -67,9 +67,9 @@ const SearchForm = ({ onSearch, isLoading, errors }) => {
     suffixIcon: null,
     options: airports.map(airport => ({
       value: airport.IATA,
-      label: `${airport.IATA} - ${airport.Name} (${airport.Country})`,
+      label: `${airport.IATA} - ${airport.CityName} (${airport.Country})`,
       iata: airport.IATA,
-      name: airport.Name,
+      name: airport.CityName,
       country: airport.Country
     })),
     optionRender: (option) => {

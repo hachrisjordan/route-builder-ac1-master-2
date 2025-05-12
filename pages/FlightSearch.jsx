@@ -12,7 +12,7 @@ function FlightSearch() {
   // Convert airports data to react-select format
   const airportOptions = airports.map(airport => ({
     value: airport.IATA,
-    label: `${airport.Name} (${airport.IATA})`
+    label: `${airport.CityName} (${airport.IATA})`
   }));
 
   return (
