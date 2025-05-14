@@ -9,7 +9,8 @@
       "Zone": "Pacific",
       "CountryCode": "NZ",
       "TC": "TC3",
-      "copazone": "Australia & New Zealand"
+      "copazone": "Australia & New Zealand",
+      "CityName": "Auckland"
     },
     {
       "Country": "Australia",
@@ -20,7 +21,8 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia & New Zealand"
+      "copazone": "Australia & New Zealand",
+      "CityName": "Brisbane"
     },
     {
       "Country": "Australia",
@@ -31,7 +33,8 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia & New Zealand"
+      "copazone": "Australia & New Zealand",
+      "CityName": "Sydney"
     },
     {
       "Country": "Australia",
@@ -42,7 +45,8 @@
       "Zone": "Pacific",
       "CountryCode": "AU",
       "TC": "TC3",
-      "copazone": "Australia & New Zealand"
+      "copazone": "Australia & New Zealand",
+      "CityName": "Melbourne"
     }
   ],
   "Caribbean": [
@@ -55,7 +59,8 @@
       "Zone": "North America",
       "CountryCode": "AG",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Antigua"
     },
     {
       "Country": "Aruba",
@@ -66,7 +71,8 @@
       "Zone": "North America",
       "CountryCode": "AW",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Aruba"
     },
     {
       "Country": "Bermuda",
@@ -77,7 +83,8 @@
       "Zone": "North America",
       "CountryCode": "BM",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Bermuda"
     },
     {
       "Country": "Barbados",
@@ -88,7 +95,8 @@
       "Zone": "North America",
       "CountryCode": "BB",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Bridgetown"
     },
     {
       "Country": "Bahamas",
@@ -99,7 +107,8 @@
       "Zone": "North America",
       "CountryCode": "BS",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Nassau"
     },
     {
       "Country": "Netherlands",
@@ -110,7 +119,8 @@
       "Zone": "Atlantic",
       "CountryCode": "BQ",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Bonaire"
     },
     {
       "Country": "Puerto Rico",
@@ -121,7 +131,8 @@
       "Zone": "North America",
       "CountryCode": "PR",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Aguadilla"
     },
     {
       "Country": "Mexico",
@@ -132,7 +143,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Cancun"
     },
     {
       "Country": "Curacao",
@@ -143,7 +155,8 @@
       "Zone": "North America",
       "CountryCode": "CW",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Curacao"
     },
     {
       "Country": "Jamaica",
@@ -154,7 +167,8 @@
       "Zone": "North America",
       "CountryCode": "JM",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Montego Bay"
     },
     {
       "Country": "Puerto Rico",
@@ -165,7 +179,8 @@
       "Zone": "North America",
       "CountryCode": "PR",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "San Juan"
     },
     {
       "Country": "Cayman Islands",
@@ -176,7 +191,8 @@
       "Zone": "North America",
       "CountryCode": "KY",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Grand Cayman Island"
     },
     {
       "Country": "Turks And Caicos Islands",
@@ -187,7 +203,8 @@
       "Zone": "North America",
       "CountryCode": "TC",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Providenciales"
     },
     {
       "Country": "Dominican Republic",
@@ -198,7 +215,8 @@
       "Zone": "North America",
       "CountryCode": "DO",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Puerto Plata"
     },
     {
       "Country": "Dominican Republic",
@@ -209,7 +227,8 @@
       "Zone": "North America",
       "CountryCode": "DO",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Punta Cana"
     },
     {
       "Country": "Dominican Republic",
@@ -220,7 +239,8 @@
       "Zone": "North America",
       "CountryCode": "DO",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Santo Domingo"
     },
     {
       "Country": "Saint Kitts And Nevis",
@@ -231,7 +251,8 @@
       "Zone": "North America",
       "CountryCode": "KN",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Saint Kitts"
     },
     {
       "Country": "Dominican Republic",
@@ -242,7 +263,8 @@
       "Zone": "North America",
       "CountryCode": "DO",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Santiago"
     },
     {
       "Country": "Virgin Islands Us",
@@ -253,7 +275,8 @@
       "Zone": "North America",
       "CountryCode": "VI",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Saint Thomas"
     },
     {
       "Country": "Netherlands",
@@ -264,7 +287,8 @@
       "Zone": "Atlantic",
       "CountryCode": "SX",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Sint Maarten"
     },
     {
       "Country": "Mexico",
@@ -275,7 +299,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "TULUM"
     },
     {
       "Country": "Saint Lucia",
@@ -286,7 +311,8 @@
       "Zone": "North America",
       "CountryCode": "LC",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Saint Lucia"
     },
     {
       "Country": "Cuba",
@@ -297,7 +323,8 @@
       "Zone": "North America",
       "CountryCode": "CU",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Havana"
     },
     {
       "Country": "Trinidad And Tobago",
@@ -308,7 +335,8 @@
       "Zone": "North America",
       "CountryCode": "TT",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Port Of Spain"
     },
     {
       "Country": "Dominica",
@@ -319,7 +347,8 @@
       "Zone": "North America",
       "CountryCode": "DM",
       "TC": "TC1",
-      "copazone": "Caribbean"
+      "copazone": "Caribbean",
+      "CityName": "Dominica"
     }
   ],
   "Central / Southern Africa": [
@@ -332,7 +361,8 @@
       "Zone": "Atlantic",
       "CountryCode": "GH",
       "TC": "TC2",
-      "copazone": "Central / Southern Africa"
+      "copazone": "Central / Southern Africa",
+      "CityName": "Accra"
     },
     {
       "Country": "Nigeria",
@@ -343,7 +373,8 @@
       "Zone": "Atlantic",
       "CountryCode": "NG",
       "TC": "TC2",
-      "copazone": "Central / Southern Africa"
+      "copazone": "Central / Southern Africa",
+      "CityName": "Lagos"
     },
     {
       "Country": "South Africa",
@@ -354,7 +385,8 @@
       "Zone": "Atlantic",
       "CountryCode": "ZA",
       "TC": "TC2",
-      "copazone": "Central / Southern Africa"
+      "copazone": "Central / Southern Africa",
+      "CityName": "Cape Town"
     },
     {
       "Country": "South Africa",
@@ -365,7 +397,8 @@
       "Zone": "Atlantic",
       "CountryCode": "ZA",
       "TC": "TC2",
-      "copazone": "Central / Southern Africa"
+      "copazone": "Central / Southern Africa",
+      "CityName": "Johannesburg"
     }
   ],
   "Central America": [
@@ -378,7 +411,8 @@
       "Zone": "North America",
       "CountryCode": "BZ",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Belize City"
     },
     {
       "Country": "Costa Rica",
@@ -389,7 +423,8 @@
       "Zone": "North America",
       "CountryCode": "CR",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Guanacaste"
     },
     {
       "Country": "Costa Rica",
@@ -400,7 +435,8 @@
       "Zone": "North America",
       "CountryCode": "CR",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "San Jose"
     },
     {
       "Country": "Guatemala",
@@ -411,7 +447,8 @@
       "Zone": "North America",
       "CountryCode": "GT",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Guatemala City"
     },
     {
       "Country": "El Salvador",
@@ -422,7 +459,8 @@
       "Zone": "North America",
       "CountryCode": "SV",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "San Salvador"
     },
     {
       "Country": "Honduras",
@@ -433,7 +471,8 @@
       "Zone": "North America",
       "CountryCode": "HN",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "San Pedro Sula"
     },
     {
       "Country": "Nicaragua",
@@ -444,7 +483,8 @@
       "Zone": "North America",
       "CountryCode": "NI",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Managua"
     },
     {
       "Country": "Honduras",
@@ -455,7 +495,8 @@
       "Zone": "North America",
       "CountryCode": "HN",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Roatan"
     },
     {
       "Country": "Honduras",
@@ -466,7 +507,8 @@
       "Zone": "North America",
       "CountryCode": "HN",
       "TC": "TC1",
-      "copazone": "Central America"
+      "copazone": "Central America",
+      "CityName": "Comayagua"
     }
   ],
   "Colombia": [
@@ -479,7 +521,8 @@
       "Zone": "South America",
       "CountryCode": "CO",
       "TC": "TC1",
-      "copazone": "Colombia"
+      "copazone": "Colombia",
+      "CityName": "Bogota"
     },
     {
       "Country": "Colombia",
@@ -490,7 +533,8 @@
       "Zone": "South America",
       "CountryCode": "CO",
       "TC": "TC1",
-      "copazone": "Colombia"
+      "copazone": "Colombia",
+      "CityName": "Medellin"
     }
   ],
   "Europe": [
@@ -503,7 +547,8 @@
       "Zone": "Atlantic",
       "CountryCode": "DE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Berlin"
     },
     {
       "Country": "Ireland",
@@ -514,7 +559,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Dublin"
     },
     {
       "Country": "United Kingdom",
@@ -525,7 +571,8 @@
       "Zone": "Atlantic",
       "CountryCode": "GB",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Edinburgh"
     },
     {
       "Country": "Switzerland",
@@ -536,7 +583,8 @@
       "Zone": "Atlantic",
       "CountryCode": "CH",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Geneva"
     },
     {
       "Country": "Portugal",
@@ -547,7 +595,8 @@
       "Zone": "Atlantic",
       "CountryCode": "PT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Lisbon"
     },
     {
       "Country": "Spain",
@@ -558,7 +607,8 @@
       "Zone": "Atlantic",
       "CountryCode": "ES",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Madrid"
     },
     {
       "Country": "Spain",
@@ -569,7 +619,8 @@
       "Zone": "Atlantic",
       "CountryCode": "ES",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Tenerife"
     },
     {
       "Country": "Netherlands",
@@ -580,7 +631,8 @@
       "Zone": "Atlantic",
       "CountryCode": "NL",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Amsterdam"
     },
     {
       "Country": "Spain",
@@ -591,7 +643,8 @@
       "Zone": "Atlantic",
       "CountryCode": "ES",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Barcelona"
     },
     {
       "Country": "Germany",
@@ -602,7 +655,8 @@
       "Zone": "Atlantic",
       "CountryCode": "DE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Frankfurt"
     },
     {
       "Country": "Belgium",
@@ -613,7 +667,8 @@
       "Zone": "Atlantic",
       "CountryCode": "BE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Brussels"
     },
     {
       "Country": "France",
@@ -624,7 +679,8 @@
       "Zone": "Atlantic",
       "CountryCode": "FR",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Paris"
     },
     {
       "Country": "United Kingdom",
@@ -635,7 +691,8 @@
       "Zone": "Atlantic",
       "CountryCode": "GB",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "London"
     },
     {
       "Country": "Germany",
@@ -646,7 +703,8 @@
       "Zone": "Atlantic",
       "CountryCode": "DE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Munich"
     },
     {
       "Country": "Italy",
@@ -657,7 +715,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Rome"
     },
     {
       "Country": "Italy",
@@ -668,7 +727,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Milan"
     },
     {
       "Country": "Switzerland",
@@ -679,7 +739,8 @@
       "Zone": "Atlantic",
       "CountryCode": "CH",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Zurich"
     },
     {
       "Country": "Greece",
@@ -690,7 +751,8 @@
       "Zone": "Atlantic",
       "CountryCode": "GR",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Athens"
     },
     {
       "Country": "Italy",
@@ -701,7 +763,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Naples"
     },
     {
       "Country": "France",
@@ -712,7 +775,8 @@
       "Zone": "Atlantic",
       "CountryCode": "FR",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Nice"
     },
     {
       "Country": "Portugal",
@@ -723,7 +787,8 @@
       "Zone": "Atlantic",
       "CountryCode": "PT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Porto"
     },
     {
       "Country": "Italy",
@@ -734,7 +799,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IT",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Venice"
     },
     {
       "Country": "Ireland",
@@ -745,7 +811,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IE",
       "TC": "TC2",
-      "copazone": "Europe"
+      "copazone": "Europe",
+      "CityName": "Shannon"
     }
   ],
   "Hawaii": [
@@ -758,7 +825,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "Hawaii"
+      "copazone": "Hawaii",
+      "CityName": "Honolulu"
     }
   ],
   "Japan": [
@@ -771,7 +839,8 @@
       "Zone": "Pacific",
       "CountryCode": "JP",
       "TC": "TC3",
-      "copazone": "Japan"
+      "copazone": "Japan",
+      "CityName": "Tokyo"
     },
     {
       "Country": "Japan",
@@ -782,7 +851,8 @@
       "Zone": "Pacific",
       "CountryCode": "JP",
       "TC": "TC3",
-      "copazone": "Japan"
+      "copazone": "Japan",
+      "CityName": "Tokyo"
     },
     {
       "Country": "Japan",
@@ -793,7 +863,8 @@
       "Zone": "Pacific",
       "CountryCode": "JP",
       "TC": "TC3",
-      "copazone": "Japan"
+      "copazone": "Japan",
+      "CityName": "Osaka"
     },
     {
       "Country": "Japan",
@@ -804,7 +875,8 @@
       "Zone": "Pacific",
       "CountryCode": "JP",
       "TC": "TC3",
-      "copazone": "Japan"
+      "copazone": "Japan",
+      "CityName": "Nagoya"
     }
   ],
   "Mexico": [
@@ -817,7 +889,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Acapulco"
     },
     {
       "Country": "Mexico",
@@ -828,7 +901,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Aguascalientes"
     },
     {
       "Country": "Mexico",
@@ -839,7 +913,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Leon/Guanajuato"
     },
     {
       "Country": "Mexico",
@@ -850,7 +925,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Cozumel"
     },
     {
       "Country": "Mexico",
@@ -861,7 +937,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Puerto Vallarta"
     },
     {
       "Country": "Mexico",
@@ -872,7 +949,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "San Jose Cabo"
     },
     {
       "Country": "Mexico",
@@ -883,7 +961,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Mexico City"
     },
     {
       "Country": "Mexico",
@@ -894,7 +973,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Guadalajara"
     },
     {
       "Country": "Mexico",
@@ -905,7 +985,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Merida"
     },
     {
       "Country": "Mexico",
@@ -916,7 +997,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Monterrey"
     },
     {
       "Country": "Mexico",
@@ -927,7 +1009,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Oaxaca"
     },
     {
       "Country": "Mexico",
@@ -938,7 +1021,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Queretaro"
     },
     {
       "Country": "Mexico",
@@ -949,7 +1033,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "San Luis Potosi"
     },
     {
       "Country": "Mexico",
@@ -960,7 +1045,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Tampico"
     },
     {
       "Country": "Mexico",
@@ -971,7 +1057,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Veracruz"
     },
     {
       "Country": "Mexico",
@@ -982,7 +1069,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Ixtapa/Zihuatanejo"
     },
     {
       "Country": "Mexico",
@@ -993,7 +1081,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Manzanillo"
     },
     {
       "Country": "Mexico",
@@ -1004,7 +1093,8 @@
       "Zone": "North America",
       "CountryCode": "MX",
       "TC": "TC1",
-      "copazone": "Mexico"
+      "copazone": "Mexico",
+      "CityName": "Puerto Escondido"
     }
   ],
   "Middle East": [
@@ -1017,7 +1107,8 @@
       "Zone": "Atlantic",
       "CountryCode": "AE",
       "TC": "TC2",
-      "copazone": "Middle East"
+      "copazone": "Middle East",
+      "CityName": "Dubai"
     },
     {
       "Country": "Israel",
@@ -1028,7 +1119,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IL",
       "TC": "TC2",
-      "copazone": "Middle East"
+      "copazone": "Middle East",
+      "CityName": "Tel Aviv-Yafo"
     }
   ],
   "North Asia": [
@@ -1041,7 +1133,8 @@
       "Zone": "Pacific",
       "CountryCode": "KR",
       "TC": "TC3",
-      "copazone": "North Asia"
+      "copazone": "North Asia",
+      "CityName": "Seoul"
     },
     {
       "Country": "China",
@@ -1052,7 +1145,8 @@
       "Zone": "Pacific",
       "CountryCode": "CN",
       "TC": "TC3",
-      "copazone": "North Asia"
+      "copazone": "North Asia",
+      "CityName": "Shanghai"
     },
     {
       "Country": "China",
@@ -1063,7 +1157,8 @@
       "Zone": "Pacific",
       "CountryCode": "CN",
       "TC": "TC3",
-      "copazone": "North Asia"
+      "copazone": "North Asia",
+      "CityName": "Beijing"
     },
     {
       "Country": "Taiwan",
@@ -1074,7 +1169,8 @@
       "Zone": "Pacific",
       "CountryCode": "TW",
       "TC": "TC3",
-      "copazone": "North Asia"
+      "copazone": "North Asia",
+      "CityName": "Taipei"
     }
   ],
   "Northern South America": [
@@ -1087,7 +1183,8 @@
       "Zone": "South America",
       "CountryCode": "PE",
       "TC": "TC1",
-      "copazone": "Northern South America"
+      "copazone": "Northern South America",
+      "CityName": "Lima"
     },
     {
       "Country": "Guyana",
@@ -1098,7 +1195,8 @@
       "Zone": "South America",
       "CountryCode": "GY",
       "TC": "TC1",
-      "copazone": "Northern South America"
+      "copazone": "Northern South America",
+      "CityName": "Georgetown"
     },
     {
       "Country": "Ecuador",
@@ -1109,7 +1207,8 @@
       "Zone": "South America",
       "CountryCode": "EC",
       "TC": "TC1",
-      "copazone": "Northern South America"
+      "copazone": "Northern South America",
+      "CityName": "Quito"
     }
   ],
   "Oceania": [
@@ -1122,7 +1221,8 @@
       "Zone": "Pacific",
       "CountryCode": "GU",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Guam"
     },
     {
       "Country": "Micronesia",
@@ -1133,7 +1233,8 @@
       "Zone": "Pacific",
       "CountryCode": "FM",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Pohnpei, Caroline Islands"
     },
     {
       "Country": "Palau",
@@ -1144,7 +1245,8 @@
       "Zone": "Pacific",
       "CountryCode": "PW",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Koror"
     },
     {
       "Country": "Northern Mariana Islands",
@@ -1155,7 +1257,8 @@
       "Zone": "Pacific",
       "CountryCode": "MP",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Saipan"
     },
     {
       "Country": "Micronesia",
@@ -1166,7 +1269,8 @@
       "Zone": "Pacific",
       "CountryCode": "FM",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Truk, Caroline Islands"
     },
     {
       "Country": "Micronesia",
@@ -1177,7 +1281,8 @@
       "Zone": "Pacific",
       "CountryCode": "FM",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Yap, Caroline Islands"
     },
     {
       "Country": "Marshall Islands",
@@ -1188,7 +1293,8 @@
       "Zone": "Pacific",
       "CountryCode": "MH",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Majuro"
     },
     {
       "Country": "Micronesia",
@@ -1199,7 +1305,8 @@
       "Zone": "Pacific",
       "CountryCode": "FM",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Kosrae, Caroline Islands"
     },
     {
       "Country": "Marshall Islands",
@@ -1210,7 +1317,8 @@
       "Zone": "Pacific",
       "CountryCode": "MH",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Kwajalein"
     },
     {
       "Country": "French Polynesia",
@@ -1221,7 +1329,8 @@
       "Zone": "Pacific",
       "CountryCode": "PF",
       "TC": "TC3",
-      "copazone": "Oceania"
+      "copazone": "Oceania",
+      "CityName": "Papeete"
     }
   ],
   "Panama": [
@@ -1234,7 +1343,8 @@
       "Zone": "North America",
       "CountryCode": "PA",
       "TC": "TC1",
-      "copazone": "Panama"
+      "copazone": "Panama",
+      "CityName": "Panama City"
     }
   ],
   "South Asia": [
@@ -1247,7 +1357,8 @@
       "Zone": "Pacific",
       "CountryCode": "PH",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Cebu City"
     },
     {
       "Country": "Vietnam",
@@ -1258,7 +1369,8 @@
       "Zone": "Pacific",
       "CountryCode": "VN",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Ho Chi Minh City"
     },
     {
       "Country": "Thailand",
@@ -1269,7 +1381,8 @@
       "Zone": "Pacific",
       "CountryCode": "TH",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Bangkok"
     },
     {
       "Country": "India",
@@ -1280,7 +1393,8 @@
       "Zone": "Atlantic",
       "CountryCode": "IN",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Delhi"
     },
     {
       "Country": "Philippines",
@@ -1291,7 +1405,8 @@
       "Zone": "Pacific",
       "CountryCode": "PH",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Manila"
     },
     {
       "Country": "Hong Kong",
@@ -1302,7 +1417,8 @@
       "Zone": "Pacific",
       "CountryCode": "HK",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Hong Kong"
     },
     {
       "Country": "Singapore",
@@ -1313,7 +1429,8 @@
       "Zone": "Pacific",
       "CountryCode": "SG",
       "TC": "TC3",
-      "copazone": "South Asia"
+      "copazone": "South Asia",
+      "CityName": "Singapore"
     }
   ],
   "Southern South America": [
@@ -1326,7 +1443,8 @@
       "Zone": "South America",
       "CountryCode": "BR",
       "TC": "TC1",
-      "copazone": "Southern South America"
+      "copazone": "Southern South America",
+      "CityName": "Sao Paulo"
     },
     {
       "Country": "Argentina",
@@ -1337,7 +1455,8 @@
       "Zone": "South America",
       "CountryCode": "AR",
       "TC": "TC1",
-      "copazone": "Southern South America"
+      "copazone": "Southern South America",
+      "CityName": "Buenos Aires"
     },
     {
       "Country": "Brazil",
@@ -1348,7 +1467,8 @@
       "Zone": "South America",
       "CountryCode": "BR",
       "TC": "TC1",
-      "copazone": "Southern South America"
+      "copazone": "Southern South America",
+      "CityName": "Rio De Janeiro"
     }
   ],
   "US, Alaska and Canada": [
@@ -1361,7 +1481,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Chicago"
     },
     {
       "Country": "United States",
@@ -1372,7 +1493,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Denver"
     },
     {
       "Country": "United States",
@@ -1383,7 +1505,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Dulles"
     },
     {
       "Country": "United States",
@@ -1394,7 +1517,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Cleveland"
     },
     {
       "Country": "United States",
@@ -1405,7 +1529,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Houston"
     },
     {
       "Country": "United States",
@@ -1416,7 +1541,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "San Francisco"
     },
     {
       "Country": "United States",
@@ -1427,7 +1553,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "Los Angeles"
     },
     {
       "Country": "United States",
@@ -1438,7 +1565,8 @@
       "Zone": "North America",
       "CountryCode": "US",
       "TC": "TC1",
-      "copazone": "US & Canada"
+      "copazone": "US & Canada",
+      "CityName": "New York"
     }
   ]
 }
