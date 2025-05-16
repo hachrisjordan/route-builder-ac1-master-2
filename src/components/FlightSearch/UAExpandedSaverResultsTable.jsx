@@ -7,9 +7,7 @@ import filteredAirportsByCopazone from '../../data/filtered_airports_by_copazone
 import airlines from './data/airlines';
 import { currencyList } from './calendar/data/currency_list';
 import { convertCurrency, formatCurrencyAmount, fetchExchangeRates } from './calendar/utils/currencyUtils';
-
-// URL for rate.json
-const RATE_JSON_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/rate.json';
+import { RATE_JSON_URL } from '../../config/cloud';
 
 // Create a separate component for formatted price display
 const FormattedPrice = ({ price, currency }) => {

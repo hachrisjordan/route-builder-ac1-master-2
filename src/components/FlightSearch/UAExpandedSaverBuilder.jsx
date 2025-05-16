@@ -3,6 +3,7 @@ import { Card, Input, DatePicker, Button, Space, Row, Col, Select, Typography } 
 import { SearchOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import filteredAirportsByCopazone from '../../data/filtered_airports_by_copazone.json';
+import { API_BASE_URL } from '../../config/cloud';
 import './styles/NormalRouteBuilder.css';
 
 const { RangePicker } = DatePicker;
@@ -284,7 +285,7 @@ const UAExpandedSaverBuilder = ({ onSearch, isLoading, errors, cachedApiKey, sav
     const endDate = dateRange ? dateRange[1].format('YYYY-MM-DD') : '';
     
     // Construct the API URL with HTTPS
-    const apiUrl = `https://backend-284998006367.us-central1.run.app/api/route-search?type=${formattedType}&airport=${formattedAirport}&startDate=${startDate}&endDate=${endDate}`;
+    const apiUrl = `${API_BASE_URL}/api/route-search?type=${formattedType}&airport=${formattedAirport}&startDate=${startDate}&endDate=${endDate}`;
     
     // Make the API call
     fetch(apiUrl, {

@@ -2,15 +2,16 @@ const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
 const { GoogleAuth } = require('google-auth-library');
+const { GCE_CONFIG } = require('./src/config/cloud');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// put project ID and Zone in env as well, you could even put the whole google api url string in env too
-const PROJECT_ID = 'fabled-emblem-451602-f6';
-const ZONE = 'us-central1-c';
-const GOOGLE_API_URL = `https://compute.googleapis.com/compute/v1/projects/${PROJECT_ID}/zones/${ZONE}/instances`;
+// Use centralized config for GCE settings
+const PROJECT_ID = GCE_CONFIG.PROJECT_ID;
+const ZONE = GCE_CONFIG.ZONE;
+const GOOGLE_API_URL = GCE_CONFIG.API_URL;
 
 const auth = new GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/cloud-platform'],

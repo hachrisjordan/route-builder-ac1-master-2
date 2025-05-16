@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getSourceCodenames } from '../data/sources';
 import { airportGroups } from '../data/airportGroups';
+import { API_BASE_URL, API_ENDPOINTS } from '../../../config/cloud';
 
 // API key storage key
 const API_KEY_STORAGE_KEY = 'normalRouteBuilderApiKey';
@@ -423,7 +424,7 @@ export default function useNormalFlightSearch() {
 
           console.log('API Request Body:', requestBody);
 
-          const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
+          const response = await fetch(API_ENDPOINTS.AVAILABILITY, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -541,7 +542,7 @@ export default function useNormalFlightSearch() {
 
               console.log('🔍 API Request Body for path:', individualPath, requestBody);
 
-              const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
+              const response = await fetch(API_ENDPOINTS.AVAILABILITY, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -637,7 +638,7 @@ export default function useNormalFlightSearch() {
       console.log('🔍 API Request Body:', requestBody);
 
       // Send request with the original path (e.g., "EST-WST-EUR")
-      const response = await fetch('https://backend-284998006367.us-central1.run.app/api/availability-v2', {
+      const response = await fetch(API_ENDPOINTS.AVAILABILITY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

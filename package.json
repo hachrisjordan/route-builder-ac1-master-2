@@ -10,7 +10,7 @@
     "@mapbox/mapbox-sdk": "^0.16.1",
     "@turf/turf": "^7.2.0",
     "@types/google-cloud__storage": "^1.7.2",
-    "antd": "^5.24.1",
+    "antd": "^5.25.1",
     "convex": "^1.21.0",
     "dayjs": "^1.11.13",
     "lucide-react": "^0.503.0",

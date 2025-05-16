@@ -1,4 +1,5 @@
 import { currencyList } from '../data/currency_list';
+import { CORS_PROXY_URL, EXCHANGE_RATES_URL } from '../../../../config/cloud';
 
 // Cache for exchange rates
 let exchangeRates = null;
@@ -15,8 +16,8 @@ export const fetchExchangeRates = async () => {
     }
 
     console.log('Fetching fresh exchange rates');
-    const corsProxyUrl = 'https://api.allorigins.win/raw?url=';
-    const targetUrl = encodeURIComponent('https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/exchange-rates/latest.json');
+    const corsProxyUrl = CORS_PROXY_URL || 'https://api.allorigins.win/raw?url=';
+    const targetUrl = encodeURIComponent(EXCHANGE_RATES_URL);
     
     const response = await fetch(`${corsProxyUrl}${targetUrl}`);
     if (!response.ok) {

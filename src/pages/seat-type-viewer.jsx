@@ -5,6 +5,7 @@ import airlines from '../data/airlines_full';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import seatAF from '../data/seat_AF.json';
+import { CLOUD_STORAGE_BASE_URL, API_BASE_URL, getSeatConfigUrl } from '../config/cloud';
 
 // Configure dayjs with UTC plugin
 dayjs.extend(utc);
@@ -12,7 +13,6 @@ dayjs.extend(utc);
 const { Title, Text } = Typography;
 const { Option } = Select;
 const ALLOWED_AIRLINES = ['LX','UX','WS','VJ','DE','4Y','WK','EW','FI','AZ','HO','VA','EN','CZ','DL','HA','B6','AA','UA','NK','F9','G4','AS','A3','NZ','OZ','MS','SA','TP','SN','AV','OU','MX','ME','KQ','MF','RO','AR','AM','SK','ZH','LA','AY','JX','FJ','KL','RJ','UL','AT','AC','LO','IB','CA','MU','TK','GA','MH','JL', 'NH', 'QR', 'AF', 'LH','BA','SQ','EK','KE','AI','EY','TG','QF','CX','VN','CI','BR','VS','SV','CM','ET','PR','OS'];
-const STORAGE_BASE_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602';
 
 // Month names array
 const monthNames = [
@@ -1114,9 +1114,9 @@ const SeatMapTooltip = ({ airline, variant, children, aircraftType }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const isDoubleDecker = aircraftType && (aircraftType.includes('747') || aircraftType.includes('380'));
-  const url = `${STORAGE_BASE_URL}/seatmap/${airline}_${variant}.png`;
-  const url1 = `${STORAGE_BASE_URL}/seatmap/${airline}_${variant}-1.png`;
-  const url2 = `${STORAGE_BASE_URL}/seatmap/${airline}_${variant}-2.png`;
+  const url = `${CLOUD_STORAGE_BASE_URL}/seatmap/${airline}_${variant}.png`;
+  const url1 = `${CLOUD_STORAGE_BASE_URL}/seatmap/${airline}_${variant}-1.png`;
+  const url2 = `${CLOUD_STORAGE_BASE_URL}/seatmap/${airline}_${variant}-2.png`;
 
   // Single deck logic
   React.useEffect(() => {
@@ -1376,7 +1376,7 @@ const SeatTypeViewer = () => {
         setSeatDataLoading(true);
         try {
           // Fetch from URL for all airlines including AF
-          const response = await fetch(`${STORAGE_BASE_URL}/seat_${selectedAirline}.json`);
+          const response = await fetch(getSeatConfigUrl(selectedAirline));
           if (!response.ok) {
             throw new Error(`Failed to fetch seat data for ${selectedAirline}`);
           }
@@ -1407,7 +1407,7 @@ const SeatTypeViewer = () => {
     setLoading(true);
     try {
       // Build API URL with optional origin/destination
-      let apiUrl = `https://backend-284998006367.us-central1.run.app/api/flightradar24/${selectedAirline}${flightNumber}`;
+      let apiUrl = `${API_BASE_URL}/api/flightradar24/${selectedAirline}${flightNumber}`;
       const params = [];
       if (origin) params.push(`origin=${encodeURIComponent(origin)}`);
       if (arrival) params.push(`destination=${encodeURIComponent(arrival)}`);

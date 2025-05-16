@@ -1,13 +1,14 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import { API_ENDPOINTS } from '../../../config/cloud';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export const processFlightData = async (from, to, date, apiKey) => {
   try {
-    const response = await fetch('https://backend-284998006367.us-central1.run.app/api/flight-details', {
+    const response = await fetch(API_ENDPOINTS.FLIGHT_DETAILS, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

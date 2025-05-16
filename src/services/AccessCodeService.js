@@ -2,8 +2,7 @@
  * Service to handle access code validation from cloud storage or external API
  */
 
-// Cloud storage URL where access codes are stored
-const ACCESS_CODES_URL = 'https://storage.googleapis.com/exchange-rates-fabled-emblem-451602/access-codes.json';
+import { ACCESS_CODES_URL } from '../config/cloud';
 
 /**
  * Fetches access codes from cloud storage or local file

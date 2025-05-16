@@ -4,6 +4,7 @@ import routeDetails from '../../../data/route_details.json';
 import airlines from '../../../data/airlines';
 import pricing from '../../../data/pricing.json';
 import airportsData from '../../../data/airports.json';
+import { API_BASE_URL, API_ENDPOINTS } from '../../../config/cloud';
 
 // Convert airports data to array if it's not already
 const airports = Array.isArray(airportsData) ? airportsData : Object.values(airportsData);
@@ -332,7 +333,7 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
 
         // Return an array of promises for each ID
         return Array.from(idsToFetch).map(id => 
-          fetch(`https://backend-284998006367.us-central1.run.app/api/seats/${id}`, {
+          fetch(API_ENDPOINTS.SEATS(id), {
           headers: {
             'accept': 'application/json',
               'Partner-Authorization': apiKey,
@@ -350,7 +351,7 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
         const routeString = currentRoute.join('-');
         
         // Add startDate parameter if available
-        let url = `https://backend-284998006367.us-central1.run.app/api/availability/${routeString}`;
+        let url = `${API_BASE_URL}/api/availability/${routeString}`;
         if (startDate) {
           const formattedDate = dayjs(startDate).format('YYYY-MM-DD');
           url += `?startDate=${formattedDate}`;
@@ -739,7 +740,7 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
             try {
               const responses = await Promise.all(
                 Array.from(idsToFetch).map(id => 
-                  fetch(`https://backend-284998006367.us-central1.run.app/api/seats/${id}`, {
+                  fetch(API_ENDPOINTS.SEATS(id), {
                 method: 'GET',
                 headers: {
                   'accept': 'application/json',
@@ -1029,7 +1030,7 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
       const routeString = currentRoute.join('-');
       
       // Add startDate parameter if available
-      let url = `https://backend-284998006367.us-central1.run.app/api/availability/${routeString}`;
+      let url = `${API_BASE_URL}/api/availability/${routeString}`;
       if (startDate) {
         const formattedDate = dayjs(startDate).format('YYYY-MM-DD');
         url += `?startDate=${formattedDate}`;
