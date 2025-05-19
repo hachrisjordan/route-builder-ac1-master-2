@@ -54,3 +54,6 @@ yarn-error.log*
 /.idea
 /.serverless
 /.vscode
+
+# Ignore gcp-key.json
+gcp-key.json

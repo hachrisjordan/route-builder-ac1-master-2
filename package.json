@@ -24,6 +24,7 @@
     "react-select": "^5.10.0"
   },
   "scripts": {
+    "prebuild": "node scripts/create-gcp-key.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
