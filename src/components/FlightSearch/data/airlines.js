@@ -15,6 +15,7 @@ const airlines = [
   { value: 'WY', label: 'Oman Air (WY)' },
   { value: 'SQ', label: 'Singapore Airlines (SQ)' },
   { value: 'SA', label: 'South African Airways (SA)' },
+  { value: 'MK', label: 'Air Mauritius (MK)' },
   { value: 'LX', label: 'Swiss (LX)' },
   { value: 'TP', label: 'TAP Air Portugal (TP)' },
   { value: 'TG', label: 'Thai Airways (TG)' },

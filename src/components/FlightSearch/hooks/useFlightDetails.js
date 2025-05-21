@@ -868,6 +868,9 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
           const findValidCombinations = (currentPath = [], segmentIndex = firstSegmentWithFlights) => {
             // If we've reached beyond the last valid segment, this is a valid combination
             if (segmentIndex > lastSegmentIndex) {
+              console.log('Found valid combination:', currentPath.map(f => 
+                `${f.flightNumber} (${dayjs(f.DepartsAt).format('MM-DD HH:mm')})`
+              ).join(' → '));
               return [currentPath];
             }
 
@@ -876,12 +879,15 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
 
             // If no flights in current segment, try next segment
             if (!currentSegment?.flights || currentSegment.flights.length === 0) {
+              console.log(`No flights in segment ${segmentIndex}, skipping`);
               return findValidCombinations(currentPath, segmentIndex + 1);
             }
 
             // For first segment, try all flights
             if (currentPath.length === 0) {
+              console.log(`\nTrying first segment ${segmentIndex} (${currentSegment.route}):`);
               currentSegment.flights.forEach(flight => {
+                console.log(`  Trying flight ${flight.flightNumber} (${dayjs(flight.DepartsAt).format('MM-DD HH:mm')})`);
                 const combos = findValidCombinations([flight], segmentIndex + 1);
                 validCombos.push(...combos);
               });
@@ -892,24 +898,43 @@ export default function useFlightDetails(getColumns, initialCombinations = []) {
               const isStopoverPoint = stopoverInfo && 
                                      currentRoute[segmentIndex] === stopoverInfo.airport;
 
+              console.log(`\nChecking connections for segment ${segmentIndex} (${currentSegment.route}):`);
+              console.log(`  Previous flight: ${prevFlight.flightNumber} arrives at ${prevArrival.format('MM-DD HH:mm')}`);
+              console.log(`  Is stopover point: ${isStopoverPoint}`);
+
               currentSegment.flights.forEach(flight => {
                 const departure = dayjs(flight.DepartsAt);
                 const connectionTime = departure.diff(prevArrival, 'minutes');
+                const hours = Math.floor(connectionTime / 60);
+                const minutes = connectionTime % 60;
+
+                console.log(`  Checking flight ${flight.flightNumber} (${departure.format('MM-DD HH:mm')}):`);
+                console.log(`    Connection time: ${hours}h ${minutes}m`);
 
                 if (isStopoverPoint) {
                   // For stopover points, connection must be within stopover day window
                   const minStopoverTime = stopoverInfo.days * 24 * 60; // Convert days to minutes
                   const maxStopoverTime = (stopoverInfo.days + 1) * 24 * 60; // Add one more day for flexibility
                   
+                  console.log(`    Stopover requirements: ${minStopoverTime/60/24} to ${maxStopoverTime/60/24} days`);
+                  
+                  // For stopovers, we only need to check if the connection time is at least the minimum
+                  // and not more than the maximum
                   if (connectionTime >= minStopoverTime && connectionTime <= maxStopoverTime) {
+                    console.log(`    ✓ Valid stopover connection`);
                     const combos = findValidCombinations([...currentPath, flight], segmentIndex + 1);
                     validCombos.push(...combos);
+                  } else {
+                    console.log(`    ✗ Invalid stopover connection`);
                   }
                 } else {
                   // For normal connections, 30 minutes to 24 hours
                   if (connectionTime >= 30 && connectionTime <= 24 * 60) {
+                    console.log(`    ✓ Valid normal connection`);
                     const combos = findValidCombinations([...currentPath, flight], segmentIndex + 1);
                     validCombos.push(...combos);
+                  } else {
+                    console.log(`    ✗ Invalid normal connection`);
                   }
                 }
               });

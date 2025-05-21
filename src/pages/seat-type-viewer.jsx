@@ -174,12 +174,23 @@ const RegistrationCalendar = ({ registrationData = [], airline, flightNumber, se
   // Create a map of dates to registration numbers and ontime data
   const registrationByDate = {};
   registrationData.forEach(item => {
-    // Store data even if registration is N/A
-    registrationByDate[item.date] = {
-      registration: item.registration,
-      ontime: item.ontime,
-      date: item.date // Store the date for historical check
-    };
+    // If we already have data for this date, only update if current registration is valid and previous was N/A
+    if (registrationByDate[item.date]) {
+      if (item.registration !== 'N/A' && registrationByDate[item.date].registration === 'N/A') {
+        registrationByDate[item.date] = {
+          registration: item.registration,
+          ontime: item.ontime,
+          date: item.date
+        };
+      }
+    } else {
+      // First entry for this date
+      registrationByDate[item.date] = {
+        registration: item.registration,
+        ontime: item.ontime,
+        date: item.date
+      };
+    }
   });
 
   return (
